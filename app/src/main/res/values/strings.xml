@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Take Quiz</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="Enter_ID">Enter Your ID Number</string>
+    <string name="Enter_password">Enter Your Password</string>
+    <string name="login">Log In</string>
+    <string name="title_activity_student_home">Student</string>
+    <string name="title_activity_doctor_home">Doctor</string>
+    <string name="listofquiz">List Of Quizes</string>
+    <string name="result">Results</string>
+    <string name="statistics">Statistics</string>
+
+</resources>
