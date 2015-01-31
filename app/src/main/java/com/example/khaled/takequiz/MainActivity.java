@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -16,12 +17,15 @@ public class MainActivity extends ActionBarActivity {
         Intent intent1 = new Intent(this,DoctorHome.class);
         EditText editText = (EditText)findViewById(R.id.Enter_ID);
         EditText editText1 = (EditText)findViewById(R.id.Enter_password);
+        TextView textView =(TextView)findViewById(R.id.wrong_password);
         String idnumber = editText.getText().toString();
         String password = editText1.getText().toString();
         if(idnumber.equals("4444")&&password.equals("4444")){
             startActivity(intent);
         }else if(idnumber.equals("1111")&&password.equals("1111")){
             startActivity(intent1);
+        }else{
+            textView.setVisibility(View.VISIBLE);
         }
     }
 

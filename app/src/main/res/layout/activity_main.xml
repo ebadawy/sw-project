@@ -23,11 +23,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" 
             android:hint="@string/Enter_password"
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="10dp"
             />
+        <TextView
+            android:id="@+id/wrong_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible"
+            android:text="@string/wrong_password"
+            android:layout_gravity="center_horizontal"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
             android:text="@string/login"
             android:onClick="login"
             android:layout_gravity="center_horizontal" />
