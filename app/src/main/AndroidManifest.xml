@@ -40,14 +40,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khaled.takequiz.DoctorHome" />
         </activity>
-        <activity
-            android:name=".Quizlist_Student"
-            android:label="@string/title_activity_quizlist__student"
-            android:parentActivityName=".StudentHome" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.khaled.takequiz.StudentHome" />
-        </activity>
     </application>
 
 </manifest>

@@ -12,14 +12,16 @@
 
     <Button
         android:layout_width="wrap_content"
+        android:textSize="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:text="Settings"/>
     <Button
         android:layout_width="fill_parent"
+        android:textSize="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="60dp"
@@ -28,6 +30,7 @@
         android:text="Create Quiz"/>
     <Button
         android:layout_width="fill_parent"
+        android:textSize="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
@@ -36,6 +39,7 @@
         android:text="List Of Quizs"/>
     <Button
         android:layout_width="fill_parent"
+        android:textSize="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
@@ -44,6 +48,7 @@
         android:text="Groups"/>
     <Button
         android:layout_width="fill_parent"
+        android:textSize="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
@@ -52,9 +57,10 @@
         android:text="Results"/>
     <Button
         android:layout_width="wrap_content"
+        android:textSize="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:text="Log Out"/>

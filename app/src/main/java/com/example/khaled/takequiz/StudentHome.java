@@ -10,10 +10,7 @@ import android.view.View;
 
 public class StudentHome extends ActionBarActivity {
 
-    public void openquiz(View view){
-        Intent intent = new Intent(this,Quizlist_Student.class);
-        startActivity(intent);
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

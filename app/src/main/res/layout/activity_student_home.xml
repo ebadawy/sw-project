@@ -26,8 +26,7 @@
         android:layout_marginTop="60dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/listofquiz"
-        android:onClick="openquiz"/>
+        android:text="@string/listofquiz"/>
 
 
     <Button

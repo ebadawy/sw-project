@@ -15,8 +15,6 @@
     <string name="title_activity_dr_create_quiz">Create Quiz</string>
     <string name="wrong_password">The ID or Password You Entered is Incorrect!! Please Try Again</string>
     <string name="title_activity_quizlist__student">Quiz List</string>
-    <string name="quizlist">Quizes List</string>
-    <string name="quiz">Quizes</string>
-    <string name="deadline">Deadline</string>
+
 
 </resources>
