@@ -32,6 +32,30 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khaled.takequiz.MainActivity" />
         </activity>
+        <activity
+            android:name=".QuizMaininfo"
+            android:label="@string/title_activity_quiz_maininfo"
+            android:parentActivityName=".DoctorHome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.DoctorHome" />
+        </activity>
+        <activity
+            android:name=".QuizQuestionAnswerStudent"
+            android:label="@string/title_activity_quiz_question_answer_student"
+            android:parentActivityName=".QuizMaininfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.QuizMaininfo" />
+        </activity>
+        <activity
+            android:name=".QuizQuestionAnswerDoctor"
+            android:label="@string/title_activity_quiz_question_answer_doctor"
+            android:parentActivityName=".QuizMaininfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.QuizMaininfo" />
+        </activity>
     </application>
 
 </manifest>
