@@ -14,10 +14,7 @@ public class Grouplayout extends ActionBarActivity {
         Intent intent = new Intent(this,grouplist.class);
         startActivity(intent);
     }
-    public void openstudentreg(View view){
-        Intent intent = new Intent(this,studentreg.class);
-        startActivity(intent);
-    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

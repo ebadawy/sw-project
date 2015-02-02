@@ -57,12 +57,12 @@
                 android:value="com.example.khaled.takequiz.Grouplayout" />
         </activity>
         <activity
-            android:name=".studentreg"
-            android:label="@string/title_activity_studentreg"
-            android:parentActivityName=".Grouplayout" >
+            android:name=".studentresult"
+            android:label="@string/title_activity_studentresult"
+            android:parentActivityName=".StudentHome" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.khaled.takequiz.Grouplayout" />
+                android:value="com.example.khaled.takequiz.StudentHome" />
         </activity>
     </application>
 
