@@ -2,15 +2,21 @@ package com.example.khaled.takequiz;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android
 
 
 public class studentresult extends ActionBarActivity {
 
+    public void msg(View view){
+        DialogFragment builder = new popup();
+        builder.show(getSupportFragmentManager(),"Result");
+    }
 
 
     @Override
