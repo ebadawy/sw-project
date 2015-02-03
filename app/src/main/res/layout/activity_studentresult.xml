@@ -9,16 +9,17 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
-    <TextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_weight="1"
         android:text="Quiz 1"
         android:textSize="30dp"
+        android:onClick="pop"
         android:background="#FF0000"
         />
-    <TextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -26,8 +27,9 @@
         android:text="Quiz 2"
         android:textSize="30dp"
         android:background="#00A0FF"
+        android:onClick="pop"
         />
-    <TextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -35,6 +37,7 @@
         android:text="Quiz 3"
         android:textSize="30dp"
         android:background="#00FF00"
+        android:onClick="pop"
         />
         />
 
