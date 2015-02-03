@@ -22,6 +22,7 @@ public class studentresult extends ActionBarActivity {
             }
         });
             alertDialog.show();
+
     }
 
     @Override
