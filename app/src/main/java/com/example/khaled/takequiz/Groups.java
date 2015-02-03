@@ -6,27 +6,32 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 
-public class DoctorHome extends ActionBarActivity {
+public class Groups extends ActionBarActivity {
 
-    Intent groupsIntent;
+    Intent srIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_home);
-        groupsIntent = new Intent(this, Groups.class);
+        setContentView(R.layout.activity_groups);
+        Button gl = (Button) findViewById(R.id.groupList);
+        Button sr = (Button) findViewById(R.id.studnetRegistation);
+        srIntent = new Intent(this, StudentRegistration.class);
+
     }
 
-    public void startGroupsIntent(View v) {
-        startActivity(groupsIntent);
+    public void startsrIntent(View v) {
+        startActivity(srIntent);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_doctor_home, menu);
+        getMenuInflater().inflate(R.menu.menu_groups, menu);
         return true;
     }
 

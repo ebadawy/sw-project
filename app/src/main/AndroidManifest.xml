@@ -32,6 +32,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khaled.takequiz.MainActivity" />
         </activity>
+        <activity
+            android:name=".Groups"
+            android:label="@string/title_activity_groups" >
+        </activity>
+        <activity
+            android:name=".StudentRegistration"
+            android:label="@string/title_activity_student_registration" >
+        </activity>
     </application>
 
 </manifest>
