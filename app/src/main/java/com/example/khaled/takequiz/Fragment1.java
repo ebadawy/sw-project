@@ -53,7 +53,11 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
 
         EditText editText = new EditText(getActivity() );
         RadioButton radiobutton = new RadioButton(getActivity());
-        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT
+                , LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout l = (LinearLayout) new LinearLayout(getActivity());
+        l.addView(radiobutton);
+        l.addView(editText);
         radiobutton.setLayoutParams(p);
         editText.setLayoutParams(p);
         editText.setText("Write Choice Here");
@@ -66,8 +70,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
         Log.d("View", "Start");
 
         try{
-            radioGroup.addView(radiobutton);
-            radioGroup.addView(editText);
+            radioGroup.addView(l);
         }catch(Exception e){
             e.printStackTrace();
         }
