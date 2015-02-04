@@ -113,7 +113,7 @@
             android:layout_alignLeft="@+id/timelimitWarning"
             android:layout_alignStart="@+id/timelimitWarning"
             android:layout_alignRight="@+id/timelimitWarning"
-            android:layout_alignEnd="@+id/timelimitWarning" />
+             />
 
     </RelativeLayout>
 
