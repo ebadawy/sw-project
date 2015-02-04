@@ -1,16 +1,9 @@
 package com.rest.service;
 
+import android.util.Log;
+
 import com.example.khaled.takequiz.QuizAPI;
-import com.example.khaled.takequiz.User;
-
-import java.util.List;
-import java.util.concurrent.Callable;
-
-import retrofit.Callback;
 import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.OkClient;
-import retrofit.client.Response;
 
 public class RestClient {
     private static QuizAPI REST_CLIENT;
@@ -29,6 +22,13 @@ public class RestClient {
 
     private static void setupRestClient() {
         RestAdapter adapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setLog(new RestAdapter.Log() {
+                    @Override
+                    public void log(String s) {
+                        Log.i("retrofitRequest**", s);
+                    }
+                })
                 .setEndpoint(ROOT)
                 .build();
         REST_CLIENT = adapter.create(QuizAPI.class);
