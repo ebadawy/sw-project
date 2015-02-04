@@ -76,7 +76,8 @@ public class QuizMaininfo extends ActionBarActivity implements View.OnClickListe
             quizmarkWarning.setTextColor(Color.RED);
         }
         else{
-        Intent intent = new Intent(QuizMaininfo.this, QuizQuestionAnswerDoctor.class);
+        Intent intent = new Intent(QuizMaininfo.this, QuizQuestionAnswerDoctor.class)
+                .putExtra("Quiz Name", subject.getText().toString());
         startActivity(intent);}
 
     }

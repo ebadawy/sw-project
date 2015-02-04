@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
     ViewPager pager;
     int currentPage;
     EditText pageNumber;
+    TextView quizName;
     Button go;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,8 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
         nextPage.setOnClickListener(this);
         previousPage.setOnClickListener(this);
         go.setOnClickListener(this);
+        quizName = (TextView) findViewById(R.id.quizName);
+        quizName.setText(getIntent().getExtras().getString("Quiz Name"));
 
     }
 
