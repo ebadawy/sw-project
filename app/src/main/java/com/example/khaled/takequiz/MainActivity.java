@@ -4,21 +4,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.JsonElement;
-import com.rest.model.StringResponse;
 import com.rest.model.User;
-import com.rest.model.UserWraper;
 import com.rest.service.RestClient;
-
-import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -27,7 +20,6 @@ import retrofit.client.Response;
 
 public class MainActivity extends ActionBarActivity {
     TextView logs;
-    User u;
     public static QuizAPI api;
     public void login(View view){
         final Intent studentActivity = new Intent(this,StudentHome.class);
