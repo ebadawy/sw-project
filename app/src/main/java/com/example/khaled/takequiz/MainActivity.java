@@ -9,14 +9,17 @@ import android.view.View;
 import android.widget.EditText;
 
 
-public class MainActivity extends ActionBarActivity {
 
+public class MainActivity extends ActionBarActivity {
+    TextView logs;
+    User u;
+    public static QuizAPI api;
     public void login(View view){
-        Intent intent = new Intent(this,StudentHome.class);
-        Intent intent1 = new Intent(this,DoctorHome.class);
+        final Intent studentActivity = new Intent(this,StudentHome.class);
+        final Intent docActivity = new Intent(this,DoctorHome.class);
         EditText editText = (EditText)findViewById(R.id.Enter_ID);
         EditText editText1 = (EditText)findViewById(R.id.Enter_password);
-        String idnumber = editText.getText().toString();
+        String userName = editText.getText().toString();
         String password = editText1.getText().toString();
         if(idnumber.equals("4444")&&password.equals("4444")){
             startActivity(intent);
@@ -29,6 +32,8 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        logs = (TextView) findViewById(R.id.logs);
+        api = RestClient.get();
     }
 
 
