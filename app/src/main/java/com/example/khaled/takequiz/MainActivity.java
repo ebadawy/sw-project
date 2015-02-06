@@ -1,13 +1,28 @@
 package com.example.khaled.takequiz;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.JsonElement;
+import com.rest.model.StringResponse;
+import com.rest.model.User;
+import com.rest.model.UserWraper;
+import com.rest.service.RestClient;
+
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -21,10 +36,27 @@ public class MainActivity extends ActionBarActivity {
         EditText editText1 = (EditText)findViewById(R.id.Enter_password);
         String userName = editText.getText().toString();
         String password = editText1.getText().toString();
-        if(idnumber.equals("4444")&&password.equals("4444")){
-            startActivity(intent);
-        }else if(idnumber.equals("1111")&&password.equals("1111")){
-            startActivity(intent1);
+        if (!userName.isEmpty() || !password.isEmpty())
+            api.login(userName, password, new Callback<User>() {
+                @Override
+                public void success(User user, Response response) {
+                    try {
+                       // the user is authenticated, ur code goes here
+                    } catch(NullPointerException e) {
+                       logs.setTextColor(Color.RED);
+                       logs.setText("Invalid User Name or Password");
+                    }
+                }
+
+                @Override
+                public void failure(RetrofitError retrofitError) {
+                    logs.setTextColor(Color.RED);
+                    logs.setText("Error: Cannot connect to the server!");
+                }
+            });
+        else {
+            logs.setTextColor(Color.RED);
+            logs.setText("Invalid User Name or Password");
         }
     }
 
