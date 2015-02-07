@@ -1,9 +1,9 @@
 package com.example.khaled.takequiz;
 
-import com.rest.model.Question;
-import com.rest.model.QuestionWraper;
+import com.rest.model.QuestionWrapper;
+import com.rest.model.QuizWrapper;
 import com.rest.model.User;
-import com.rest.model.UserWraper;
+import com.rest.model.UserWrapper;
 import com.squareup.okhttp.Response;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public interface QuizAPI {
 
     @POST("/users")
     @Headers({"Content-Type: application/json"})
-    public void createUser(@Body UserWraper user,
+    public void createUser(@Body UserWrapper user,
                            Callback<Response> response);
 
 
@@ -32,6 +32,10 @@ public interface QuizAPI {
                       Callback<User> user);
 
     @POST("/questions")
-    public void createQuestion(@Body QuestionWraper questionWraper,
+    public void createQuestion(@Body QuestionWrapper questionWraper,
                                 Callback<Response> response);
+
+    @POST("/quizzes")
+    public void createQuize(@Body QuizWrapper quizWrapper,
+                               Callback<Response> response);
 }
