@@ -3,10 +3,10 @@ package com.rest.model;
 /**
  * Created by ehab on 2/4/15.
  */
-public class UserWraper {
+public class UserWrapper {
     private User user;
 
-    public UserWraper(User u) {
+    public UserWrapper(User u) {
         this.user = u;
     }
 }
