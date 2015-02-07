@@ -1,6 +1,7 @@
 package com.example.khaled.takequiz;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +12,24 @@ import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    api.login(userName, password, new Callback<User>() {
+        @Override
+        public void success(User user, Response response) {
+            try {
+                // the user is authenticated, ur code goes here
+            } catch(NullPointerException e) {
+                logs.setTextColor(Color.RED);
+                logs.setText("Invalid User Name or Password");
+            }
+        }
+
+        @Override
+        public void failure(RetrofitError retrofitError) {
+            logs.setTextColor(Color.RED);
+            logs.setText("Error: Cannot connect to the server!");
+        }
+    });
 
     public void login(View view){
         Intent intent = new Intent(this,StudentHome.class);
