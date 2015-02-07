@@ -11,6 +11,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class User {
+    private int user_id;
     private String user_name;
     private String password;
     private int user_result = 0;
@@ -21,6 +22,7 @@ public class User {
         this.user_name = null;
         this.password = null;
         this.groups = null;
+        this.user_id = 0;
     }
 
     public User(String name, String pass, String r) {
@@ -28,6 +30,7 @@ public class User {
         this.password = pass;
         this.role = r;
         this.groups = null;
+        this.user_id = 0;
 
     }
 
@@ -36,7 +39,7 @@ public class User {
     public int getUserResult() {return user_result;}
     public String getRole() {return role;}
     public List<Group> getGroups() {return groups;}
-
+    public int getUserId(){return user_id;}
 
 
     public void setUserName(String id) {this.user_name = id;}
