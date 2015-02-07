@@ -14,6 +14,15 @@ public class Quiz {
         this.id = 0;
     }
 
+    public Quiz(String n, List<Question> q) {
+        this.id = 0;
+        this.name = n;
+        this.questions = q;
+    }
+
+    public void setQuestions(List<Question> q) {
+        this.questions = q;
+    }
     public String getName() {
         return this.name;
     }
