@@ -4,6 +4,8 @@ package com.rest.model;
 import com.example.khaled.takequiz.MainActivity;
 import com.example.khaled.takequiz.QuizAPI;
 
+import java.util.List;
+
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -13,21 +15,27 @@ public class User {
     private String password;
     private int user_result = 0;
     private  String role;
+    private List<Group> groups;
+
     public User() {
         this.user_name = null;
         this.password = null;
+        this.groups = null;
     }
 
     public User(String name, String pass, String r) {
         this.user_name = name;
         this.password = pass;
         this.role = r;
+        this.groups = null;
+
     }
 
     public String getUserName() {return user_name;}
     public String getPassword() {return password;}
     public int getUserResult() {return user_result;}
     public String getRole() {return role;}
+    public List<Group> getGroups() {return groups;}
 
 
 
