@@ -28,7 +28,9 @@ public class MainActivity extends ActionBarActivity {
         EditText editText1 = (EditText)findViewById(R.id.Enter_password);
         String userName = editText.getText().toString();
         String password = editText1.getText().toString();
-        if (!userName.isEmpty() || !password.isEmpty())
+        if (!userName.isEmpty() || !password.isEmpty()) {
+            logs.setTextColor(Color.BLACK);
+            logs.setText("Please Wait...");
             api.login(userName, password, new Callback<User>() {
                 @Override
                 public void success(User user, Response response) {
@@ -46,7 +48,7 @@ public class MainActivity extends ActionBarActivity {
                     logs.setText("Error: Cannot connect to the server!");
                 }
             });
-        else {
+        } else {
             logs.setTextColor(Color.RED);
             logs.setText("Invalid User Name or Password");
         }
