@@ -5,11 +5,13 @@ import com.savagelook.android.Lazy;
 import java.util.List;
 
 public class Group {
+    private int id;
     private String group_name;
     private int students_number;
     private List<User> users;
 
     public Group() {
+        this.id = 0;
         this.group_name = null;
         this.students_number = 0;
         this.users = null;
@@ -25,6 +27,10 @@ public class Group {
 
     public List<User> getUsers() {
         return users;
+    }
+
+    public int getId() {
+        return this.id;
     }
 
 }
