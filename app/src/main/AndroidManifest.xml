@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.khaled.takequiz" >
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -33,36 +35,12 @@
                 android:value="com.example.khaled.takequiz.MainActivity" />
         </activity>
         <activity
-            android:name=".Quizlist_Student"
-            android:label="@string/title_activity_quizlist__student"
-            android:parentActivityName=".StudentHome" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.khaled.takequiz.StudentHome" />
+            android:name=".Groups"
+            android:label="@string/title_activity_groups" >
         </activity>
         <activity
-            android:name=".Grouplayout"
-            android:label="@string/title_activity_grouplayout"
-            android:parentActivityName=".DoctorHome" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.khaled.takequiz.DoctorHome" />
-        </activity>
-        <activity
-            android:name=".grouplist"
-            android:label="@string/title_activity_grouplist"
-            android:parentActivityName=".Grouplayout" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.khaled.takequiz.Grouplayout" />
-        </activity>
-        <activity
-            android:name=".studentresult"
-            android:label="@string/title_activity_studentresult"
-            android:parentActivityName=".StudentHome" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.khaled.takequiz.StudentHome" />
+            android:name=".StudentRegistration"
+            android:label="@string/title_activity_student_registration" >
         </activity>
     </application>
 
