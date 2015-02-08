@@ -18,7 +18,7 @@ public class Quiz {
     private String time_limit;
     private int quiz_mark;
     private List<Question> questions;
-    
+    private boolean published;
 
     public Quiz() {
         this.name = null;
@@ -27,6 +27,7 @@ public class Quiz {
         this.deadline = null;
         this.time_limit = null;
         this.quiz_mark = 0;
+        this.published = false;
     }
 
     public Quiz(String name, String deadline,
@@ -37,6 +38,7 @@ public class Quiz {
         this.time_limit = time_limit;
         this.quiz_mark = quiz_mark;
         this.questions = questions;
+        this.published = false;
     }
 
     public void setQuestions(List<Question> q) {
@@ -53,6 +55,8 @@ public class Quiz {
     public int getId() {
         return this.id;
     }
+
+    public boolean isPublished() {return published;}
 
     public void loadQuizInfo() {
 
