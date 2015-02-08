@@ -32,6 +32,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khaled.takequiz.MainActivity" />
         </activity>
+        <activity
+            android:name=".PageViewActivity"
+            android:label="@string/title_activity_page_view" >
+        </activity>
+        <activity
+            android:name=".QuizActivity"
+            android:label="@string/title_activity_quiz" >
+        </activity>
     </application>
 
 </manifest>
