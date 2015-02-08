@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="C:\swproject\sw-project\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\swproject\sw-project\app\build\intermediates\pre-dexed\debug\classes-b801d186b6a7d21b13045304647fc6fb29328446.jar" />
+    </item>
+    <item
         jar="C:\swproject\sw-project\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -9,11 +16,11 @@
         <dex dex="C:\swproject\sw-project\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-c9a3eac8ee0da0b8e158e330cf95c844460d8499.jar" />
     </item>
     <item
-        jar="C:\swproject\sw-project\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jar="C:\swproject\sw-project\app\build\intermediates\exploded-aar\com.jjoe64\graphview\4.0.0\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\swproject\sw-project\app\build\intermediates\pre-dexed\debug\classes-b801d186b6a7d21b13045304647fc6fb29328446.jar" />
+        sha1="ae24ad61a573cd1faf8261f5ec6d8f0cb58ddaad">
+        <dex dex="C:\swproject\sw-project\app\build\intermediates\pre-dexed\debug\classes-d91da71ad2ce8b8ab0ddd40ab48d44289afea554.jar" />
     </item>
     <item
         jar="C:\swproject\sw-project\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"

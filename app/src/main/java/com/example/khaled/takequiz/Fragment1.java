@@ -26,13 +26,18 @@ import java.util.List;
  * Created by user on 2/2/2015.
  */
 public class Fragment1 extends Fragment implements View.OnClickListener{
+
     private LinearLayout mLayout;
     private Button mButton;
     private RadioGroup radioGroup;
     long counter=1;
-    List<EditText> allEds = new ArrayList<EditText>();
+    EditText question;
+    EditText choice;
+    RadioButton radioButton;
+    public List<EditText> allEds = new ArrayList<EditText>();
     List<RadioButton> allRbs = new ArrayList<RadioButton>();
     Button check;
+
 
     public View onCreateView(LayoutInflater inflater,ViewGroup container,
      Bundle savedInstanceState)
@@ -41,6 +46,11 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
         mLayout = (LinearLayout) beko.findViewById(R.id.linear1);
         mButton = (Button)beko.findViewById(R.id.addChoice);
         radioGroup = (RadioGroup)beko.findViewById(R.id.radioGroup);
+        question = (EditText)beko.findViewById(R.id.question);
+        choice =(EditText)beko.findViewById(R.id.choice);
+        radioButton =(RadioButton)beko.findViewById(R.id.radioButton);
+        allEds.add(choice);
+        allRbs.add(radioButton);
         check = (Button)beko.findViewById(R.id.check);
         mButton.setOnClickListener(this);
         check.setOnClickListener(this);
@@ -52,21 +62,21 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
     public void addChoiceclick(){
 
         EditText editText = new EditText(getActivity() );
-        RadioButton radiobutton = new RadioButton(getActivity());
+        RadioButton radiobutton1 = new RadioButton(getActivity());
         LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        radiobutton.setLayoutParams(p);
+        radiobutton1.setLayoutParams(p);
         editText.setLayoutParams(p);
         editText.setText("Write Choice Here");
         editText.setId((int) counter);
         counter++;
-        radiobutton.setId((int) counter);
+        radiobutton1.setId((int) counter);
         counter++;
         allEds.add(editText);
-        allRbs.add(radiobutton);
+        allRbs.add(radiobutton1);
         Log.d("View", "Start");
 
         try{
-            radioGroup.addView(radiobutton);
+            radioGroup.addView(radiobutton1);
             radioGroup.addView(editText);
         }catch(Exception e){
             e.printStackTrace();
@@ -84,6 +94,10 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
         {
             Toast.makeText(getActivity(), "Check Passed", Toast.LENGTH_SHORT).show();
         }
+
+
+
+
     }
     @Override
      public void onClick(View view) {
@@ -97,8 +111,29 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
                 }
 
             }
+     public  List<String> getChoiceList() {
+        List<String> choices = new ArrayList<String>();
+         for(int i = 0;i<allEds.size();i++) {
+             String choice = ((allEds.get(i).getText().toString()));
+             choices.add(choice);
 
+         }
+         return choices;
+     }
+    public String getQuestion(){
+        String question_ = question.getText().toString();
+        return question_;
+    }
 
+   public int getRightChoice(){
+       int radiocounter = 1;
+       for(int i = 0 ;i<allRbs.size();i++) {
+          System.out.println("AllRbs size is "+(allRbs.size()));
+           if (allRbs.get(i).isChecked()){break;}
+           else radiocounter ++;
+       }
+       return radiocounter;
+   }
 
 }
 

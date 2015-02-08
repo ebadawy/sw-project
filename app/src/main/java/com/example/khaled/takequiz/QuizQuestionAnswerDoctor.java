@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -18,9 +19,11 @@ import java.util.Vector;
 public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.OnClickListener , OnPageChangeListener{
     Button addQuestion;
     private PagerAdapter mPagerAdapter;
-    private List<Fragment> fragments;
+    public List<Fragment> fragments;
+    public List<Fragment1> createdFragments = new ArrayList<Fragment1>();
     Button nextPage;
     Button previousPage;
+    Button save;
     ViewPager pager;
     int currentPage;
     EditText pageNumber;
@@ -34,7 +37,9 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
         previousPage=(Button)findViewById(R.id.previousPage);
         go=(Button)findViewById(R.id.go);
         pageNumber = (EditText)findViewById(R.id.pageNumber);
+        save = (Button)findViewById(R.id.save);
         addQuestion.setOnClickListener(this);
+        save.setOnClickListener(this);
         initialisePaging();
         nextPage.setOnClickListener(this);
         previousPage.setOnClickListener(this);
@@ -52,6 +57,7 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
         pager.setOnPageChangeListener(this);
 
 
+
     }
     private void addQuestionClick(){
         fragments.add(Fragment.instantiate(this,Fragment1.class.getName()));
@@ -64,6 +70,28 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
         int pageNumberx = Integer.parseInt(pageNumber_);
         ViewPager pager = (ViewPager)findViewById(R.id.viewpager);
         pager.setCurrentItem(pageNumberx-1,true);
+
+    }
+    public void saveClick(){
+        List<String> questions_ = new ArrayList<String>();
+        for(int i = 0 ;i<fragments.size(); i++) {
+            Fragment1 f = (Fragment1) fragments.get(i);
+            createdFragments.add(f);
+
+        }
+        for(int i = 0 ; i<createdFragments.size() ;i++) {
+            List<String>Choices_ = new ArrayList<String>();
+            Choices_ = createdFragments.get(i).getChoiceList();
+            questions_.add(createdFragments.get(i).getQuestion());
+            System.out.println(questions_.get(i));
+            for(int j = 0 ;j<Choices_.size();j++){
+             System.out.println(Choices_.get(j));
+            }
+            System.out.println("right answer is " + Choices_.get((createdFragments.get(i).getRightChoice())-1));
+        }
+        questions_.clear();
+        createdFragments.clear();
+
 
     }
     public void onClick(View view) {
@@ -80,6 +108,9 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
                 break;
             case R.id.go:
                 goClick();
+                break;
+            case R.id.save:
+                saveClick();
                 break;
         }
 
