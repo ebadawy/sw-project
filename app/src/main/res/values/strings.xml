@@ -12,8 +12,7 @@
     <string name="listofquiz">List Of Quizes</string>
     <string name="result">Results</string>
     <string name="statistics">Statistics</string>
-    <string name="title_activity_quiz">QuizActivity</string>
-    <string name="title_activity_fragment">Fragment</string>
-    <string name="title_activity_page_view">PageViewActivity</string>
+    <string name="title_activity_groups">Groups</string>
+    <string name="title_activity_student_registration">StudentRegistration</string>
 
 </resources>
