@@ -2,39 +2,60 @@
 <items version="2" >
 
     <item
-        jar="C:\swproject\sw-project\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jar="/home/ehab/sw-project/app/libs/retrofit-1.9.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\swproject\sw-project\app\build\intermediates\pre-dexed\debug\classes-b801d186b6a7d21b13045304647fc6fb29328446.jar" />
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="/home/ehab/sw-project/app/build/intermediates/pre-dexed/debug/retrofit-1.9.0-9c3fe32d0dd68de73284d276e1f288857e295cde.jar" />
     </item>
     <item
-        jar="C:\swproject\sw-project\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\swproject\sw-project\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-c9a3eac8ee0da0b8e158e330cf95c844460d8499.jar" />
-    </item>
-    <item
-        jar="C:\swproject\sw-project\app\build\intermediates\exploded-aar\com.jjoe64\graphview\4.0.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="ae24ad61a573cd1faf8261f5ec6d8f0cb58ddaad">
-        <dex dex="C:\swproject\sw-project\app\build\intermediates\pre-dexed\debug\classes-d91da71ad2ce8b8ab0ddd40ab48d44289afea554.jar" />
-    </item>
-    <item
-        jar="C:\swproject\sw-project\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jar="/home/ehab/sw-project/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\swproject\sw-project\app\build\intermediates\pre-dexed\debug\classes-e7be5bd555d9152798d157269c3490ff7c1d9e03.jar" />
+        <dex dex="/home/ehab/sw-project/app/build/intermediates/pre-dexed/debug/classes-237bafdb3c235eebd9ff38fc118e82dcf5807dfd.jar" />
     </item>
     <item
-        jar="C:\Users\user\AppData\Local\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jar="/home/ehab/sw-project/app/libs/okio-1.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c0b52915a48fa91b1b94a28d4a2997bac5f524df">
+        <dex dex="/home/ehab/sw-project/app/build/intermediates/pre-dexed/debug/okio-1.2.0-73974cf03e68801cc50942f2b62334fb7f65d6ad.jar" />
+    </item>
+    <item
+        jar="/home/ehab/sw-project/app/libs/okhttp-2.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="959c454243581fdf730abfd4f4745441724bcf2c">
+        <dex dex="/home/ehab/sw-project/app/build/intermediates/pre-dexed/debug/okhttp-2.2.0-aef1835ea1ae32104ac87c05443e51a4cf91e09e.jar" />
+    </item>
+    <item
+        jar="/home/ehab/sw-project/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/home/ehab/sw-project/app/build/intermediates/pre-dexed/debug/classes-df20b4da3c307733406e46d6ea6c07bb1e0c7d5f.jar" />
+    </item>
+    <item
+        jar="/home/ehab/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\swproject\sw-project\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-526bbe69b84c00fa36d57250649ee70a6bf82b77.jar" />
+        <dex dex="/home/ehab/sw-project/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-2eb61b1dd8d8ef5167174f5cb5369f54441fd133.jar" />
+    </item>
+    <item
+        jar="/home/ehab/sw-project/app/libs/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
+        <dex dex="/home/ehab/sw-project/app/build/intermediates/pre-dexed/debug/gson-2.2.4-9e5513be795424959b0a3b7f3500f2aa3d422451.jar" />
+    </item>
+    <item
+        jar="/home/ehab/sw-project/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/home/ehab/sw-project/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-78254221051397d82da5189d1cf689b4e7f8b11e.jar" />
     </item>
 
 </items>

@@ -12,8 +12,7 @@
     <string name="listofquiz">List Of Quizes</string>
     <string name="result">Results</string>
     <string name="statistics">Statistics</string>
-    <string name="title_activity_quiz_maininfo">QuizMaininfo</string>
-    <string name="title_activity_quiz_question_answer_student">QuizQuestionAnswerStudent</string>
-    <string name="title_activity_quiz_question_answer_doctor">QuizQuestionAnswerDoctor</string>
+    <string name="title_activity_groups">Groups</string>
+    <string name="title_activity_student_registration">StudentRegistration</string>
 
 </resources>
