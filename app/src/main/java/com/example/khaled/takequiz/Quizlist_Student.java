@@ -1,17 +1,41 @@
 package com.example.khaled.takequiz;
 
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.rest.model.Quiz;
+
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class Quizlist_Student extends ActionBarActivity {
-
+    public QuizAPI api;
+    TextView logs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizlist__student);
+        api.getQuizzes(new Callback<List<Quiz>>() {
+            @Override
+            public void success(List<Quiz> quizs, Response response) {
+
+            }
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+                logs.setTextColor(Color.RED);
+                logs.setText("Error: Cannot connect to the server!");
+            }
+        });
     }
 
 

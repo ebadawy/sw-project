@@ -33,7 +33,7 @@ public class Question {
         return this.choices;
     }
 
-    public void setChoicesWraper(List<Choice> c) {
+    public void setChoices(List<Choice> c) {
         choices = c;
     }
 

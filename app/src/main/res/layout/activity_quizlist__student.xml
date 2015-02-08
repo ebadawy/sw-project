@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/quizlist"
+        android:text="Quiz List"
         android:layout_gravity="center_horizontal"
         android:textSize="40dp"
         android:layout_marginBottom="30dp"
@@ -26,7 +26,7 @@
          <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="@string/quiz"
+             android:text="Quiz"
              android:layout_gravity="left"
              android:textSize="30dp"
              />
@@ -34,7 +34,7 @@
          <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="@string/deadline"
+             android:text="Deadline"
              android:layout_gravity="right"
              android:textSize="30dp"
              android:layout_column="30" />
