@@ -18,7 +18,7 @@ import java.util.Vector;
 
 public class QuizActivity extends FragmentActivity implements View.OnClickListener , OnPageChangeListener{
     Button submit;
-    private PagerAdapter mPagerAdapter;
+    private QuizPageAdapter mPagerAdapter;
     private List<Fragment> fragments;
     Button nextPage;
     Button previousPage;
@@ -44,9 +44,9 @@ public class QuizActivity extends FragmentActivity implements View.OnClickListen
 
     private void initialisePaging() {
         fragments = new Vector<Fragment>();
-        fragments.add(Fragment.instantiate(this,Fragment1.class.getName()));
+        fragments.add(Fragment.instantiate(this,FragmentQuiz.class.getName()));
 
-        mPagerAdapter = new PagerAdapter(this.getSupportFragmentManager(),fragments);
+        mPagerAdapter = new QuizPageAdapter(this.getSupportFragmentManager(),fragments);
         ViewPager pager = (ViewPager)findViewById(R.id.viewpager);
         pager.setAdapter(mPagerAdapter);
         pager.setOnPageChangeListener(this);
@@ -85,9 +85,6 @@ public class QuizActivity extends FragmentActivity implements View.OnClickListen
 
         int nextPage = currentPage+1;
         if (nextPage >= totalPages) {
-            // We can't go forward anymore.
-            // Loop to the first page. If you don't want looping just
-            // return here.
             nextPage = 0;
         }
         ViewPager pager = (ViewPager)findViewById(R.id.viewpager);
@@ -101,9 +98,6 @@ public class QuizActivity extends FragmentActivity implements View.OnClickListen
 
         int previousPage = currentPage-1;
         if (previousPage < 0) {
-            // We can't go back anymore.
-            // Loop to the last page. If you don't want looping just
-            // return here.
             previousPage = totalPages - 1;
         }
         ViewPager pager = (ViewPager)findViewById(R.id.viewpager);
