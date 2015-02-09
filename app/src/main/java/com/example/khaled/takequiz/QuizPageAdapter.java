@@ -9,22 +9,23 @@ import java.util.List;
 
 
 public class QuizPageAdapter extends FragmentPagerAdapter {
-    private List<Fragment> fragments;
-    public QuizPageAdapter(FragmentManager fm,List<Fragment> fragments) {
+    int num;
+
+    public QuizPageAdapter(FragmentManager fm) {
         super(fm);
-        this.fragments = fragments;
+
     }
 
     @Override
     public Fragment getItem(int arg0) {
 
-        return fragments.get(arg0);
+        return new FragmentQuiz();
     }
 
     @Override
     public int getCount() {
 
-        return this.fragments.size();
+        return num;
     }
 
 
