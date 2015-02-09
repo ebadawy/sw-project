@@ -1,6 +1,7 @@
 package com.example.khaled.takequiz;
 
 
+import android.app.Dialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.app.FragmentActivity;
@@ -12,6 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rest.model.Question;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -26,6 +30,9 @@ public class QuizActivity extends FragmentActivity implements View.OnClickListen
     int currentPage;
     EditText pageNumber;
     TextView quizName;
+    List<Question> QUES ;
+    List<String> ANS ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +42,8 @@ public class QuizActivity extends FragmentActivity implements View.OnClickListen
         previousPage=(Button)findViewById(R.id.previousPage);
         pageNumber = (EditText)findViewById(R.id.pageNumber);
         initialisePaging();
+        QUES = new ArrayList<Question>(10);
+        ANS = new ArrayList<String>(QUES.size());
         nextPage.setOnClickListener(this);
         previousPage.setOnClickListener(this);
         quizName = (TextView) findViewById(R.id.quizName);
@@ -102,5 +111,29 @@ public class QuizActivity extends FragmentActivity implements View.OnClickListen
         }
         ViewPager pager = (ViewPager)findViewById(R.id.viewpager);
         pager.setCurrentItem(previousPage,true);
+    }
+    public String getans (int no)
+    {
+        return ANS.get(no);
+    }
+    public void setans (String as,int no)
+    {
+        ANS.set(no,as);
+    }
+    public Question getcurrentQues ()
+    {
+        return QUES.get(currentPage);
+    }
+    public void send()
+    {
+        for(int i=0;i<ANS.size();i++) {
+            if (ANS.get(i) == null)
+            {
+                Dialog dialog = new Dialog(this);
+                dialog.setContentView(R.layout.activity_quiz_warning);
+                dialog.show();
+            }
+        }
+
     }
 }
