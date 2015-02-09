@@ -37,23 +37,28 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
     public List<EditText> allEds = new ArrayList<EditText>();
     List<RadioButton> allRbs = new ArrayList<RadioButton>();
     Button check;
+    View beko;
 
 
     public View onCreateView(LayoutInflater inflater,ViewGroup container,
-     Bundle savedInstanceState)
-    { View beko = (ScrollView)inflater.inflate(R.layout.fragment1_layout,
+     Bundle savedInstanceState){
+
+     beko = (ScrollView)inflater.inflate(R.layout.fragment1_layout,
             container,false);
-        mLayout = (LinearLayout) beko.findViewById(R.id.linear1);
-        mButton = (Button)beko.findViewById(R.id.addChoice);
-        radioGroup = (RadioGroup)beko.findViewById(R.id.radioGroup);
-        question = (EditText)beko.findViewById(R.id.question);
-        choice =(EditText)beko.findViewById(R.id.choice);
-        radioButton =(RadioButton)beko.findViewById(R.id.radioButton);
-        allEds.add(choice);
-        allRbs.add(radioButton);
-        check = (Button)beko.findViewById(R.id.check);
-        mButton.setOnClickListener(this);
-        check.setOnClickListener(this);
+
+            mLayout = (LinearLayout) beko.findViewById(R.id.linear1);
+            mButton = (Button) beko.findViewById(R.id.addChoice);
+            radioGroup = (RadioGroup) beko.findViewById(R.id.radioGroup);
+            question = (EditText) beko.findViewById(R.id.question);
+            choice = (EditText) beko.findViewById(R.id.choice);
+            radioButton = (RadioButton) beko.findViewById(R.id.radioButton);
+            allEds.add(choice);
+            allRbs.add(radioButton);
+            check = (Button) beko.findViewById(R.id.check);
+            mButton.setOnClickListener(this);
+            check.setOnClickListener(this);
+
+
 
          return beko;
     }
@@ -78,6 +83,8 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
         try{
             radioGroup.addView(radiobutton1);
             radioGroup.addView(editText);
+
+
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -134,8 +141,15 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
        }
        return radiocounter;
    }
-
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        System.out.println("fragment already created");
+        super.onActivityCreated(savedInstanceState);
+    }
+    
 }
+
+
 
 
 

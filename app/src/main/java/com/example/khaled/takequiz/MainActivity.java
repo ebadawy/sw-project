@@ -36,6 +36,7 @@ public class MainActivity extends ActionBarActivity {
                 public void success(User user, Response response) {
                     try {
                        // the user is authenticated, ur code goes here
+                        startActivity(docActivity);
                     } catch(NullPointerException e) {
                        logs.setTextColor(Color.RED);
                        logs.setText("Invalid User Name or Password");

@@ -77,6 +77,13 @@ public class QuizMaininfo extends ActionBarActivity implements View.OnClickListe
         }
         else{
         Intent intent = new Intent(QuizMaininfo.this, QuizQuestionAnswerDoctor.class);
+            Bundle extras =new Bundle();
+            extras.putString("subject",subject_);
+            extras.putString("deadline",deadline_);
+            extras.putString("timelimit",timelimit_);
+            extras.putString("quizmark",quizmark_);
+            intent.putExtras(extras);
+
         startActivity(intent);}
 
     }

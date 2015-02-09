@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.khaled.takequiz" >
-
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -35,12 +33,28 @@
                 android:value="com.example.khaled.takequiz.MainActivity" />
         </activity>
         <activity
-            android:name=".Groups"
-            android:label="@string/title_activity_groups" >
+            android:name=".QuizMaininfo"
+            android:label="@string/title_activity_quiz_maininfo"
+            android:parentActivityName=".DoctorHome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.DoctorHome" />
         </activity>
         <activity
-            android:name=".StudentRegistration"
-            android:label="@string/title_activity_student_registration" >
+            android:name=".QuizQuestionAnswerStudent"
+            android:label="@string/title_activity_quiz_question_answer_student"
+            android:parentActivityName=".QuizMaininfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.QuizMaininfo" />
+        </activity>
+        <activity
+            android:name=".QuizQuestionAnswerDoctor"
+            android:label="@string/title_activity_quiz_question_answer_doctor"
+            android:parentActivityName=".QuizMaininfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.QuizMaininfo" />
         </activity>
     </application>
 
