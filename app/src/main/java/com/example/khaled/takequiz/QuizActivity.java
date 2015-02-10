@@ -9,9 +9,11 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +34,7 @@ public class QuizActivity extends FragmentActivity {
     TextView quizName;
     List<Question> QUES ;
     List<String> ANS ;
+    Chronometer chronometer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,12 @@ public class QuizActivity extends FragmentActivity {
         ANS = new ArrayList<String>(QUES.size());
         quizName = (TextView) findViewById(R.id.quizName);
         quizName.setText(getIntent().getExtras().getString("Quiz Name"));
+        chronometer = (Chronometer)findViewById(R.id.chronometer);
+        chronometer.setVisibility(View.VISIBLE);
+        chronometer.start();
+        if(chronometer.bringPointIntoView(15))
+            chronometer.stop();
+
 
     }
 
@@ -130,6 +139,7 @@ public class QuizActivity extends FragmentActivity {
                 dialog.setContentView(R.layout.activity_quiz_warning);
                 dialog.show();
             }
+
         }
 
     }
@@ -137,4 +147,13 @@ public class QuizActivity extends FragmentActivity {
     {
 
     }
+    public void hide()
+    {
+        if(chronometer.getVisibility()==View.VISIBLE)
+            chronometer.setVisibility(View.GONE);
+        if(chronometer.getVisibility()==View.GONE)
+            chronometer.setVisibility(View.VISIBLE);
+    }
+
+
 }

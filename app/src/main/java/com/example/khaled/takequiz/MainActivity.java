@@ -84,9 +84,5 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void gotopage(View v)
-    {
-        Intent intent = new Intent(this,PageViewActivity.class);
-        startActivity(intent);
-    }
+
 }
