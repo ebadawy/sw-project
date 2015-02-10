@@ -1,6 +1,9 @@
 package com.example.khaled.takequiz;
 
+import com.rest.model.Choice;
+import com.rest.model.Question;
 import com.rest.model.QuestionWrapper;
+import com.rest.model.Quiz;
 import com.rest.model.QuizWrapper;
 import com.rest.model.User;
 import com.rest.model.UserWrapper;
@@ -13,6 +16,7 @@ import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.Headers;
 import retrofit.http.POST;
+import retrofit.http.Path;
 import retrofit.http.Query;
 
 public interface QuizAPI {
@@ -21,7 +25,6 @@ public interface QuizAPI {
     @Headers({"Content-Type: application/json"})
     public void createUser(@Body UserWrapper user,
                            Callback<Response> response);
-
 
     @GET("/users")
     public void getUsers(Callback<List<User>> users);
@@ -33,9 +36,24 @@ public interface QuizAPI {
 
     @POST("/questions")
     public void createQuestion(@Body QuestionWrapper questionWraper,
-                                Callback<Response> response);
+                               Callback<Response> response);
 
     @POST("/quizzes")
     public void createQuize(@Body QuizWrapper quizWrapper,
-                               Callback<Response> response);
+                            Callback<Response> response);
+
+    @GET("/quizzes")
+    public void getQuizzes(Callback<List<Quiz>> quizzes);
+
+    @GET("/quizzes/{quiz_id}/questions")
+    public void getQuizQuestions(@Path("quiz_id") int quiz_id,
+                                 Callback<List<Question>> questions);
+
+    @GET("/quizzes/{quiz_id}/questions/{question_id}/choices")
+    public void getQuestionChoices(@Path("quiz_id") int quiz_id,
+                                   @Path("question_id") int question_id,
+                                   Callback<List<Choice>> choices);
+
+
+
 }
