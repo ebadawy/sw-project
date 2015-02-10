@@ -43,4 +43,12 @@ public class StudentHome extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    public void stay(){
+        Intent intent = new Intent(this,StudentHome.class);
+        startActivity(intent);
+    }
+    @Override
+    public void onBackPressed() {
+        stay();
+    }
 }
