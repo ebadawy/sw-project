@@ -4,14 +4,43 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.rest.model.Quiz;
+
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class SelectQuiz extends ActionBarActivity {
+
+    public static QuizAPI api;
+    Quiz quiz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_quiz);
+        final TextView txt = (TextView) findViewById(R.id.txt);
+        try {
+            api.getQuizzes(new Callback<List<Quiz>>() {
+                @Override
+                public void success(List<Quiz> quizs, Response response) {
+                    txt.setText(quiz.getName());
+                }
+
+                @Override
+                public void failure(RetrofitError retrofitError) {
+
+                }
+            });
+        }catch (NullPointerException e){
+            txt.setText("No Quizes :D");
+        }
     }
 
 
