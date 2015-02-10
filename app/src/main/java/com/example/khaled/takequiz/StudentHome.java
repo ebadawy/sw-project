@@ -10,7 +10,10 @@ import android.view.View;
 
 public class StudentHome extends ActionBarActivity {
 
-
+    public void getout(View view){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
