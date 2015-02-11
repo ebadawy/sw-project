@@ -1,7 +1,6 @@
 package com.example.khaled.takequiz;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,47 +9,23 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.rest.model.User;
-import com.rest.service.RestClient;
-
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
-
 
 public class MainActivity extends ActionBarActivity {
-    TextView logs;
-    public static QuizAPI api;
+
     public void login(View view){
-        final Intent studentActivity = new Intent(this,StudentHome.class);
-        final Intent docActivity = new Intent(this,DoctorHome.class);
+        Intent intent = new Intent(this,StudentHome.class);
+        Intent intent1 = new Intent(this,DoctorHome.class);
         EditText editText = (EditText)findViewById(R.id.Enter_ID);
         EditText editText1 = (EditText)findViewById(R.id.Enter_password);
-        String userName = editText.getText().toString();
+        TextView textView =(TextView)findViewById(R.id.wrong_password);
+        String idnumber = editText.getText().toString();
         String password = editText1.getText().toString();
-        if (!userName.isEmpty() || !password.isEmpty()) {
-            logs.setTextColor(Color.BLACK);
-            logs.setText("Please Wait...");
-            api.login(userName, password, new Callback<User>() {
-                @Override
-                public void success(User user, Response response) {
-                    try {
-                       // the user is authenticated, ur code goes here
-                    } catch(NullPointerException e) {
-                       logs.setTextColor(Color.RED);
-                       logs.setText("Invalid User Name or Password");
-                    }
-                }
-
-                @Override
-                public void failure(RetrofitError retrofitError) {
-                    logs.setTextColor(Color.RED);
-                    logs.setText("Error: Cannot connect to the server!");
-                }
-            });
-        } else {
-            logs.setTextColor(Color.RED);
-            logs.setText("Invalid User Name or Password");
+        if(idnumber.equals("4444")&&password.equals("4444")){
+            startActivity(intent);
+        }else if(idnumber.equals("1111")&&password.equals("1111")){
+            startActivity(intent1);
+        }else{
+            textView.setVisibility(View.VISIBLE);
         }
     }
 
@@ -58,8 +33,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        logs = (TextView) findViewById(R.id.logs);
-        api = RestClient.get();
     }
 
 
@@ -83,10 +56,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-    public void gotopage(View v)
-    {
-        Intent intent = new Intent(this,PageViewActivity.class);
-        startActivity(intent);
     }
 }

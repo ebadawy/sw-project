@@ -1,31 +1,35 @@
 package com.example.khaled.takequiz;
 
-import android.content.Intent;
+import android.app.ListActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+
+import com.rest.model.Quiz;
+
+import java.util.List;
 
 
-public class StudentHome extends ActionBarActivity {
-
-    public void openquiz(View view){
-        Intent intent = new Intent(this,Quizlist_Student.class);
-        startActivity(intent);
-    }
+public class Quizlist_DoctorActivity extends ListActivity {
+    List<Quiz> quizs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_home);
+        setContentView(R.layout.activity_quizlist__doctor);
+        ArrayAdapter<Quiz> adapter = new ArrayAdapter<Quiz>(this,android.
+                R.layout.simple_list_item_1,quizs);
+        setListAdapter(adapter);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_student_home, menu);
+        getMenuInflater().inflate(R.menu.menu_quizlist__doctor, menu);
         return true;
     }
 
