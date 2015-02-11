@@ -11,16 +11,23 @@ import android.view.View;
 public class StudentHome extends ActionBarActivity {
 
 
-    public void openquiz(View view){
-        Intent intent = new Intent(this,Quizlist_Student.class);
-        startActivity(intent);
-    }
+
 
     public void openresults(View view){
         Intent intent = new Intent(this,studentresult.class);
         startActivity(intent);
     }
 
+
+
+    public void getout(View view){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+    public void listquiz(View view){
+        Intent intent = new Intent(this,SelectQuiz.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,4 +57,5 @@ public class StudentHome extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
