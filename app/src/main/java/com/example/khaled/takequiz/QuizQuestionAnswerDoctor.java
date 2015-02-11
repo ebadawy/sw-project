@@ -70,8 +70,7 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
         nextPage.setOnClickListener(this);
         previousPage.setOnClickListener(this);
         go.setOnClickListener(this);
-        quizName = (TextView) findViewById(R.id.quizName);
-        quizName.setText(getIntent().getExtras().getString("Quiz Name"));
+
 
 
         if (savedInstanceState == null) {
