@@ -25,15 +25,16 @@ public class SelectQuiz extends ActionBarActivity {
 
     public static QuizAPI api;
     Quiz quiz;
-
+    LinearLayout.LayoutParams params;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_quiz);
         final LinearLayout lm = (LinearLayout) findViewById(R.id.linearmain);
+        //final LinearLayout am =(LinearLayout) findViewById(R.id.alternate);
 
-        LinearLayout.LayoutParams params =
-        new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params =
+        new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         final TextView txt = (TextView) findViewById(R.id.txt);
         try {
@@ -43,20 +44,21 @@ public class SelectQuiz extends ActionBarActivity {
                     // txt.setText(quiz.getName());
                     if (quizs.size() != 0) {
                         for (Quiz quiz : quizs) {
-                            //Create Layout
-
-                            LinearLayout l1 = new LinearLayout(getApplicationContext());
-                            l1.setOrientation(LinearLayout.HORIZONTAL);
-                            //Create Button
+                        LinearLayout A = new LinearLayout(getApplicationContext());
+                            A.setOrientation(LinearLayout.HORIZONTAL);
                             final Button btn = new Button(getApplicationContext());
                             btn.setId(quiz.getId());
                             btn.setText(quiz.getName());
                             btn.setGravity(Gravity.LEFT);
-                            txt.setText(quiz.getName());
-                            //Create Deadline text
+                            btn.setLayoutParams(params);
+                            A.addView(btn);
                             TextView deadline = new TextView(getApplicationContext());
                             deadline.setText(quiz.getDeadline());
                             deadline.setGravity(Gravity.RIGHT);
+                            deadline.setLayoutParams(params);
+                            A.addView(deadline);
+                            lm.addView(A);
+
                         }
                     } else {
                         txt.setText("No Quizzes Available Now");
