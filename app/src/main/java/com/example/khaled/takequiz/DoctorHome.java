@@ -22,8 +22,8 @@ public class DoctorHome extends ActionBarActivity {
         startActivity(intent);
     }
     public void stata(View v){
-        Intent intent = new Intent(this,Statistics.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, Statistics.class);
+//        startActivity(intent);
     }
 
     @Override
