@@ -1,10 +1,12 @@
 package com.example.khaled.takequiz;
 
+import com.rest.model.Answer;
 import com.rest.model.Choice;
 import com.rest.model.Question;
 import com.rest.model.QuestionWrapper;
 import com.rest.model.Quiz;
 import com.rest.model.QuizWrapper;
+import com.rest.model.Result;
 import com.rest.model.User;
 import com.rest.model.UserWrapper;
 import com.squareup.okhttp.Response;
@@ -54,6 +56,27 @@ public interface QuizAPI {
                                    @Path("question_id") int question_id,
                                    Callback<List<Choice>> choices);
 
+    @POST("/users/{user_id}/quizzes/{quiz_id}/questions/{question_id}/answers")
+    public void sendAnswer(@Path("user_id") int user_id,
+                           @Path("quiz_id") int quiz_id,
+                           @Path("question_id") int question_id,
+                           @Body Answer answer,
+                           Callback<Response> response);
 
+    @GET("/users/{user_id}/quizzes/{quiz_id}/questions/{question_id}/answers")
+    public void getAnswer(@Path("user_id") int user_id,
+                          @Path("quiz_id") int quiz_id,
+                          @Path("question_id") int question_id,
+                          Callback<Answer> answer);
+
+    @GET("/users/{user_id}/quizzes/{quiz_id}/answers")
+    public void getAnswers(@Path("user_id") int user_id,
+                           @Path("quiz_id") int quiz_id,
+                            Callback<List<Answer>> answers);
+
+    @GET("/users/{user_id}/quizzes/{quiz_id}/results")
+    public void getResult(@Path("user_id") int user_id,
+                           @Path("quiz_id") int quiz_id,
+                           Callback<Result> rslt);
 
 }
