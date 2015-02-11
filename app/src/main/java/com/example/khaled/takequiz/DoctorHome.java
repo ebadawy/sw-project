@@ -18,6 +18,10 @@ public class DoctorHome extends ActionBarActivity {
         Intent intent = new Intent(this,Quizlist_DoctorActivity.class);
         startActivity(intent);
     }
+    public void stata(View v){
+        Intent intent = new Intent(this,Statistics.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
