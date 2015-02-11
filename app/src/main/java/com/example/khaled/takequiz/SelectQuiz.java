@@ -52,6 +52,7 @@ public class SelectQuiz extends ActionBarActivity {
                         LinearLayout A = new LinearLayout(getApplicationContext());
                             A.setOrientation(LinearLayout.HORIZONTAL);
                             final Button btn = new Button(getApplicationContext());
+                            params.setMargins(10,35,0,0);
                             btn.setId(quiz.getId());
                             btn.setText(quiz.getName());
                             btn.setGravity(Gravity.LEFT);
@@ -59,14 +60,18 @@ public class SelectQuiz extends ActionBarActivity {
                             btn.setBackgroundColor(Color.WHITE);
                             btn.setTextColor(Color.BLACK);
                             btn.setTextSize(30);
+
                             A.addView(btn);
+
                             TextView deadline = new TextView(getApplicationContext());
+                            para.setMargins(10,35,10,0);
                             deadline.setText(quiz.getDeadline());
                             deadline.setGravity(Gravity.RIGHT);
                             deadline.setLayoutParams(para);
                             deadline.setTextColor(Color.BLACK);
                             deadline.setTextSize(30);
                             A.addView(deadline);
+
                             lm.addView(A);
 
                         }
