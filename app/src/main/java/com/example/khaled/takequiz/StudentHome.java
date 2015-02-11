@@ -18,6 +18,10 @@ public class StudentHome extends ActionBarActivity {
         Intent intent = new Intent(this,SelectQuiz.class);
         startActivity(intent);
     }
+    public void openresults(View v){
+        Intent intent = new Intent(this,studentresult.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

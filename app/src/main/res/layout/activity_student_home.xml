@@ -30,7 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textSize="30dp"
-        android:text="@string/result"/>
+        android:text="@string/result"
+        android:onClick="openresults"/>
 
     <Button
         android:layout_width="fill_parent"
