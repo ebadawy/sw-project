@@ -36,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
                 public void success(User user, Response response) {
                     try {
                        // the user is authenticated, ur code goes here
-                    if(user.getRole().equals("students")){
+                    if(user.getRole().equals("student")){
                         startActivity(studentActivity);
                     }else if(user.getRole().equals("doc")){
                         startActivity(docActivity);

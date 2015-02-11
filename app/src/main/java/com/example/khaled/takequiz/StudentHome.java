@@ -1,13 +1,19 @@
 package com.example.khaled.takequiz;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class StudentHome extends ActionBarActivity {
 
+    public void openresult(View v){
+        Intent intent = new Intent(this,studentresult.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
