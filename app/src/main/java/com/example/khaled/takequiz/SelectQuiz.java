@@ -3,6 +3,7 @@ package com.example.khaled.takequiz;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,34 +37,37 @@ public class SelectQuiz extends ActionBarActivity {
 
         final TextView txt = (TextView) findViewById(R.id.txt);
         try {
-            api.getQuizzes(new Callback<List<Quiz>>() {
+            MainActivity.api.getQuizzes(25, new Callback<List<Quiz>>() {
                 @Override
                 public void success(List<Quiz> quizs, Response response) {
-                   // txt.setText(quiz.getName());
-                    if(quizs.size()!=0){
-                    for (int i=0;i<quizs.size();i++) {
-                        //Create Layout
-                        LinearLayout l1 = new LinearLayout(getApplicationContext());
-                        l1.setOrientation(LinearLayout.HORIZONTAL);
-                        //Create Button
-                        final Button btn = new Button(getApplicationContext());
-                        btn.setId(quiz.getId());
-                        btn.setText(quiz.getName());
-                        btn.setGravity(Gravity.LEFT);
-                        //Create Deadline text
-                        TextView deadline = new TextView(getApplicationContext());
-                        deadline.setText(quiz.getDeadline());
-                        deadline.setGravity(Gravity.RIGHT);
-                    }
-                    }else{
+                    // txt.setText(quiz.getName());
+                    if (quizs.size() != 0) {
+                        for (Quiz quiz : quizs) {
+                            //Create Layout
+
+                            LinearLayout l1 = new LinearLayout(getApplicationContext());
+                            l1.setOrientation(LinearLayout.HORIZONTAL);
+                            //Create Button
+                            final Button btn = new Button(getApplicationContext());
+                            btn.setId(quiz.getId());
+                            btn.setText(quiz.getName());
+                            btn.setGravity(Gravity.LEFT);
+                            txt.setText(quiz.getName());
+                            //Create Deadline text
+                            TextView deadline = new TextView(getApplicationContext());
+                            deadline.setText(quiz.getDeadline());
+                            deadline.setGravity(Gravity.RIGHT);
+                        }
+                    } else {
                         txt.setText("No Quizzes Available Now");
                     }
                 }
 
                 @Override
                 public void failure(RetrofitError retrofitError) {
-                    txt.setText("Cannot Connect To Server");
+                    txt.setText(retrofitError.getMessage());
                     txt.setTextColor(Color.RED);
+                    Log.e("Error", "retrofit", retrofitError);
                 }
             });
         }catch (NullPointerException e){
