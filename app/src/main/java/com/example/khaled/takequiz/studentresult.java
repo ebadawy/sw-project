@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +25,7 @@ import retrofit.client.Response;
 
 
 public class studentresult extends ActionBarActivity {
-
+    LinearLayout.LayoutParams params;
     QuizAPI api;
     Quiz quiz;
     public void pop(View view){
@@ -44,56 +45,52 @@ public class studentresult extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studentresult);
         final LinearLayout lm = (LinearLayout) findViewById(R.id.linearmain);
+        //final LinearLayout am =(LinearLayout) findViewById(R.id.alternate);
 
-        LinearLayout.LayoutParams params =
+        params =
                 new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        final TextView result = (TextView) findViewById(R.id.result);
+
+
+        final TextView txt = (TextView) findViewById(R.id.txt);
         try {
-            api.getQuizzes(new Callback<List<Quiz>>() {
+            MainActivity.api.getQuizzes(25, new Callback<List<Quiz>>() {
                 @Override
                 public void success(List<Quiz> quizs, Response response) {
                     // txt.setText(quiz.getName());
-
-                    if(quizs.size()!=0){
-                        for (int i=0;i<quizs.size();i++) {
-                            //Create Layout
-                            LinearLayout l1 = new LinearLayout(getApplicationContext());
-                            l1.setOrientation(LinearLayout.HORIZONTAL);
-                            //Create Button
+                    if (quizs.size() != 0) {
+                        for (Quiz quiz : quizs) {
+                            LinearLayout A = new LinearLayout(getApplicationContext());
+                            A.setOrientation(LinearLayout.HORIZONTAL);
                             final Button btn = new Button(getApplicationContext());
+                            params.setMargins(10,35,0,0);
                             btn.setId(quiz.getId());
                             btn.setText(quiz.getName());
-                            btn.setGravity(Gravity.CENTER);
-                            btn.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    final AlertDialog alertDialog = new AlertDialog.Builder(getApplicationContext()).create();
-                                    //need to get result from server
-                                    alertDialog.setMessage("Your Result Is ");
-                                    alertDialog.setButton("OK",new DialogInterface.OnClickListener(){
-                                        public void onClick(DialogInterface dialog,int which){
-                                            alertDialog.dismiss();
-                                        }
-                                    });
-                                    alertDialog.show();
-                                }
-                            });
+                            btn.setGravity(Gravity.LEFT);
+                            btn.setLayoutParams(params);
+                            btn.setBackgroundColor(Color.WHITE);
+                            btn.setTextColor(Color.BLACK);
+                            btn.setTextSize(30);
+
+                            A.addView(btn);
+
+                            lm.addView(A);
 
                         }
-                    }else{
-                        result.setText("No Results Available Now");
+                    } else {
+                        txt.setText("No Results Available Now");
                     }
                 }
 
                 @Override
                 public void failure(RetrofitError retrofitError) {
-                    result.setText("Cannot Connect To Server");
-                    result.setTextColor(Color.RED);
+                    txt.setText(retrofitError.getMessage());
+                    txt.setTextColor(Color.RED);
+                    Log.e("Error", "retrofit", retrofitError);
                 }
             });
         }catch (NullPointerException e){
-            result.setText("No Results Available Now");
+            txt.setText("No Results Available Now");
         }
 
     }
