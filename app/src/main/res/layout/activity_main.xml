@@ -24,7 +24,6 @@
         <EditText
             android:id="@+id/Enter_ID"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
             android:hint="@string/Enter_ID"
             android:textSize="30dp"
