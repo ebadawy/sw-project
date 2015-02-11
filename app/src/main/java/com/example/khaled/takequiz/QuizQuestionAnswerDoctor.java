@@ -136,10 +136,9 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
                 choices.add(c1);
                 System.out.println(Choices_.get(j));
             }
-            System.out.println("right answer is " +
-                    Choices_.get((createdFragments.get(i).getRightChoice()) - 1));
+
             Question q1 = new Question(questions_.get(i),
-                    Choices_.get((createdFragments.get(i).getRightChoice()) - 1), choices);
+                    createdFragments.get(i).getRightChoice(), choices);
             questions.add(q1);
         }
         Quiz quiz = new Quiz(j, deadline, timelimit, Integer.parseInt(quizmark), questions);

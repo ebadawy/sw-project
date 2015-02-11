@@ -28,15 +28,16 @@ import java.util.List;
 public class Fragment1 extends Fragment implements View.OnClickListener{
 
     private LinearLayout mLayout;
-    private Button mButton;
+    EditText rightAnswer;
     private RadioGroup radioGroup;
     counter counterz = new counter();
+    int counter = 2;
     EditText question;
-
+    Button addChoice;
     EditText choice;
     RadioButton radioButton;
     public List<EditText> allEds = new ArrayList<EditText>();
-    List<RadioButton> allRbs = new ArrayList<RadioButton>();
+
     Button check;
     View beko;
 
@@ -46,29 +47,37 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
 
     public View onCreateView(LayoutInflater inflater,ViewGroup container,
      Bundle savedInstanceState){
-         if(allRbs.size()== 0) {
+
+         if(allEds.size()== 0) {
              beko = (ScrollView) inflater.inflate(R.layout.fragment1_layout,
                      container, false);
 
              mLayout = (LinearLayout) beko.findViewById(R.id.linear1);
-             mButton = (Button) beko.findViewById(R.id.addChoice);
+            rightAnswer =(EditText)beko.findViewById(R.id.rightChoice);
              radioGroup = (RadioGroup) beko.findViewById(R.id.radioGroup);
              question = (EditText) beko.findViewById(R.id.question);
              choice = (EditText) beko.findViewById(R.id.choice);
-             radioButton = (RadioButton) beko.findViewById(R.id.radioButton);
+             addChoice =(Button)beko.findViewById(R.id.addChoice);
              allEds.add(choice);
-             allRbs.add(radioButton);
+
              check = (Button) beko.findViewById(R.id.check);
-             mButton.setOnClickListener(this);
+
              check.setOnClickListener(this);
+             addChoice.setOnClickListener(this);
+
+
+
+
              return beko;
          }
         else {
+
 
              ((ViewGroup)beko.getParent()).removeAllViews();
              return beko;
 
          }
+
 
 
            }
@@ -77,26 +86,25 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
     public void addChoiceclick(){
 
         EditText editText = new EditText(getActivity() );
+        TextView choiceNumber = new TextView(getActivity());
+        choiceNumber.setText(counter+".");
+        counter ++;
 
-        RadioButton radiobutton1 = new RadioButton(getActivity());
         LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
-        radiobutton1.setLayoutParams(p);
-
         editText.setLayoutParams(p);
-        editText.setText("Write Choice Here");
+
+        editText.setHint("Write Choice Here");
         editText.setId(counterz.getcounter());
-
-        radiobutton1.setId(counterz.getcounter());
-
+        LinearLayout A = new LinearLayout(getActivity());
+        A.setOrientation(LinearLayout.HORIZONTAL);
         allEds.add(editText);
-        allRbs.add(radiobutton1);
         Log.d("View", "Start");
 
         try{
-
-            radioGroup.addView(radiobutton1);
-            radioGroup.addView(editText);
+            A.addView(choiceNumber);
+            A.addView(editText);
+            radioGroup.addView(A);
 
 
 
@@ -117,7 +125,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
             Toast.makeText(getActivity(), "Check Passed", Toast.LENGTH_SHORT).show();
         }
 
-System.out.println("no of radiobuttons "+allRbs.size());
+
     }
     @Override
      public void onClick(View view) {
@@ -145,15 +153,13 @@ System.out.println("no of radiobuttons "+allRbs.size());
         return question_;
     }
 
-   public int getRightChoice(){
-       int radiocounter = 1;
-       for(int i = 0 ;i<allRbs.size();i++) {
-          System.out.println("AllRbs size is "+(allRbs.size()));
-           if (allRbs.get(i).isChecked()){break;}
-           else radiocounter ++;
+   public String getRightChoice(){
+       int i = Integer.parseInt(rightAnswer.getText().toString())-1;
+       String rightchoice = allEds.get(i).getText().toString();
+       return rightchoice;
        }
-       return radiocounter;
-   }
+
+
 
 }
 

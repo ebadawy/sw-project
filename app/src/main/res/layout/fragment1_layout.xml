@@ -29,7 +29,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:text="Write Question here" />
+        android:hint="Write Question here" />
 
     <RadioGroup
         android:layout_width="fill_parent"
@@ -44,17 +44,19 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-            <RadioButton
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/radioButton"
-                android:checked="false" />
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="1."
+                android:id="@+id/choiceNumber"
+                android:textSize="15dp" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/choice"
-                android:text="Write Choice here" />
+                android:hint="Write Choice here" />
 
         </LinearLayout>
 
@@ -62,7 +64,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="111dp">
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -90,9 +92,32 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Click Check before swipe"
             android:id="@+id/textView2"
-            android:layout_alignParentBottom="true"
+            android:layout_alignBottom="@+id/check"
             android:layout_toRightOf="@+id/check"
             android:layout_toEndOf="@+id/check" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/rightChoice"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/check"
+            android:layout_toStartOf="@+id/check" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Enter Right choice number"
+            android:id="@+id/textView3"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/rightChoice"
+            android:layout_toEndOf="@+id/rightChoice" />
+
     </RelativeLayout>
     />
 </LinearLayout>
