@@ -19,7 +19,7 @@ import retrofit.http.POST;
 import retrofit.http.Path;
 import retrofit.http.Query;
 
-public interface QuizAPI {
+public interface    QuizAPI {
 
     @POST("/users")
     @Headers({"Content-Type: application/json"})

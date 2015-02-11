@@ -54,6 +54,7 @@ public class studentresult extends ActionBarActivity {
                 @Override
                 public void success(List<Quiz> quizs, Response response) {
                     // txt.setText(quiz.getName());
+
                     if(quizs.size()!=0){
                         for (int i=0;i<quizs.size();i++) {
                             //Create Layout

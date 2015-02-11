@@ -39,25 +39,23 @@ public class SelectQuiz extends ActionBarActivity {
             api.getQuizzes(new Callback<List<Quiz>>() {
                 @Override
                 public void success(List<Quiz> quizs, Response response) {
-                   // txt.setText(quiz.getName());
-                    if(quizs.size()!=0){
+                   
+
                     for (int i=0;i<quizs.size();i++) {
                         //Create Layout
                         LinearLayout l1 = new LinearLayout(getApplicationContext());
                         l1.setOrientation(LinearLayout.HORIZONTAL);
                         //Create Button
                         final Button btn = new Button(getApplicationContext());
-                        btn.setId(quiz.getId());
-                        btn.setText(quiz.getName());
+                        btn.setId(quizs.get(i).getId());
+                        btn.setText(quizs.get(i).getName());
                         btn.setGravity(Gravity.LEFT);
                         //Create Deadline text
                         TextView deadline = new TextView(getApplicationContext());
-                        deadline.setText(quiz.getDeadline());
+                        deadline.setText(quizs.get(i).getDeadline());
                         deadline.setGravity(Gravity.RIGHT);
                     }
-                    }else{
-                        txt.setText("No Quizzes Available Now");
-                    }
+
                 }
 
                 @Override
