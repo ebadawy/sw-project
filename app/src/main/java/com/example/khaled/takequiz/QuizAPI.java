@@ -44,7 +44,7 @@ public interface QuizAPI {
     public void createQuize(@Body QuizWrapper quizWrapper,
                             Callback<Response> response);
 
-    @GET("users/{user_id}/quizzes")
+    @GET("/users/{user_id}/quizzes")
     public void getQuizzes(@Path("user_id") int userId, Callback<List<Quiz>> quizzes);
 
     @GET("/quizzes/{quiz_id}/questions")

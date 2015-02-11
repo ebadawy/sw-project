@@ -13,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.rest.model.Quiz;
 import com.rest.model.Result;
@@ -46,7 +48,7 @@ public class studentresult extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studentresult);
-        final LinearLayout lm = (LinearLayout) findViewById(R.id.linearmain);
+        final ScrollView lm = (ScrollView) findViewById(R.id.linearmain);
         //final LinearLayout am =(LinearLayout) findViewById(R.id.alternate);
 
         params =
@@ -63,7 +65,7 @@ public class studentresult extends ActionBarActivity {
                             LinearLayout A = new LinearLayout(getApplicationContext());
                             A.setOrientation(LinearLayout.HORIZONTAL);
                             final Button btn = new Button(getApplicationContext());
-                            params.setMargins(10,35,0,0);
+                            params.setMargins(10, 35, 0, 0);
                             btn.setId(quiz.getId());
                             btn.setText(quiz.getName());
                             btn.setGravity(Gravity.LEFT);
@@ -72,25 +74,33 @@ public class studentresult extends ActionBarActivity {
                             btn.setTextColor(Color.BLACK);
                             btn.setTextSize(30);
 
-                            A.addView(btn);
-
-                            lm.addView(A);
-
                            btn.setOnClickListener(new View.OnClickListener() {
                                @Override
                                public void onClick(View v) {
+
                                    MainActivity.api.getResult(25, quiz.getId(), new Callback<Result>() {
                                        @Override
                                        public void success(Result result, Response response) {
-                                           final AlertDialog alertDialog = new AlertDialog.Builder(getApplicationContext()).create();
 
-                                           alertDialog.setMessage("Your Result Is " + result.getResult());
-                                           alertDialog.setButton("OK",new DialogInterface.OnClickListener(){
-                                               public void onClick(DialogInterface dialog,int which){
-                                                   alertDialog.dismiss();
-                                               }
-                                           });
-                                           alertDialog.show();
+//                                          Toast.makeText(getApplicationContext(), result.getResult(), Toast.LENGTH_SHORT).show();
+                                           final AlertDialog alertDialog = new AlertDialog.Builder(studentresult.this).create();
+                                            try {
+                                                alertDialog.setMessage("Your Result Is " + result.getResult());
+                                                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        alertDialog.dismiss();
+                                                    }
+                                                });
+                                                alertDialog.show();
+                                            }catch (NullPointerException e){
+                                                alertDialog.setMessage("Not now");
+                                                alertDialog.setButton("OK",new DialogInterface.OnClickListener(){
+                                                    public void onClick(DialogInterface dialog,int which){
+                                                        alertDialog.dismiss();
+                                                    }
+                                                });
+                                                alertDialog.show();
+                                            }
                                        }
 
                                        @Override
@@ -100,6 +110,10 @@ public class studentresult extends ActionBarActivity {
                                    });
                                }
                            });
+
+                            A.addView(btn);
+
+                            lm.addView(A);
 
                         }
                     } else {

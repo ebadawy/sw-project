@@ -34,6 +34,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khaled.takequiz.MainActivity" />
         </activity>
+
+        <activity
+            android:name=".studentresult"
+            android:label="Results"
+            android:parentActivityName=".StudentHome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.StudentHome" />
+        </activity>
+
         <activity
             android:name=".Groups"
             android:label="@string/title_activity_groups" >

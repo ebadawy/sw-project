@@ -10,12 +10,19 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:id="@+id/linearmain">
+    >
     <ImageView
         android:layout_width="248dp"
         android:layout_height="176dp"
         android:src="@drawable/result"
         android:layout_gravity="center"/>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearmain"
+        android:orientation="vertical">
+
+        </ScrollView>
 
 <TextView
     android:layout_width="fill_parent"
