@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rest.model.Quiz;
+import com.rest.model.Result;
 
 import java.util.List;
 
@@ -30,7 +31,8 @@ public class studentresult extends ActionBarActivity {
     Quiz quiz;
     public void pop(View view){
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setMessage("Your Result Is 10");
+
+        alertDialog.setMessage("Your Result Is ");
         alertDialog.setButton("OK",new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog,int which){
                 alertDialog.dismiss();
@@ -48,9 +50,7 @@ public class studentresult extends ActionBarActivity {
         //final LinearLayout am =(LinearLayout) findViewById(R.id.alternate);
 
         params =
-                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-
+              new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         final TextView txt = (TextView) findViewById(R.id.txt);
         try {
@@ -59,7 +59,7 @@ public class studentresult extends ActionBarActivity {
                 public void success(List<Quiz> quizs, Response response) {
                     // txt.setText(quiz.getName());
                     if (quizs.size() != 0) {
-                        for (Quiz quiz : quizs) {
+                        for (final Quiz quiz : quizs) {
                             LinearLayout A = new LinearLayout(getApplicationContext());
                             A.setOrientation(LinearLayout.HORIZONTAL);
                             final Button btn = new Button(getApplicationContext());
@@ -75,6 +75,31 @@ public class studentresult extends ActionBarActivity {
                             A.addView(btn);
 
                             lm.addView(A);
+
+                           btn.setOnClickListener(new View.OnClickListener() {
+                               @Override
+                               public void onClick(View v) {
+                                   MainActivity.api.getResult(25, quiz.getId(), new Callback<Result>() {
+                                       @Override
+                                       public void success(Result result, Response response) {
+                                           final AlertDialog alertDialog = new AlertDialog.Builder(getApplicationContext()).create();
+
+                                           alertDialog.setMessage("Your Result Is " + result.getResult());
+                                           alertDialog.setButton("OK",new DialogInterface.OnClickListener(){
+                                               public void onClick(DialogInterface dialog,int which){
+                                                   alertDialog.dismiss();
+                                               }
+                                           });
+                                           alertDialog.show();
+                                       }
+
+                                       @Override
+                                       public void failure(RetrofitError retrofitError) {
+
+                                       }
+                                   });
+                               }
+                           });
 
                         }
                     } else {
