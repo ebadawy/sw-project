@@ -7,36 +7,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import android.widget.Button;
 
+public class Grouplayout extends ActionBarActivity {
 
-
-
-public class DoctorHome extends ActionBarActivity implements View.OnClickListener {
-    Button createQuiz;
-    public void opengroups(View view){
-        Intent intent = new Intent(this,Grouplayout.class);
-        startActivity(intent);
-    }
-
-    public void stata(View v){
-        Intent intent = new Intent(this,Statistics.class);
+    public void opengrouplist(View view){
+        Intent intent = new Intent(this,grouplist.class);
         startActivity(intent);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_home);
-        createQuiz =(Button)findViewById(R.id.createQuiz);
-        createQuiz.setOnClickListener(this);
+        setContentView(R.layout.activity_grouplayout);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_doctor_home, menu);
+        getMenuInflater().inflate(R.menu.menu_grouplayout, menu);
         return true;
     }
 
@@ -53,20 +42,5 @@ public class DoctorHome extends ActionBarActivity implements View.OnClickListene
         }
 
         return super.onOptionsItemSelected(item);
-    }
-    private void createQuizClick(){
-        Intent intent = new Intent(DoctorHome.this, QuizMaininfo.class);
-        startActivity(intent);
-
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch(view.getId()){
-            case R.id.createQuiz:
-                createQuizClick();
-                break;
-        }
-
     }
 }

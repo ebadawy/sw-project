@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.khaled.takequiz" >
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -33,8 +35,25 @@
                 android:value="com.example.khaled.takequiz.MainActivity" />
         </activity>
         <activity
+            android:name=".Quizlist_Student"
+            android:label="@string/title_activity_quizlist__student"
+            android:parentActivityName=".StudentHome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.StudentHome" />
+        </activity>
+        <activity
             android:name=".QuizMaininfo"
             android:label="@string/title_activity_quiz_maininfo"
+            android:parentActivityName=".StudentHome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.StudentHome" />
+        </activity>
+        <activity
+            android:name=".Grouplayout"
+            android:label="@string/title_activity_grouplayout" >
+>>>>>> khaled_12_drgroup
             android:parentActivityName=".DoctorHome" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -49,12 +68,29 @@
                 android:value="com.example.khaled.takequiz.QuizMaininfo" />
         </activity>
         <activity
-            android:name=".QuizQuestionAnswerDoctor"
-            android:label="@string/title_activity_quiz_question_answer_doctor"
-            android:parentActivityName=".QuizMaininfo" >
+            android:name=".grouplist"
+            android:label="@string/title_activity_grouplist"
+            android:parentActivityName=".Grouplayout" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.khaled.takequiz.QuizMaininfo" />
+                android:value="com.example.khaled.takequiz.Grouplayout" />
+        </activity>
+        <activity
+            android:name=".studentresult"
+            android:label="@string/title_activity_studentresult"
+            android:parentActivityName=".StudentHome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.StudentHome" />
+>>>>>>> khaled_12_drgroup
+        </activity>
+        <activity
+            android:name=".Statistics"
+            android:label="@string/title_activity_statistics" >
+        </activity>
+        <activity
+            android:name=".Grapher"
+            android:label="@string/title_activity_grapher" >
         </activity>
     </application>
 
