@@ -1,47 +1,24 @@
 package com.example.khaled.takequiz;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 
-public class DoctorHome extends ActionBarActivity {
-
-
-    Intent groupsIntent;
-
-    public void opengroups(View view){
-        Intent intent = new Intent(this,Grouplayout.class);
-        startActivity(intent);
-    }
-    public  void listofquiz(View v){
-        Intent intent = new Intent(this,Quizlist_DoctorActivity.class);
-        startActivity(intent);
-    }
-    public void stata(View v){
-        Intent intent = new Intent(this,Statistics.class);
-        startActivity(intent);
-    }
+public class grouplist extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_home);
-        groupsIntent = new Intent(this, Groups.class);
-    }
-
-    public void startGroupsIntent(View v) {
-        startActivity(groupsIntent);
+        setContentView(R.layout.activity_grouplist);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_doctor_home, menu);
+        getMenuInflater().inflate(R.menu.menu_grouplist, menu);
         return true;
     }
 

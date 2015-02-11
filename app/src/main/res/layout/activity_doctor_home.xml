@@ -10,14 +10,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="Settings"/>
+    
     <Button
         android:layout_width="fill_parent"
         android:layout_marginLeft="30dp"
@@ -33,7 +26,17 @@
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="List Of Quizs"/>
+        android:text="List Of Quizs"
+        android:onClick="listofquiz"/>
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Groups"
+        android:onClick="opengroups"/>
     <Button
         android:layout_width="fill_parent"
         android:layout_marginLeft="30dp"
@@ -42,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="startGroupsIntent"
-        android:text="Groups"/>
+        android:text="Results"/>
     <Button
         android:layout_width="fill_parent"
         android:layout_marginLeft="30dp"
@@ -50,7 +53,8 @@
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Results"/>
+        android:text="Statistics"
+        android:onClick="stata"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_marginLeft="30dp"
