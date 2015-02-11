@@ -72,12 +72,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuizMaininfo.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="QuizMaininfo.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/QuizMaininfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6753472" vertical-offset="937" max-vertical-offset="1666">
-              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="784" max-vertical-offset="1666">
+              <caret line="88" column="28" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="28" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.7118056" vertical-offset="459" max-vertical-offset="1632">
+              <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
+              <folding>
+                <element signature="e#1540#1582#0" expanded="true" />
+                <element signature="e#1905#1943#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1159,6 +1172,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_quiz_question_answer_doctor.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/QuizQuestionAnswerDoctor.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_doctor_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -1893,9 +1907,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/QuizMaininfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6753472" vertical-offset="937" max-vertical-offset="1666">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="784" max-vertical-offset="1666">
+          <caret line="88" column="28" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="28" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7118056" vertical-offset="459" max-vertical-offset="1632">
+          <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
+          <folding>
+            <element signature="e#1540#1582#0" expanded="true" />
+            <element signature="e#1905#1943#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
