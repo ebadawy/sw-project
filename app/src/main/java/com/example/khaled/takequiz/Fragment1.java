@@ -30,8 +30,9 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
     private LinearLayout mLayout;
     private Button mButton;
     private RadioGroup radioGroup;
-    long counter=1;
+    counter counterz = new counter();
     EditText question;
+
     EditText choice;
     RadioButton radioButton;
     public List<EditText> allEds = new ArrayList<EditText>();
@@ -40,42 +41,52 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
     View beko;
 
 
+
+
+
     public View onCreateView(LayoutInflater inflater,ViewGroup container,
      Bundle savedInstanceState){
+         if(allRbs.size()== 0) {
+             beko = (ScrollView) inflater.inflate(R.layout.fragment1_layout,
+                     container, false);
 
-     beko = (ScrollView)inflater.inflate(R.layout.fragment1_layout,
-            container,false);
+             mLayout = (LinearLayout) beko.findViewById(R.id.linear1);
+             mButton = (Button) beko.findViewById(R.id.addChoice);
+             radioGroup = (RadioGroup) beko.findViewById(R.id.radioGroup);
+             question = (EditText) beko.findViewById(R.id.question);
+             choice = (EditText) beko.findViewById(R.id.choice);
+             radioButton = (RadioButton) beko.findViewById(R.id.radioButton);
+             allEds.add(choice);
+             allRbs.add(radioButton);
+             check = (Button) beko.findViewById(R.id.check);
+             mButton.setOnClickListener(this);
+             check.setOnClickListener(this);
+             return beko;
+         }
+        else {
 
-            mLayout = (LinearLayout) beko.findViewById(R.id.linear1);
-            mButton = (Button) beko.findViewById(R.id.addChoice);
-            radioGroup = (RadioGroup) beko.findViewById(R.id.radioGroup);
-            question = (EditText) beko.findViewById(R.id.question);
-            choice = (EditText) beko.findViewById(R.id.choice);
-            radioButton = (RadioButton) beko.findViewById(R.id.radioButton);
-            allEds.add(choice);
-            allRbs.add(radioButton);
-            check = (Button) beko.findViewById(R.id.check);
-            mButton.setOnClickListener(this);
-            check.setOnClickListener(this);
+             ((ViewGroup)beko.getParent()).removeAllViews();
+             return beko;
+
+         }
 
 
-
-         return beko;
-    }
+           }
 
 
     public void addChoiceclick(){
 
         EditText editText = new EditText(getActivity() );
         RadioButton radiobutton1 = new RadioButton(getActivity());
-        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
         radiobutton1.setLayoutParams(p);
         editText.setLayoutParams(p);
         editText.setText("Write Choice Here");
-        editText.setId((int) counter);
-        counter++;
-        radiobutton1.setId((int) counter);
-        counter++;
+        editText.setId(counterz.getcounter());
+
+        radiobutton1.setId(counterz.getcounter());
+
         allEds.add(editText);
         allRbs.add(radiobutton1);
         Log.d("View", "Start");
@@ -102,9 +113,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
             Toast.makeText(getActivity(), "Check Passed", Toast.LENGTH_SHORT).show();
         }
 
-
-
-
+System.out.println("no of radiobuttons "+allRbs.size());
     }
     @Override
      public void onClick(View view) {
@@ -141,12 +150,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
        }
        return radiocounter;
    }
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        System.out.println("fragment already created");
-        super.onActivityCreated(savedInstanceState);
-    }
-    
+
 }
 
 
