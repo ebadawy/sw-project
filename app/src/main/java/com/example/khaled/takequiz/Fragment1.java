@@ -77,10 +77,12 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
     public void addChoiceclick(){
 
         EditText editText = new EditText(getActivity() );
+
         RadioButton radiobutton1 = new RadioButton(getActivity());
         LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         radiobutton1.setLayoutParams(p);
+
         editText.setLayoutParams(p);
         editText.setText("Write Choice Here");
         editText.setId(counterz.getcounter());
@@ -92,8 +94,10 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
         Log.d("View", "Start");
 
         try{
+
             radioGroup.addView(radiobutton1);
             radioGroup.addView(editText);
+
 
 
         }catch(Exception e){

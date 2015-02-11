@@ -76,6 +76,7 @@ public class QuizMaininfo extends ActionBarActivity implements View.OnClickListe
             quizmarkWarning.setTextColor(Color.RED);
         }
         else{
+
         Intent intent = new Intent(QuizMaininfo.this, QuizQuestionAnswerDoctor.class);
             Bundle extras =new Bundle();
             extras.putString("subject",subject_);
@@ -83,6 +84,7 @@ public class QuizMaininfo extends ActionBarActivity implements View.OnClickListe
             extras.putString("timelimit",timelimit_);
             extras.putString("quizmark",quizmark_);
             intent.putExtras(extras);
+
 
         startActivity(intent);}
 
