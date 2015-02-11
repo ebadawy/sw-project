@@ -1,6 +1,7 @@
 package com.example.khaled.takequiz;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,7 @@ public class SelectQuiz extends ActionBarActivity {
     public static QuizAPI api;
     Quiz quiz;
     LinearLayout.LayoutParams params;
+    LinearLayout.LayoutParams para;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,10 @@ public class SelectQuiz extends ActionBarActivity {
         //final LinearLayout am =(LinearLayout) findViewById(R.id.alternate);
 
         params =
+        new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        para =
         new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
 
         final TextView txt = (TextView) findViewById(R.id.txt);
         try {
@@ -51,11 +56,12 @@ public class SelectQuiz extends ActionBarActivity {
                             btn.setText(quiz.getName());
                             btn.setGravity(Gravity.LEFT);
                             btn.setLayoutParams(params);
+                            
                             A.addView(btn);
                             TextView deadline = new TextView(getApplicationContext());
                             deadline.setText(quiz.getDeadline());
                             deadline.setGravity(Gravity.RIGHT);
-                            deadline.setLayoutParams(params);
+                            deadline.setLayoutParams(para);
                             A.addView(deadline);
                             lm.addView(A);
 
