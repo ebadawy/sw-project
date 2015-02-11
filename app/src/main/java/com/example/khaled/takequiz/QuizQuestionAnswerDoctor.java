@@ -179,7 +179,13 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
                 goClick();
                 break;
             case R.id.save:
+                try{
                 saveClick();
+                }
+                catch(NumberFormatException e){
+                    Toast.makeText(getApplicationContext(), "Missing Field Recheck", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
         }
 

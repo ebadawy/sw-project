@@ -154,10 +154,10 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
     }
 
    public String getRightChoice(){
-       int i = Integer.parseInt(rightAnswer.getText().toString())-1;
+           int i = Integer.parseInt(rightAnswer.getText().toString()) - 1;
        String rightchoice = allEds.get(i).getText().toString();
        return rightchoice;
-       }
+   }
 
 
 

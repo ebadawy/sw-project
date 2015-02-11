@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class QuizMaininfo extends ActionBarActivity implements View.OnClickListener{
@@ -46,48 +47,54 @@ public class QuizMaininfo extends ActionBarActivity implements View.OnClickListe
 
         return super.onOptionsItemSelected(item);
     }
-    private void nextCreateClick(){
-        EditText subject = (EditText)findViewById(R.id.subject);
-        EditText deadline = (EditText)findViewById(R.id.deadline);
-        EditText timelimit = (EditText)findViewById(R.id.timelimit);
-        EditText quizmark = (EditText)findViewById(R.id.quizmark);
-        TextView subjectWarning = (TextView)findViewById(R.id.subjectWarning);
-        TextView deadlineWarning = (TextView)findViewById(R.id.deadlineWarning);
-        TextView timelimitWarning = (TextView)findViewById(R.id.timelimitWarning);
-        TextView quizmarkWarning = (TextView)findViewById(R.id.quizmarkWarning);
+    private void nextCreateClick() {
+        EditText subject = (EditText) findViewById(R.id.subject);
+        EditText deadline = (EditText) findViewById(R.id.deadline);
+        EditText timelimit = (EditText) findViewById(R.id.timelimit);
+        EditText quizmark = (EditText) findViewById(R.id.quizmark);
+        TextView subjectWarning = (TextView) findViewById(R.id.subjectWarning);
+        TextView deadlineWarning = (TextView) findViewById(R.id.deadlineWarning);
+        TextView timelimitWarning = (TextView) findViewById(R.id.timelimitWarning);
+        TextView quizmarkWarning = (TextView) findViewById(R.id.quizmarkWarning);
         String subject_ = subject.getText().toString();
         String deadline_ = deadline.getText().toString();
         String timelimit_ = timelimit.getText().toString();
         String quizmark_ = quizmark.getText().toString();
-        if(subject_.equals("") || subject_.equals("Subject")){
+        if (subject_.equals("") || subject_.equals("Subject")) {
             subjectWarning.setText("Enter Subject");
             subjectWarning.setTextColor(Color.RED);
         }
-        if(deadline_.equals("") || deadline_.equals("Deadline")){
+        if (deadline_.equals("") || deadline_.equals("Deadline")) {
             deadlineWarning.setText("Enter Deadline");
             deadlineWarning.setTextColor(Color.RED);
         }
-        if(timelimit_.equals("") || timelimit_.equals("Time Limit")){
+        if (timelimit_.equals("") || timelimit_.equals("Time Limit")) {
             timelimitWarning.setText("Enter Time Limit");
             timelimitWarning.setTextColor(Color.RED);
         }
-        if(quizmark_.equals("") || quizmark_.equals("Quiz Mark")){
+        if (quizmark_.equals("") || quizmark_.equals("Quiz Mark")) {
             quizmarkWarning.setText("Enter Quiz Mark");
             quizmarkWarning.setTextColor(Color.RED);
+        } else {
+            try {
+                int i = Integer.parseInt(quizmark_);
+                Intent intent = new Intent(QuizMaininfo.this, QuizQuestionAnswerDoctor.class);
+                Bundle extras = new Bundle();
+                extras.putString("subject", subject_);
+                extras.putString("deadline", deadline_);
+                extras.putString("timelimit", timelimit_);
+                extras.putString("quizmark", quizmark_);
+                intent.putExtras(extras);
+
+
+                startActivity(intent);
+            } catch (NumberFormatException e) {
+                Toast.makeText(getApplicationContext(), "Enter a number in QuizMark", Toast.LENGTH_SHORT).show();
+
+            }
+
+
         }
-        else{
-
-        Intent intent = new Intent(QuizMaininfo.this, QuizQuestionAnswerDoctor.class);
-            Bundle extras =new Bundle();
-            extras.putString("subject",subject_);
-            extras.putString("deadline",deadline_);
-            extras.putString("timelimit",timelimit_);
-            extras.putString("quizmark",quizmark_);
-            intent.putExtras(extras);
-
-
-        startActivity(intent);}
-
     }
 
     @Override
