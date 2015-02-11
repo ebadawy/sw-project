@@ -39,7 +39,7 @@ public class FragmentQuiz extends Fragment {
                              Bundle savedInstanceState) {
         View question = (ScrollView)inflater.inflate(R.layout.activity_questions,
                 container, false);
-        choicecontainer.add(0,ans);
+        choicecontainer.add(ans);
         ques = (TextView)question.findViewById(R.id.textView2);
         ans = (RadioButton)question.findViewById(R.id.radioButton);
         radioGroup = (RadioGroup)question.findViewById(R.id.radio);

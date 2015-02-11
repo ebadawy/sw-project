@@ -70,6 +70,10 @@
             android:label="@string/title_activity_groups" >
         </activity>
         <activity
+            android:name=".QuizActivity"
+            android:label="QuizActivity" >
+        </activity>
+        <activity
             android:name=".StudentRegistration"
             android:label="@string/title_activity_student_registration" >
         </activity>

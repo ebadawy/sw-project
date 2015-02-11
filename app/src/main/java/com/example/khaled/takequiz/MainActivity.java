@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.rest.model.Quiz;
 import com.rest.model.User;
 import com.rest.service.RestClient;
 
@@ -20,7 +21,10 @@ import retrofit.client.Response;
 
 public class MainActivity extends ActionBarActivity {
     TextView logs;
+
     public static QuizAPI api;
+    public static User current_user;
+    public static Quiz current_quiz;
     public void login(View view){
         final Intent studentActivity = new Intent(this,StudentHome.class);
         final Intent docActivity = new Intent(this,DoctorHome.class);
