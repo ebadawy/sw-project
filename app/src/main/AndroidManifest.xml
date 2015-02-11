@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.khaled.takequiz" >
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -42,25 +42,6 @@
             android:name=".StudentRegistration"
             android:label="@string/title_activity_student_registration" >
         </activity>
-        <activity
-            android:name=".SelectQuiz"
-            android:label="@string/title_activity_select_quiz"
-            android:parentActivityName=".StudentHome" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.khaled.takequiz.StudentHome" />
-        </activity>
-
-        <activity
-            android:name=".studentresult"
-            android:label="Results"
-            android:parentActivityName=".StudentHome" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.khaled.takequiz.StudentHome" />
-        </activity>
-
-
     </application>
 
 </manifest>

@@ -33,8 +33,8 @@ public class Question {
         return this.choices;
     }
 
-    public void setChoices(List<Choice> c) {
-        choices = c;
+    public void setChoices(List<Choice> choices) {
+        this.choices = choices;
     }
 
     public int getId() {

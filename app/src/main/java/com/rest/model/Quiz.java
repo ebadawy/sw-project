@@ -41,7 +41,6 @@ public class Quiz {
         this.published = false;
     }
 
-    public String getDeadline(){return this.deadline;}
     public void setQuestions(List<Question> q) {
         this.questions = q;
     }
