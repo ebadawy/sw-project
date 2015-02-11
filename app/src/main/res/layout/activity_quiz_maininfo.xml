@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Quiz Information:"
+        android:Text="Quiz Information:"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -42,14 +42,14 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="46dp"
-            android:text="Subject" />
+            android:Hint="Subject" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/deadline"
             android:layout_marginTop="30dp"
-            android:text="Deadline"
+            android:Hint="Deadline"
             android:layout_below="@+id/subject"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/timelimit"
-            android:text="Time Limit"
+            android:Hint="Time Limit"
             android:layout_marginTop="30dp"
             android:layout_below="@+id/deadline"
             android:layout_alignParentLeft="true"
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/quizmark"
             android:layout_marginTop="30dp"
-            android:text="Quiz Mark"
+            android:Hint="Quiz Mark"
             android:layout_below="@+id/timelimit"
             android:layout_alignRight="@+id/timelimit"
             android:layout_alignEnd="@+id/timelimit" />
