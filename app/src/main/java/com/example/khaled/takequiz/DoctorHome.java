@@ -19,10 +19,7 @@ public class DoctorHome extends ActionBarActivity implements View.OnClickListene
         startActivity(intent);
     }
 
-    public void stata(View v){
-        Intent intent = new Intent(this,Statistics.class);
-        startActivity(intent);
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

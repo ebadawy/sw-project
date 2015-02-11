@@ -49,13 +49,6 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fragment1 fragment;
-        if (savedInstanceState != null) {
-            fragment = (Fragment1) getSupportFragmentManager().findFragmentByTag("customtag");
-        } else {
-            fragment = new Fragment1();
-            getSupportFragmentManager().beginTransaction().add(R.id.viewpager, fragment, "customtag").commit();
-        }
         setContentView(R.layout.activity_quiz_question_answer_doctor);
         viewSubject = (TextView) findViewById(R.id.viewSubject);
         addQuestion = (Button) findViewById(R.id.addQuestion);
