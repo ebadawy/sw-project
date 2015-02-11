@@ -14,6 +14,10 @@ public class DoctorHome extends ActionBarActivity {
         Intent intent = new Intent(this,Grouplayout.class);
         startActivity(intent);
     }
+    public  void listofquiz(View v){
+        Intent intent = new Intent(this,Quizlist_DoctorActivity.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
