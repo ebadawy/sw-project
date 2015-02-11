@@ -42,14 +42,14 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="46dp"
-            android:Hint="Subject" />
+            android:hint="Subject" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/deadline"
             android:layout_marginTop="30dp"
-            android:Hint="Deadline"
+            android:hint="Deadline"
             android:layout_below="@+id/subject"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/timelimit"
-            android:Hint="Time Limit"
+            android:hint="Time Limit"
             android:layout_marginTop="30dp"
             android:layout_below="@+id/deadline"
             android:layout_alignParentLeft="true"
@@ -68,11 +68,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/quizmark"
-            android:layout_marginTop="30dp"
-            android:Hint="Quiz Mark"
+            android:hint="Quiz Mark"
             android:layout_below="@+id/timelimit"
-            android:layout_alignRight="@+id/timelimit"
-            android:layout_alignEnd="@+id/timelimit" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="42dp" />
 
         <TextView
             android:layout_width="wrap_content"
