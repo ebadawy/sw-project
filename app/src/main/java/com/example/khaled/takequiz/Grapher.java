@@ -12,11 +12,22 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
 import com.jjoe64.graphview.LineGraphView;
+import com.rest.model.Quiz;
+import com.rest.model.Result;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class Grapher extends ActionBarActivity {
     String userid;
     String username;
+    List<Quiz> quizzes = new ArrayList<>();
+    List<Result> quizresult = new ArrayList<>();
 
 
     @Override
@@ -40,6 +51,7 @@ public class Grapher extends ActionBarActivity {
             username = (String) savedInstanceState.getSerializable("username");
 
         }
+        int id = Integer.parseInt(userid);
 
         GraphViewSeries exampleSeries = new GraphViewSeries(new GraphViewData[] {
                 new GraphViewData(1, 40)
@@ -62,8 +74,33 @@ public class Grapher extends ActionBarActivity {
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
         layout.addView(graphView);
-        MainActivity.api.getQuizzes(user id);
-        MainActivity.api.getResult(,);
+        MainActivity.api.getQuizzes(id, new Callback<List<Quiz>>() {
+            @Override
+            public void success(List<Quiz> quizs, Response response) {
+                for(int i = 0 ;i <quizs.size();i++){
+                    quizzes.add(quizs.get(i));
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+
+            }
+        });
+        for (int i = 0 ; i<quizzes.size();i++) {
+            MainActivity.api.getResult(id,quizzes.get(i).getId(),new Callback<Result>() {
+                @Override
+                public void success(Result result, Response response) {
+                    quizresult.add(result);
+                    
+                }
+
+                @Override
+                public void failure(RetrofitError retrofitError) {
+
+                }
+            } );
+        }
     }
     }
 
