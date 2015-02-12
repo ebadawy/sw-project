@@ -24,20 +24,20 @@ public class Grapher extends ActionBarActivity {
 
         GraphViewSeries exampleSeries = new GraphViewSeries(new GraphViewData[] {
                 new GraphViewData(1, 40)
-                , new GraphViewData(2, 12)
-                , new GraphViewData(3, 7)
-                , new GraphViewData(2, 8)
-                , new GraphViewData(2, 10)
-                , new GraphViewData(3, 26)
                 , new GraphViewData(1, 37)
                 , new GraphViewData(1, 53)
+                , new GraphViewData(2, 8)
+                , new GraphViewData(2, 10)
+                , new GraphViewData(2, 12)
+                , new GraphViewData(3, 7)
+                , new GraphViewData(3, 26)
                 , new GraphViewData(3, 253)
 
         });
 
         GraphView graphView = new LineGraphView(
                 this // context
-                , "Job Status Graph" // heading
+                , "Quizzes Graph" // heading
         );
         graphView.addSeries(exampleSeries); // data
 

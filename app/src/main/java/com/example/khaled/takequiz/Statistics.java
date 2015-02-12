@@ -9,21 +9,21 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class DoctorHome extends ActionBarActivity implements View.OnClickListener{
-Button statistics;
+public class Statistics extends ActionBarActivity implements View.OnClickListener{
+Button hossam;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_home);
-        statistics =(Button)findViewById(R.id.statistics);
-        statistics.setOnClickListener(this);
+        setContentView(R.layout.activity_statistics);
+        hossam =(Button)findViewById(R.id.hossam);
+        hossam.setOnClickListener(this);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_doctor_home, menu);
+        getMenuInflater().inflate(R.menu.menu_statistics, menu);
         return true;
     }
 
@@ -41,16 +41,18 @@ Button statistics;
 
         return super.onOptionsItemSelected(item);
     }
-    public void statisticsClick(){
-        Intent intent = new Intent(DoctorHome.this,Statistics.class);
+    public void hossamClick(){
+        Intent intent = new Intent(Statistics.this,Grapher.class);
         startActivity(intent);
-
     }
-    public void onClick(View view){
-        switch (view.getId()){
-            case R.id.statistics:
-                statisticsClick();
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.hossam:
+                hossamClick();
                 break;
         }
+
     }
 }
