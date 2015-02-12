@@ -9,6 +9,7 @@ import com.rest.model.QuizWrapper;
 import com.rest.model.Result;
 import com.rest.model.User;
 import com.rest.model.UserWrapper;
+import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Response;
 
 import java.util.List;
@@ -81,5 +82,8 @@ public interface QuizAPI {
 
     @GET("/users?role=student")
     public void getStudents(Callback<List<User>> users);
+
+    @GET("/quizzes?users={user_id}&status=true")
+    public void getQuizzesWithResults(@Path("user_id") int userID, Callback<List<Quiz>> quizzes);
 
 }
