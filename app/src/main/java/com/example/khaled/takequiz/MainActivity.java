@@ -35,6 +35,11 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public void success(User user, Response response) {
                     try {
+                        if(user.getRole().equals("student")){
+                            startActivity(studentActivity);
+                        }else if(user.getRole().equals("doc")){
+                            startActivity(docActivity);
+                        }
                         
                        // the user is authenticated, ur code goes here
                     } catch(NullPointerException e) {

@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
@@ -24,12 +26,13 @@ import retrofit.client.Response;
 
 public class Statistics extends ActionBarActivity implements View.OnClickListener{
 List<Button> StudentNames = new ArrayList<>();
-ScrollView layout1;
+LinearLayout layout1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
-        layout1=(ScrollView)findViewById(R.id.layout1);
+        layout1=(LinearLayout)findViewById(R.id.layout1);
+
 
         MainActivity.api.getStudents(new Callback<List<User>>() {
             @Override
@@ -37,8 +40,9 @@ ScrollView layout1;
                 for(int i = 0;i<users.size();i++){
                     Button name = new Button(getApplicationContext());
                     name.setText(users.get(i).getUserName());
-                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) name.getLayoutParams();
-                    lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+                    ViewGroup.LayoutParams lp =new ViewGroup.LayoutParams(
+                            ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT);
                     name.setLayoutParams(lp);
                     layout1.addView(name);
                 }
@@ -74,18 +78,13 @@ ScrollView layout1;
 
         return super.onOptionsItemSelected(item);
     }
-    public void hossamClick(){
-        Intent intent = new Intent(Statistics.this,Grapher.class);
-        startActivity(intent);
-    }
+
+
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()){
-            case R.id.hossam:
-                hossamClick();
-                break;
+
         }
 
     }
-}
+
