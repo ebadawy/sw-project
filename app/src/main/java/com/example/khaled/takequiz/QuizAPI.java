@@ -89,7 +89,7 @@ public interface QuizAPI {
     public void getQuizzesWithResults(@Path("user_id") int userID, Callback<List<Quiz>> quizzes);
 
     @PATCH("/quizzes/{quiz_id}")
-    public void setPublished(@Path("quiz_id") int quizId, Callback<Response> responseCallback);
+    public void setPublished(@Path("quiz_id") int quizId, @Query("quiz_status") boolean published, Callback<Response> responseCallback);
 
     @GET("/users")
     public void getQuizUsers(@Query("quiz_id") int quizId, Callback<List<User>> users);
