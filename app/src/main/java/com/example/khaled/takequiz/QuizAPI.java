@@ -2,6 +2,7 @@ package com.example.khaled.takequiz;
 
 import com.rest.model.Answer;
 import com.rest.model.Choice;
+import com.rest.model.GraphBuilder;
 import com.rest.model.Question;
 import com.rest.model.QuestionWrapper;
 import com.rest.model.Quiz;
@@ -102,5 +103,9 @@ public interface QuizAPI {
     public void resultStatus(@Query("quiz_id") int quizId,
                              @Query("result_status") int publish,
                              Callback<Response> responseCallback);
+
+    @GET("/graph")
+    public void graphPoints(@Query("user_id") int userId,
+                               Callback<GraphBuilder> graphBuilderCallback);
 
 }
