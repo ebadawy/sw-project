@@ -1,17 +1,25 @@
 package com.example.khaled.takequiz;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class DoctorHome extends ActionBarActivity {
 
+    Intent groupsIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_home);
+        groupsIntent = new Intent(this, Groups.class);
+    }
+
+    public void startGroupsIntent(View v) {
+        startActivity(groupsIntent);
     }
 
 
