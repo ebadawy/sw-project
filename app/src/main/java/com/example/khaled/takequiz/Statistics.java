@@ -28,7 +28,7 @@ public class Statistics extends ActionBarActivity implements View.OnClickListene
 List<Button> StudentNames = new ArrayList<>();
 LinearLayout layout1;
 int counter = 0;
-List<User> usersextra;
+List<User> usersextra = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,11 +59,14 @@ List<User> usersextra;
                         public void onClick(View view) {
                             int id = usersextra.get(j).getId();
                             String username =usersextra.get(j).getUserName();
+
                             String ids = Integer.toString(id);
+
                             Bundle extras =new Bundle();
                             extras.putString("id",ids);
                             extras.putString("username",username);
                             Intent intent = new Intent(Statistics.this,Grapher.class);
+                            intent.putExtras(extras);
                             startActivity(intent);
                         }
                     });
