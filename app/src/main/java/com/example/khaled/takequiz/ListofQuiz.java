@@ -14,6 +14,7 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.rest.model.Quiz;
@@ -58,7 +59,7 @@ public class ListofQuiz extends ActionBarActivity {
                 public void success(List<Quiz> quizs, Response response) {
                     // txt.setText(quiz.getName());
                     if (quizs.size() != 0) {
-                        for ( Quiz quiz : quizs) {
+                        for ( final Quiz quiz : quizs) {
                             LinearLayout A = new LinearLayout(getApplicationContext());
                             A.setOrientation(LinearLayout.HORIZONTAL);
                             final Button btn = new Button(getApplicationContext());
@@ -73,16 +74,41 @@ public class ListofQuiz extends ActionBarActivity {
 
                             A.addView(btn);
 
-                            Switch toggleButton = new Switch(ListofQuiz.this);
+                            final Switch toggleButton = new Switch(ListofQuiz.this);
                             para.setMargins(10,35,10,0);
                             toggleButton.setLayoutParams(para);
+                            toggleButton.setChecked(false);
                             toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                 @Override
                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                     if(isChecked){
-                                   //     quiz.isPublished()=true;
+                                        MainActivity.api.quizStatus(quiz.getId(),true,new Callback<com.squareup.okhttp.Response>() {
+                                            @Override
+                                            public void success(com.squareup.okhttp.Response response, Response response2) {
+                                                Toast.makeText(ListofQuiz.this,"Quiz is now published to students",Toast.LENGTH_LONG).show();
+                                            }
+
+                                            @Override
+                                            public void failure(RetrofitError retrofitError) {
+                                                Toast.makeText(ListofQuiz.this,"Error, Quiz is not published",Toast.LENGTH_LONG).show();
+
+                                            }
+                                        });
+                                        toggleButton.setChecked(true);
                                     }else{
-                                      //quiz.isPublished()=false;
+                                        MainActivity.api.quizStatus(quiz.getId(),false,new Callback<com.squareup.okhttp.Response>() {
+                                            @Override
+                                            public void success(com.squareup.okhttp.Response response, Response response2) {
+                                                Toast.makeText(ListofQuiz.this,"Quiz is not published to students",Toast.LENGTH_LONG).show();
+                                            }
+
+                                            @Override
+                                            public void failure(RetrofitError retrofitError) {
+                                                Toast.makeText(ListofQuiz.this,"Error, Quiz is still published",Toast.LENGTH_LONG).show();
+
+                                            }
+                                        });
+                                        toggleButton.setChecked(false);
                                     }
                                 }
                             });
