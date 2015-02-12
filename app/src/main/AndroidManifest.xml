@@ -32,17 +32,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khaled.takequiz.MainActivity" />
         </activity>
-        <activity
-            android:name=".Quizlist_Student"
-            android:label="@string/title_activity_quizlist__student"
-            android:parentActivityName=".StudentHome" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.khaled.takequiz.StudentHome" />
-        </activity>
+
         <activity
             android:name=".Quizlist_DoctorActivity"
             android:label="@string/title_activity_quizlist__doctor" >
+
+            android:name=".Groups"
+            android:label="@string/title_activity_groups" >
+        </activity>
+        <activity
+            android:name=".StudentRegistration"
+            android:label="@string/title_activity_student_registration" >
         </activity>
     </application>
 

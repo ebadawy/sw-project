@@ -19,5 +19,7 @@
     <string name="quiz">Quizes</string>
     <string name="deadline">Deadline</string>
     <string name="title_activity_quizlist__doctor">Quizlist_DoctorActivity</string>
+    <string name="title_activity_groups">Groups</string>
+    <string name="title_activity_student_registration">StudentRegistration</string>
 
 </resources>
