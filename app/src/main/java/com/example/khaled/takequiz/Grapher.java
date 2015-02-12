@@ -15,12 +15,31 @@ import com.jjoe64.graphview.LineGraphView;
 
 
 public class Grapher extends ActionBarActivity {
+    String userid;
+    String username;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grapher);
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras == null) {
+                userid = null;
+                username = null;
+
+            } else {
+                userid = extras.getString("id");
+
+                username = extras.getString("username");
+
+            }
+        } else {
+            userid = (String) savedInstanceState.getSerializable("id");
+            username = (String) savedInstanceState.getSerializable("username");
+
+        }
 
         GraphViewSeries exampleSeries = new GraphViewSeries(new GraphViewData[] {
                 new GraphViewData(1, 40)
