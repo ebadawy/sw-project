@@ -6,6 +6,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import com.rest.model.Quiz;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class Results extends ActionBarActivity {
@@ -17,6 +29,29 @@ public class Results extends ActionBarActivity {
         Intent intent = getIntent();
         String DrId = intent.getStringExtra(DoctorHome.doctorid);
         Log.i("info","******************************************************"+DrId);
+        int id = Integer.parseInt(DrId);
+        MainActivity.api.getQuizzes(id,new Callback<List<Quiz>>() {
+            @Override
+            public void success(List<Quiz> quizs, Response response) {
+                List<String> names = new ArrayList<String>();
+                for (Quiz quiz : quizs){
+                    names.add(quiz.getName());
+                    Log.i("info", "yesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"+quiz);
+                }
+
+                Spinner spinner = (Spinner) findViewById(R.id.spinner);
+                ArrayAdapter<String> adp = new ArrayAdapter<String>(Results.this,android.R.layout.simple_list_item_1,names);
+                adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(adp);
+
+            }
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+                TextView txt = new TextView(Results.this);
+                Log.i("info","NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+            }
+        });
     }
 
 
