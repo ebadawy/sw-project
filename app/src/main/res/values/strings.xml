@@ -13,5 +13,8 @@
     <string name="result">Results</string>
     <string name="statistics">Statistics</string>
     <string name="title_activity_statistics">Statistics</string>
+    <string name="title_activity_groups">Groups</string>
+    <string name="title_activity_student_registration">StudentRegistration</string>
+
 
 </resources>

@@ -9,31 +9,29 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class DoctorHome extends ActionBarActivity implements View.OnClickListener{
-Button statistics;
-Intent groupsIntent;
+public class Groups extends ActionBarActivity {
+
+    Intent srIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_home);
+        setContentView(R.layout.activity_groups);
+        Button gl = (Button) findViewById(R.id.groupList);
+        Button sr = (Button) findViewById(R.id.studnetRegistation);
+        srIntent = new Intent(this, StudentRegistration.class);
 
-        statistics =(Button)findViewById(R.id.statistics);
-        statistics.setOnClickListener(this);
-
-        groupsIntent = new Intent(this, Groups.class);
     }
 
-    public void startGroupsIntent(View v) {
-        startActivity(groupsIntent);
-
+    public void startsrIntent(View v) {
+        startActivity(srIntent);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_doctor_home, menu);
+        getMenuInflater().inflate(R.menu.menu_groups, menu);
         return true;
     }
 
@@ -50,17 +48,5 @@ Intent groupsIntent;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-    public void statisticsClick(){
-        Intent intent = new Intent(DoctorHome.this,Statistics.class);
-        startActivity(intent);
-
-    }
-    public void onClick(View view){
-        switch (view.getId()){
-            case R.id.statistics:
-                statisticsClick();
-                break;
-        }
     }
 }
