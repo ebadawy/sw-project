@@ -58,6 +58,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khaled.takequiz.StudentHome" />
         </activity>
+        <activity
+            android:name=".Results"
+            android:label="@string/title_activity_results"
+            android:parentActivityName=".DoctorHome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.DoctorHome" />
+        </activity>
     </application>
 
 </manifest>

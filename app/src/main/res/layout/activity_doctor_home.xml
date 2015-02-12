@@ -47,17 +47,9 @@
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Results"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:textSize="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="Log Out"
-        android:onClick="getoutdr"/>
+        android:text="Results"
+        android:onClick="drresults"/>
+
 </LinearLayout>
 
 

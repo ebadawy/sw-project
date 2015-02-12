@@ -13,12 +13,15 @@ import android.widget.TextView;
 import com.rest.model.User;
 import com.rest.service.RestClient;
 
+import java.io.Closeable;
+
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 
 public class MainActivity extends ActionBarActivity {
+    public final static String DocID = "com.example.khaled.takequiz.id";
     TextView logs;
     public static QuizAPI api;
     public void login(View view){
@@ -41,7 +44,7 @@ public class MainActivity extends ActionBarActivity {
                        }else if(user.getRole().equals("doc")){
                            startActivity(docActivity);
                        }
-
+                docActivity.putExtra(DocID,Integer.toString(user.getId()));
                     } catch(NullPointerException e) {
                        logs.setTextColor(Color.RED);
                        logs.setText("Invalid User Name or Password");
@@ -90,4 +93,6 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
