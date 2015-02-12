@@ -29,8 +29,7 @@ import retrofit.client.Response;
 public class Grapher extends ActionBarActivity {
     String userid;
     String username;
-    List<Quiz> quizzes = new ArrayList<>();
-    List<Result> quizresult = new ArrayList<>();
+
 
 
 
@@ -43,33 +42,36 @@ public class Grapher extends ActionBarActivity {
             Bundle extras = getIntent().getExtras();
                 userid = extras.getString("id");
                 username = extras.getString("username");
-        int id = Integer.parseInt(userid);
+        final int id = Integer.parseInt(userid);
         MainActivity.api.getQuizzes(id, new Callback<List<Quiz>>() {
             @Override
-            public void success(List<Quiz> quizs, Response response) {
-                for (int i = 0; i < quizs.size(); i++) {
-                    quizzes.add(i,quizs.get(i));
+            public void success(final List<Quiz> quizs, Response response) {
+                final int[] counter = {0};
+                for (final Quiz q:quizs) {
+                    final DataPoint[][] datas = {new DataPoint[quizs.size()]};
+
+                    MainActivity.api.getResult(id, q.getId(), new Callback<Result>() {
+                        @Override
+                        public void success(Result result, Response response) {
+                            datas[0][counter[0]]  = generateData(q,result) ;
+                            counter[0]++;
+
+                        }
+
+                        @Override
+                        public void failure(RetrofitError retrofitError) {
+
+                        }
+                    });
                 }
             }
             @Override
             public void failure(RetrofitError retrofitError) {
             }
         });
-        System.out.println("quizzes size: " +quizzes.size());
-        //for (int i = 0; i < quizzes.size(); i++) {
-            //MainActivity.api.getResult(id, quizzes.get(i).getId(), new Callback<Result>() {
-               // @Override
-               // public void success(Result result, Response response) {
-                  //  quizresult.add(result);
 
-               // }
 
-               // @Override
-              //  public void failure(RetrofitError retrofitError) {
 
-             //   }
-           // });
-        //}
 
 
         //graph.addSeries(new LineGraphSeries(generateData()));
@@ -87,22 +89,11 @@ public class Grapher extends ActionBarActivity {
        //     System.out.println(quizzes.get(i).getId()+"        "+quizresult.get(i).getResult());
        // }
     }
-    private DataPoint[] generateData() {
-
-
-    int count = quizzes.size();
-    DataPoint[] values = new DataPoint[count];
-    for (int i = 0; i < count; i++) {
-
-        int x = quizzes.get(i).getId();
-        int y = quizresult.get(i).getResult();
-        System.out.println(x);
-        System.out.println(y);
+    private DataPoint generateData(Quiz quiz, Result result) {
+        int x = quiz.getId();
+        int y = result.getResult();
         DataPoint v = new DataPoint(x, y);
-        values[i] = v;
-
-    }
-    return values;
+    return v;
 }
     }
 
