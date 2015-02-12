@@ -18,7 +18,9 @@ import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.Headers;
+import retrofit.http.PATCH;
 import retrofit.http.POST;
+import retrofit.http.PUT;
 import retrofit.http.Path;
 import retrofit.http.Query;
 
@@ -85,5 +87,8 @@ public interface QuizAPI {
 
     @GET("/quizzes?users={user_id}&status=true")
     public void getQuizzesWithResults(@Path("user_id") int userID, Callback<List<Quiz>> quizzes);
+
+    @PATCH("/quizzes/{quiz_id}")
+    public void setPublished(@Path("quiz_id") String quizId, Callback<Response> responseCallback);
 
 }
