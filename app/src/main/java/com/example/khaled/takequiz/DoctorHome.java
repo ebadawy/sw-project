@@ -12,13 +12,14 @@ import com.rest.model.Result;
 
 
 public class DoctorHome extends ActionBarActivity {
-
+public static final String doctorid="com.eexample.khaled.takequiz.MESSAGE";
 
     public void drresults(View v){
         Intent intent = new Intent(this, Results.class);
         Intent docid = getIntent();
         String id = docid.getStringExtra(MainActivity.DocID);
         Log.i("Info","++++++++++++++++++++++++++++++++++++++++++++++++++++++"+id);
+        intent.putExtra(doctorid,id);
         startActivity(intent);
 
     }
