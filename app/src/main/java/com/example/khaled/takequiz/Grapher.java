@@ -43,6 +43,8 @@ public class Grapher extends ActionBarActivity {
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
         layout.addView(graphView);
+        MainActivity.api.getQuizzes(user id);
+        MainActivity.api.getResult(,);
     }
     }
 

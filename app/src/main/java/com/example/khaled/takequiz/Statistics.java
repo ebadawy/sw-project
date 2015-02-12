@@ -27,6 +27,8 @@ import retrofit.client.Response;
 public class Statistics extends ActionBarActivity implements View.OnClickListener{
 List<Button> StudentNames = new ArrayList<>();
 LinearLayout layout1;
+int counter = 0;
+List<User> usersextra;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +46,27 @@ LinearLayout layout1;
                             ViewGroup.LayoutParams.WRAP_CONTENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT);
                     name.setLayoutParams(lp);
+                    name.setId(counter);
+                    StudentNames.add(name);
+                    counter ++;
                     layout1.addView(name);
+                    usersextra.add(users.get(i));
+                }
+                for(int i = 0 ;i<StudentNames.size();i++){
+                    final int j = i;
+                    StudentNames.get(i).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            int id = usersextra.get(j).getId();
+                            String username =usersextra.get(j).getUserName();
+                            String ids = Integer.toString(id);
+                            Bundle extras =new Bundle();
+                            extras.putString("id",ids);
+                            extras.putString("username",username);
+                            Intent intent = new Intent(Statistics.this,Grapher.class);
+                            startActivity(intent);
+                        }
+                    });
                 }
 
             }
