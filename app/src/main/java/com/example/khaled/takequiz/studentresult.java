@@ -2,6 +2,7 @@ package com.example.khaled.takequiz;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -48,6 +49,9 @@ public class studentresult extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studentresult);
+        Intent intent = getIntent();
+        String sid=intent.getStringExtra(StudentHome.studentid);
+        final int id = Integer.parseInt(sid);
         final LinearLayout lm = (LinearLayout) findViewById(R.id.linearmain);
         //final LinearLayout am =(LinearLayout) findViewById(R.id.alternate);
 
@@ -56,7 +60,7 @@ public class studentresult extends ActionBarActivity {
 
         final TextView txt = (TextView) findViewById(R.id.txt);
         try {
-            MainActivity.api.getQuizzes(25, new Callback<List<Quiz>>() {
+            MainActivity.api.getQuizzes(id, new Callback<List<Quiz>>() {
                 @Override
                 public void success(List<Quiz> quizs, Response response) {
                     // txt.setText(quiz.getName());
@@ -78,7 +82,7 @@ public class studentresult extends ActionBarActivity {
                                @Override
                                public void onClick(View v) {
 
-                                   MainActivity.api.getResult(25, quiz.getId(), new Callback<Result>() {
+                                   MainActivity.api.getResult(id, quiz.getId(), new Callback<Result>() {
                                        @Override
                                        public void success(Result result, Response response) {
 
@@ -105,7 +109,7 @@ public class studentresult extends ActionBarActivity {
 
                                        @Override
                                        public void failure(RetrofitError retrofitError) {
-
+                                            Toast.makeText(studentresult.this,"Results is not published yet",Toast.LENGTH_LONG).show();
                                        }
                                    });
                                }

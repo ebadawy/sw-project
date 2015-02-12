@@ -54,7 +54,7 @@ public class ListofQuiz extends ActionBarActivity {
         final TextView txt = (TextView) findViewById(R.id.txt);
 
         try {
-            MainActivity.api.getQuizzes(25, new Callback<List<Quiz>>() {
+            MainActivity.api.getQuizzes(id, new Callback<List<Quiz>>() {
                 @Override
                 public void success(List<Quiz> quizs, Response response) {
                     // txt.setText(quiz.getName());

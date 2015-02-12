@@ -9,17 +9,24 @@ import android.view.View;
 
 
 public class StudentHome extends ActionBarActivity {
-
+    public static final String studentid="com.example.khaled.takequiz.MESSAGE";
     public void getout(View view){
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
     public void listquiz(View view){
         Intent intent = new Intent(this,SelectQuiz.class);
+        Intent n = getIntent();
+        String Stuid = n.getStringExtra(MainActivity.StuID);
+        intent.putExtra(studentid,Stuid);
         startActivity(intent);
+
     }
     public void openresults(View v){
         Intent intent = new Intent(this,studentresult.class);
+        Intent n = getIntent();
+        String Stuid = n.getStringExtra(MainActivity.StuID);
+        intent.putExtra(studentid,Stuid);
         startActivity(intent);
     }
     @Override

@@ -1,5 +1,6 @@
 package com.example.khaled.takequiz;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
@@ -32,6 +33,9 @@ public class SelectQuiz extends ActionBarActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_quiz);
+        Intent intent = getIntent();
+        String sid=intent.getStringExtra(StudentHome.studentid);
+        int id = Integer.parseInt(sid);
         final LinearLayout lm = (LinearLayout) findViewById(R.id.linearmain);
         //final LinearLayout am =(LinearLayout) findViewById(R.id.alternate);
 
@@ -43,7 +47,7 @@ public class SelectQuiz extends ActionBarActivity {
 
         final TextView txt = (TextView) findViewById(R.id.txt);
         try {
-            MainActivity.api.getQuizzes(25, new Callback<List<Quiz>>() {
+            MainActivity.api.getQuizzes(id, new Callback<List<Quiz>>() {
                 @Override
                 public void success(List<Quiz> quizs, Response response) {
                     // txt.setText(quiz.getName());

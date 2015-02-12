@@ -23,6 +23,7 @@ import retrofit.client.Response;
 
 public class MainActivity extends ActionBarActivity {
     public final static String DocID = "com.example.khaled.takequiz.id";
+    public final static String StuID="com.example.khaled.takequiz.id";
     TextView logs;
     public static QuizAPI api;
     public void login(View view){
@@ -41,9 +42,9 @@ public class MainActivity extends ActionBarActivity {
                     try {
                        // the user is authenticated, ur code goes here
                        if(user.getRole().equals("student")){
+                           studentActivity.putExtra(StuID,Integer.toString(user.getId()));
                            startActivity(studentActivity);
                        }else if(user.getRole().equals("doc")){
-                           Log.i("info","-----------------------------------------"+user.getId());
                            docActivity.putExtra(DocID,Integer.toString(user.getId()));
                            startActivity(docActivity);
                        }

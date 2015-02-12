@@ -58,7 +58,6 @@ public static int quizid;
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         String name = parent.getItemAtPosition(position).toString();
-                        Log.i("info","######################################################"+name);
                         for(Quiz quiz : quizs){
                             if(quiz.getName().equals(name)){
                                 quizid = quiz.getId();
