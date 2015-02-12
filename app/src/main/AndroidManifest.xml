@@ -66,6 +66,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khaled.takequiz.DoctorHome" />
         </activity>
+        <activity
+            android:name=".ListofQuiz"
+            android:label="@string/title_activity_listof_quiz"
+            android:parentActivityName=".DoctorHome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.DoctorHome" />
+        </activity>
     </application>
 
 </manifest>

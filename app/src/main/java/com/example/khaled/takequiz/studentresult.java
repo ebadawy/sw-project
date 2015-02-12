@@ -48,7 +48,7 @@ public class studentresult extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studentresult);
-        final ScrollView lm = (ScrollView) findViewById(R.id.linearmain);
+        final LinearLayout lm = (LinearLayout) findViewById(R.id.linearmain);
         //final LinearLayout am =(LinearLayout) findViewById(R.id.alternate);
 
         params =

@@ -12,7 +12,7 @@ import com.rest.model.Result;
 
 
 public class DoctorHome extends ActionBarActivity {
-public static final String doctorid="com.eexample.khaled.takequiz.MESSAGE";
+public static final String doctorid="com.example.khaled.takequiz.MESSAGE";
 
     public void drresults(View v){
         Intent intent = new Intent(this, Results.class);
@@ -22,6 +22,13 @@ public static final String doctorid="com.eexample.khaled.takequiz.MESSAGE";
         intent.putExtra(doctorid,id);
         startActivity(intent);
 
+    }
+    public void listofquiz(View v){
+        Intent intent = new Intent(this,ListofQuiz.class);
+        Intent docid = getIntent();
+        String id = docid.getStringExtra(MainActivity.DocID);
+        intent.putExtra(doctorid,id);
+        startActivity(intent);
     }
 
     Intent groupsIntent;
@@ -63,10 +70,7 @@ public static final String doctorid="com.eexample.khaled.takequiz.MESSAGE";
         Intent intent = new Intent(this,DoctorHome.class);
         startActivity(intent);
     }
-    @Override
-    public void onBackPressed() {
-        stay();
-    }
+
 
 
 }

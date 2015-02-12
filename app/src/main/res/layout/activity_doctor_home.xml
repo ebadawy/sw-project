@@ -28,7 +28,8 @@
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="List Of Quizs"/>
+        android:text="List Of Quizs"
+        android:onClick="listofquiz"/>
     <Button
         android:layout_width="fill_parent"
         android:textSize="30dp"

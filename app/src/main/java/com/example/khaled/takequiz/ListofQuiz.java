@@ -1,17 +1,111 @@
 package com.example.khaled.takequiz;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.ToggleButton;
+
+import com.rest.model.Quiz;
+
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class ListofQuiz extends ActionBarActivity {
+    LinearLayout.LayoutParams params;
+    LinearLayout.LayoutParams para;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listof_quiz);
+        Intent intent = getIntent();
+        String doctorid=intent.getStringExtra(DoctorHome.doctorid);
+        int id =Integer.parseInt(doctorid);
+        Log.i("Info","#####################################################################"+id);
+
+
+
+
+        final LinearLayout lm = (LinearLayout) findViewById(R.id.linearmain);
+        //final LinearLayout am =(LinearLayout) findViewById(R.id.alternate);
+
+        params =
+                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        para =
+                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+
+        final TextView txt = (TextView) findViewById(R.id.txt);
+
+        try {
+            MainActivity.api.getQuizzes(25, new Callback<List<Quiz>>() {
+                @Override
+                public void success(List<Quiz> quizs, Response response) {
+                    // txt.setText(quiz.getName());
+                    if (quizs.size() != 0) {
+                        for ( Quiz quiz : quizs) {
+                            LinearLayout A = new LinearLayout(getApplicationContext());
+                            A.setOrientation(LinearLayout.HORIZONTAL);
+                            final Button btn = new Button(getApplicationContext());
+                            params.setMargins(10,35,0,0);
+                            btn.setId(quiz.getId());
+                            btn.setText(quiz.getName());
+                            btn.setGravity(Gravity.LEFT);
+                            btn.setLayoutParams(params);
+                            btn.setBackgroundColor(Color.WHITE);
+                            btn.setTextColor(Color.BLACK);
+                            btn.setTextSize(30);
+
+                            A.addView(btn);
+
+                            Switch toggleButton = new Switch(ListofQuiz.this);
+                            para.setMargins(10,35,10,0);
+                            toggleButton.setLayoutParams(para);
+                            toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                @Override
+                                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                    if(isChecked){
+                                   //     quiz.isPublished()=true;
+                                    }else{
+                                      //quiz.isPublished()=false;
+                                    }
+                                }
+                            });
+                            A.addView(toggleButton);
+
+                            lm.addView(A);
+
+                        }
+                    } else {
+                        txt.setText("No Quizzes Available Now");
+                    }
+                }
+
+                @Override
+                public void failure(RetrofitError retrofitError) {
+                    txt.setText(retrofitError.getMessage());
+                    txt.setTextColor(Color.RED);
+                    Log.e("Error", "retrofit", retrofitError);
+                }
+            });
+        }catch (NullPointerException e){
+            txt.setText("No Quizzes Available Now");
+        }
     }
 
 

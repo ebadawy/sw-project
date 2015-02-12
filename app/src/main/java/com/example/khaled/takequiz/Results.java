@@ -36,7 +36,6 @@ public class Results extends ActionBarActivity {
                 List<String> names = new ArrayList<String>();
                 for (Quiz quiz : quizs){
                     names.add(quiz.getName());
-                    Log.i("info", "yesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"+quiz);
                 }
 
                 Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -48,8 +47,6 @@ public class Results extends ActionBarActivity {
 
             @Override
             public void failure(RetrofitError retrofitError) {
-                TextView txt = new TextView(Results.this);
-                Log.i("info","NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
             }
         });
     }
