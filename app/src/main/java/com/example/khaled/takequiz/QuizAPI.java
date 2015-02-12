@@ -86,9 +86,21 @@ public interface QuizAPI {
     public void getStudents(Callback<List<User>> users);
 
     @GET("/quizzes?users={user_id}&status=true")
-    public void getQuizzesWithResults(@Path("user_id") int userID, Callback<List<Quiz>> quizzes);
+    public void getQuizzesWithResults(@Path("user_id") int userID,
+                                      Callback<List<Quiz>> quizzes);
 
     @PATCH("/quizzes/{quiz_id}")
-    public void setPublished(@Path("quiz_id") String quizId, Callback<Response> responseCallback);
+    public void quizStatus(@Path("quiz_id") int quizId,
+                             @Query("quiz_status") boolean published,
+                             Callback<Response> responseCallback);
+
+    @GET("/users")
+    public void getQuizUsers(@Query("quiz_id") int quizId,
+                             Callback<List<User>> users);
+
+    @PATCH("/publish")
+    public void resultStatus(@Query("quiz_id") int quizId,
+                             @Query("result_status") int publish,
+                             Callback<Response> responseCallback);
 
 }
