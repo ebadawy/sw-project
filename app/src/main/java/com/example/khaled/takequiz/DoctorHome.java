@@ -3,6 +3,7 @@ package com.example.khaled.takequiz;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,8 +15,12 @@ public class DoctorHome extends ActionBarActivity {
 
 
     public void drresults(View v){
-        Intent intent = new Intent(this, Result.class);
+        Intent intent = new Intent(this, Results.class);
+        Intent docid = getIntent();
+        String id = docid.getStringExtra(MainActivity.DocID);
+        Log.i("Info","++++++++++++++++++++++++++++++++++++++++++++++++++++++"+id);
         startActivity(intent);
+
     }
 
     Intent groupsIntent;
@@ -24,6 +29,7 @@ public class DoctorHome extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_home);
         groupsIntent = new Intent(this, Groups.class);
+
     }
 
     public void startGroupsIntent(View v) {

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,9 +43,11 @@ public class MainActivity extends ActionBarActivity {
                        if(user.getRole().equals("student")){
                            startActivity(studentActivity);
                        }else if(user.getRole().equals("doc")){
+                           Log.i("info","-----------------------------------------"+user.getId());
+                           docActivity.putExtra(DocID,Integer.toString(user.getId()));
                            startActivity(docActivity);
                        }
-                docActivity.putExtra(DocID,Integer.toString(user.getId()));
+
                     } catch(NullPointerException e) {
                        logs.setTextColor(Color.RED);
                        logs.setText("Invalid User Name or Password");
