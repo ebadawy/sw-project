@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ Button deletegroup;
     EditText groupname;
     int counter =0;
     List<EditText> groupsname = new ArrayList<>();
+    List<LinearLayout> layouts = new ArrayList<>();
+    List<TextView> Groupsstudentno = new ArrayList<>();
     int x =0 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +63,16 @@ Button deletegroup;
     }
 
     public void addGroupClick(){
+        TextView sno = new TextView(GroupList.this);
         groupname = new EditText(GroupList.this);
         final AlertDialog.Builder alertDialog =new AlertDialog.Builder(this);
         final EditText input = new EditText(GroupList.this);
         input.setHint("Group Name");
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams ls = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         input.setLayoutParams(lp);
         alertDialog.setView(input);
@@ -95,6 +102,9 @@ Button deletegroup;
             input.setHint("Deleted Group Name");
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams ls = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.FILL_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT);
             input.setLayoutParams(lp);
             alertDialog.setView(input);
