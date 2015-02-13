@@ -1,13 +1,19 @@
 package com.example.khaled.takequiz;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class StudentHome extends ActionBarActivity {
 
+    public void getout(View view){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,5 +42,13 @@ public class StudentHome extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void stay(){
+        Intent intent = new Intent(this,StudentHome.class);
+        startActivity(intent);
+    }
+    @Override
+    public void onBackPressed() {
+        stay();
     }
 }
