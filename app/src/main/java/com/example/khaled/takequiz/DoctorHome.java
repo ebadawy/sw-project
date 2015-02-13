@@ -21,6 +21,15 @@ public class DoctorHome extends ActionBarActivity implements View.OnClickListene
 
 
 
+<<<<<<< HEAD
+=======
+    public void getoutdr(View view){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+
+    Intent groupsIntent;
+>>>>>>> master
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +60,7 @@ public class DoctorHome extends ActionBarActivity implements View.OnClickListene
 
         return super.onOptionsItemSelected(item);
     }
+
     private void createQuizClick(){
         Intent intent = new Intent(DoctorHome.this, QuizMaininfo.class);
         startActivity(intent);
@@ -66,4 +76,16 @@ public class DoctorHome extends ActionBarActivity implements View.OnClickListene
         }
 
     }
+
+    public void stay(){
+        Intent intent = new Intent(this,DoctorHome.class);
+        startActivity(intent);
+    }
+    @Override
+    public void onBackPressed() {
+        stay();
+    }
+
+
+
 }

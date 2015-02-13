@@ -10,8 +10,8 @@ import android.view.View;
 
 public class StudentHome extends ActionBarActivity {
 
-    public void openquiz(View view){
-        Intent intent = new Intent(this,Quizlist_Student.class);
+    public void getout(View view){
+        Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
 
@@ -48,5 +48,13 @@ public class StudentHome extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void stay(){
+        Intent intent = new Intent(this,StudentHome.class);
+        startActivity(intent);
+    }
+    @Override
+    public void onBackPressed() {
+        stay();
     }
 }

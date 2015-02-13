@@ -21,6 +21,7 @@ import retrofit.client.Response;
 public class MainActivity extends ActionBarActivity {
     TextView logs;
     public static QuizAPI api;
+    public static User current_user;
     public void login(View view){
         final Intent studentActivity = new Intent(this,StudentHome.class);
         final Intent docActivity = new Intent(this,DoctorHome.class);
@@ -36,8 +37,14 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public void success(User user, Response response) {
                     try {
+                        current_user = user;
                        // the user is authenticated, ur code goes here
-                        startActivity(docActivity);
+                       if(user.getRole().equals("student")){
+                           startActivity(studentActivity);
+                       }else if(user.getRole().equals("doc")){
+                           startActivity(docActivity);
+                       }
+
                     } catch(NullPointerException e) {
                        logs.setTextColor(Color.RED);
                        logs.setText("Invalid User Name or Password");
