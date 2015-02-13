@@ -53,13 +53,15 @@ public class Grapher extends ActionBarActivity {
                 LinearLayout l = (LinearLayout)findViewById(R.id.layout1);
 
                 graph.addSeries(new LineGraphSeries( graphBuilder.generateData()));
-                l.addView(graph);
+
                 System.out.println("success");
             }
 
             @Override
             public void failure(RetrofitError retrofitError) {
                 System.out.println("fail");
+                Log.e("Error","retrofit", retrofitError);
+
 
             }
         });
