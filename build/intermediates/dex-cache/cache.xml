@@ -2,13 +2,6 @@
 <items version="2" >
 
     <item
-        jar="/home/khaled/Documents/git/sw-project/app/libs/okio-1.2.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c0b52915a48fa91b1b94a28d4a2997bac5f524df">
-        <dex dex="/home/khaled/Documents/git/sw-project/app/build/intermediates/pre-dexed/debug/okio-1.2.0-8752cee394f9bfde6a11507a8dc13f179954c5d4.jar" />
-    </item>
-    <item
         jar="/home/khaled/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -16,18 +9,32 @@
         <dex dex="/home/khaled/Documents/git/sw-project/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-04d12ca9ba9a51bef83bd5ee796b606059bd3a44.jar" />
     </item>
     <item
-        jar="/home/khaled/Documents/git/sw-project/app/libs/okhttp-2.2.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="959c454243581fdf730abfd4f4745441724bcf2c">
-        <dex dex="/home/khaled/Documents/git/sw-project/app/build/intermediates/pre-dexed/debug/okhttp-2.2.0-b407748c8048af890d83495aa02c33d5b595a71b.jar" />
-    </item>
-    <item
         jar="/home/khaled/Documents/git/sw-project/app/libs/gson-2.2.4.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
         <dex dex="/home/khaled/Documents/git/sw-project/app/build/intermediates/pre-dexed/debug/gson-2.2.4-39e257fa98569b62b97893d23918a8215221bb7c.jar" />
+    </item>
+    <item
+        jar="/home/khaled/Documents/git/sw-project/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/home/khaled/Documents/git/sw-project/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-f32ed08273057903077e0f9f4f7eb687a7b7fa6e.jar" />
+    </item>
+    <item
+        jar="/home/khaled/Documents/git/sw-project/app/libs/okio-1.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c0b52915a48fa91b1b94a28d4a2997bac5f524df">
+        <dex dex="/home/khaled/Documents/git/sw-project/app/build/intermediates/pre-dexed/debug/okio-1.2.0-8752cee394f9bfde6a11507a8dc13f179954c5d4.jar" />
+    </item>
+    <item
+        jar="/home/khaled/Documents/git/sw-project/app/libs/okhttp-2.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="959c454243581fdf730abfd4f4745441724bcf2c">
+        <dex dex="/home/khaled/Documents/git/sw-project/app/build/intermediates/pre-dexed/debug/okhttp-2.2.0-b407748c8048af890d83495aa02c33d5b595a71b.jar" />
     </item>
     <item
         jar="/home/khaled/Documents/git/sw-project/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
@@ -42,13 +49,6 @@
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
         <dex dex="/home/khaled/Documents/git/sw-project/app/build/intermediates/pre-dexed/debug/classes-78205c8c76f3ee2d37b4d0ed08789d96374e5097.jar" />
-    </item>
-    <item
-        jar="/home/khaled/Documents/git/sw-project/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="/home/khaled/Documents/git/sw-project/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-f32ed08273057903077e0f9f4f7eb687a7b7fa6e.jar" />
     </item>
     <item
         jar="/home/khaled/Documents/git/sw-project/app/libs/retrofit-1.9.0.jar"
