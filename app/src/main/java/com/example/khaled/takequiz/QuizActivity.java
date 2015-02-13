@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextClock;
@@ -44,6 +45,10 @@ public class QuizActivity extends FragmentActivity {
     List<String> ANS ;
     Chronometer chronometer;
     Quiz quiz;
+    LinearLayout layout;
+    RadioGroup rad;
+    TextView ques;
+
 
 
     @Override
@@ -98,6 +103,11 @@ public class QuizActivity extends FragmentActivity {
         submit =(Button)findViewById(R.id.submit);
         nextPage=(Button)findViewById(R.id.nextPage);
         previousPage=(Button)findViewById(R.id.previousPage);
+        //layout = (LinearLayout)findViewById(R.id.fragment);
+        //ques = new TextView(this);
+        //layout.addView(ques);
+        //rad = new RadioGroup(this);
+        //layout.addView(rad);
         quiz = CurrentQuiz.getInstance();
         initialisePaging();
         QUES = quiz.getQuestions();
@@ -133,21 +143,21 @@ public class QuizActivity extends FragmentActivity {
         for (int i=0;i<10;i++)
         {
             FragmentQuiz currentques = (FragmentQuiz) mPagerAdapter.getItem(i);
-            RadioGroup rad = currentques.getRadioGroup();
-            RadioButton currentchoice = currentques.getRadioButton();
+            TextView t = new TextView(this);
+            RadioGroup r = new RadioGroup(this);
+            t.setText("fkjhkfhkfllf");
+            currentques.layout.addView(t);
+            currentques.layout.addView(r);
 
 
-            int choices = i+1;
-            currentques.setTextView("ques");
-            currentchoice.setText("ans");
-            for(int j=1;j<choices;j++)
+            for(int j=1;j<3;j++)
             {
 
                 RadioButton choice = new RadioButton(this);
                 choice.setId(i+j);
                 choice.setText("add");
-                currentques.setChoicecontainer(choice);
-                rad.addView(choice);
+                r.addView(choice);
+
             }
         }
 

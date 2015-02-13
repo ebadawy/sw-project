@@ -1,39 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/scrollView1">
-    <RelativeLayout
-        android:layout_width="wrap_content" android:layout_height="wrap_content">
+    android:id="@+id/fragment">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="QUESTION"
-            android:id="@+id/textView2"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="106dp" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/textView2"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/scrollView2">
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/radio"
-                android:layout_marginTop="40dp">
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="FIRST ANSWER"
-                        android:id="@+id/radioButton"
-                        android:layout_marginBottom="20dp"/>
-            </RadioGroup>
-        </ScrollView>
-    </RelativeLayout>
-</ScrollView>
+</LinearLayout>
