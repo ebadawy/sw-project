@@ -3,6 +3,7 @@ package com.example.khaled.takequiz;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Layout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.app.Activity;
@@ -44,6 +45,7 @@ public class Grapher extends ActionBarActivity {
                 username = extras.getString("username");
         final int id = Integer.parseInt(userid);
         MainActivity.api.graphPoints(id, new Callback<GraphBuilder>() {
+
             @Override
             public void success(GraphBuilder graphBuilder, Response response) {
                 System.out.println("success");
