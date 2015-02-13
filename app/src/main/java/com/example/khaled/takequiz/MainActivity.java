@@ -24,6 +24,7 @@ import retrofit.client.Response;
 public class MainActivity extends ActionBarActivity {
     public final static String DocID = "com.example.khaled.takequiz.id";
     public final static String StuID="com.example.khaled.takequiz.id";
+    public static User current_user;
     TextView logs;
     public static QuizAPI api;
     public void login(View view){
@@ -40,7 +41,8 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public void success(User user, Response response) {
                     try {
-                       // the user is authenticated, ur code goes here
+                        MainActivity.current_user = user;
+                        // the user is authenticated, ur code goes here
                        if(user.getRole().equals("student")){
                            studentActivity.putExtra(StuID,Integer.toString(user.getId()));
                            startActivity(studentActivity);
