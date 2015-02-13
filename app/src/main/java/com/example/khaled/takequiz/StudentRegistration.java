@@ -2,6 +2,7 @@ package com.example.khaled.takequiz;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,18 +29,20 @@ public class StudentRegistration extends ActionBarActivity {
         MainActivity.api.getGroups(MainActivity.current_user.getId(),new Callback<List<Group>>() {
             @Override
             public void success(List<Group> groups, Response response) {
-                Spinner spinner = (Spinner)findViewById(R.id.spinner);
+
                 List<String> names = new ArrayList<String>();
                 for(Group group : groups){
                     names.add(group.getGroupName());
                 }
+                Spinner spinner = (Spinner)findViewById(R.id.spinner2);
              ArrayAdapter<String> adp =
                      new ArrayAdapter<String>(StudentRegistration.this,android.R.layout.simple_list_item_1,names);
                 adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(adp);
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                        
                     }
 
                     @Override

@@ -1,5 +1,6 @@
 package com.example.khaled.takequiz;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
@@ -88,7 +89,8 @@ public class ListofQuiz extends ActionBarActivity {
                                         MainActivity.api.quizStatus(quiz.getId(),true,new Callback<com.squareup.okhttp.Response>() {
                                             @Override
                                             public void success(com.squareup.okhttp.Response response, Response response2) {
-                                                Toast.makeText(ListofQuiz.this,"Quiz is now published to students",Toast.LENGTH_LONG).show();
+                                                AlertDialog.Builder dialog = new AlertDialog.Builder(ListofQuiz.this);
+                                                //Toast.makeText(ListofQuiz.this,"Quiz is now published to students",Toast.LENGTH_LONG).show();
                                             }
 
                                             @Override
