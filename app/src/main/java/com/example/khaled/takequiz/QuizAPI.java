@@ -103,7 +103,7 @@ public interface QuizAPI {
 
     @PATCH("/publish")
     public void resultStatus(@Query("quiz_id") int quizId,
-                             @Query("result_status") int publish,
+                             @Query("result_status") boolean publish,
                              Callback<Response> responseCallback);
 
     @GET("/graph")
@@ -122,13 +122,14 @@ public interface QuizAPI {
     @GET("/groups/{group_id}/users")
     public void getGroupUsers(@Path("group_id") int groupId, Callback<List<User>> users);
 
-    @PATCH("/groups/{group_id}?action=add")
+    @PATCH("/groups/{group_id}?method=add")
+
     public void addStudent(@Query("user_name") String user_name,
                            @Path("group_id") int groupId,
                            Callback<Response> responseCallback);
 
-    @PATCH("/groups/{group_id}?user_name={user_name}&action=delete")
-    public void deleteStudent(@Path("user_name") String user_name,
+    @PATCH("/groups/{group_id}?method=delete")
+    public void deleteStudent(@Query("user_name") String user_name,
                               @Path("group_id") int groupId,
                               Callback<Response> responseCallback);
 
