@@ -30,10 +30,10 @@ public class GroupList extends ActionBarActivity implements View.OnClickListener
 Button deletegroup;
     Button addgroup;
     LinearLayout maingrouplayout;
-    EditText groupname;
+    TextView groupname;
     int counter =0;
-    List<Group> groups = new ArrayList<>();
-    List<EditText> groupsname = new ArrayList<>();
+    public static List<Group> groups;
+    List<TextView> groupsname = new ArrayList<>();
     List<LinearLayout> layouts = new ArrayList<>();
     List<TextView> Groupsstudentno = new ArrayList<>();
     Group group;
@@ -47,6 +47,43 @@ Button deletegroup;
         maingrouplayout =(LinearLayout)findViewById(R.id.maingrouplayout);
         addgroup.setOnClickListener(this);
         deletegroup.setOnClickListener(this);
+        MainActivity.api.getGroups(MainActivity.current_user.getId(), new Callback<List<Group>>() {
+            @Override
+            public void success(List<Group> groups, retrofit.client.Response response) {
+                GroupList.groups = new ArrayList<Group>(groups);
+                for(int i = 0 ;i<groups.size();i++){
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT);
+                    final LinearLayout.LayoutParams ls = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.FILL_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT);
+                    groupname = new TextView(GroupList.this);
+                    final TextView sno = new TextView(GroupList.this);
+                    sno.setLayoutParams(ls);
+                    final LinearLayout l = new LinearLayout(GroupList.this);
+                    l.setLayoutParams(ls);
+                    sno.setGravity(Gravity.RIGHT);
+                    groupname.setTextSize(20);
+                    sno.setTextSize(20);
+                    l.setOrientation(LinearLayout.HORIZONTAL);
+                    groupname.setText(groups.get(i).getGroupName());
+                    sno.setText(Integer.toString(groups.get(i).getStudentsNumber()));
+                    groupsname.add(groupname);
+                    Groupsstudentno.add(sno);
+                    layouts.add(l);
+                    l.addView(groupname);
+                    l.addView(sno);
+                    maingrouplayout.addView(l);
+                }
+            }
+
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+
+            }
+        });
     }
 
 
@@ -75,7 +112,7 @@ Button deletegroup;
     public void addGroupClick(){
 
         ;
-        groupname = new EditText(GroupList.this);
+        groupname = new TextView(GroupList.this);
         final AlertDialog.Builder alertDialog =new AlertDialog.Builder(this);
         final EditText input = new EditText(GroupList.this);
         input.setHint("Group Name");
@@ -92,10 +129,10 @@ Button deletegroup;
                 if (input.getText().toString().equals("")) {
                     Toast.makeText(GroupList.this, "Please write a group name", Toast.LENGTH_SHORT).show();
                 } else {
-                    TextView sno = new TextView(GroupList.this);
+                    final TextView sno = new TextView(GroupList.this);
                     sno.setLayoutParams(ls);
                     sno.setText("0");
-                    LinearLayout l = new LinearLayout(GroupList.this);
+                    final LinearLayout l = new LinearLayout(GroupList.this);
                     l.setLayoutParams(ls);
                     sno.setGravity(Gravity.RIGHT);
                     groupname.setTextSize(20);
