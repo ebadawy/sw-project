@@ -42,7 +42,7 @@ public class Quizlist_DoctorActivity extends ListActivity {
 
     ArrayAdapter<Quiz> adapter = new ArrayAdapter<Quiz>(this,android.
             R.layout.simple_list_item_1,q);
-            setListAdapter(adapter);
+            //setListAdapter(adapter);
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
