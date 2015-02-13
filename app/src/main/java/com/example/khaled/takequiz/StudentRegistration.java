@@ -85,7 +85,7 @@ public class StudentRegistration extends ActionBarActivity {
                                                 add.setChecked(false);
                                             }
                                         }catch (NullPointerException e){
-                                            Toast.makeText(StudentRegistration.this,"This Group have no students",Toast.LENGTH_LONG).show();
+                                            //Toast.makeText(StudentRegistration.this,"This Group have no students",Toast.LENGTH_SHORT).show();
                                         }
                                         add.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                             @Override

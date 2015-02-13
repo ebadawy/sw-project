@@ -123,7 +123,7 @@ public interface QuizAPI {
     public void getGroupUsers(@Path("group_id") int groupId, Callback<List<User>> users);
 
     @PATCH("/groups/{group_id}?user_name={user_name}&action=add")
-    public void addStudent(@Path("user_name") String user_name,
+    public void addStudent(@Query("user_name") String user_name,
                            @Path("group_id") int groupId,
                            Callback<Response> responseCallback);
 
