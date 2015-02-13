@@ -3,12 +3,33 @@ package com.example.khaled.takequiz;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.rest.model.Result;
+
 
 public class DoctorHome extends ActionBarActivity {
+public static final String doctorid="com.example.khaled.takequiz.MESSAGE";
+
+    public void drresults(View v){
+        Intent intent = new Intent(this, Results.class);
+        Intent docid = getIntent();
+        String id = docid.getStringExtra(MainActivity.DocID);
+        Log.i("Info","++++++++++++++++++++++++++++++++++++++++++++++++++++++"+id);
+        intent.putExtra(doctorid,id);
+        startActivity(intent);
+
+    }
+    public void listofquiz(View v){
+        Intent intent = new Intent(this,ListofQuiz.class);
+        Intent docid = getIntent();
+        String id = docid.getStringExtra(MainActivity.DocID);
+        intent.putExtra(doctorid,id);
+        startActivity(intent);
+    }
 
     Intent groupsIntent;
     @Override
@@ -16,6 +37,7 @@ public class DoctorHome extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_home);
         groupsIntent = new Intent(this, Groups.class);
+
     }
 
     public void startGroupsIntent(View v) {
@@ -44,4 +66,11 @@ public class DoctorHome extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    public void stay(){
+        Intent intent = new Intent(this,DoctorHome.class);
+        startActivity(intent);
+    }
+
+
+
 }

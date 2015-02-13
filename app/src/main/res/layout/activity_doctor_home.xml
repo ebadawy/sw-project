@@ -10,55 +10,51 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="Settings"/>
+
     <Button
         android:layout_width="fill_parent"
+        android:textSize="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="60dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Create Quiz"/>
+        android:text="Create Quiz"
+        android:background="@drawable/butt"/>
     <Button
         android:layout_width="fill_parent"
+        android:textSize="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="List Of Quizs"/>
+        android:background="@drawable/butt"
+        android:text="List Of Quizs"
+        android:onClick="listofquiz"/>
     <Button
         android:layout_width="fill_parent"
+        android:textSize="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/butt"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="startGroupsIntent"
         android:text="Groups"/>
     <Button
         android:layout_width="fill_parent"
+        android:textSize="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:background="@drawable/butt"
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Results"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="60dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="Log Out"/>
+        android:text="Results"
+        android:onClick="drresults"/>
+
 </LinearLayout>
 
 

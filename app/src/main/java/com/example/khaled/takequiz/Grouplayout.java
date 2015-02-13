@@ -8,38 +8,24 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class StudentHome extends ActionBarActivity {
-    public static final String studentid="com.example.khaled.takequiz.MESSAGE";
-    public void getout(View view){
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
-    }
-    public void listquiz(View view){
-        Intent intent = new Intent(this,SelectQuiz.class);
-        Intent n = getIntent();
-        String Stuid = n.getStringExtra(MainActivity.StuID);
-        intent.putExtra(studentid,Stuid);
-        startActivity(intent);
+public class Grouplayout extends ActionBarActivity {
 
-    }
-    public void openresults(View v){
-        Intent intent = new Intent(this,studentresult.class);
-        Intent n = getIntent();
-        String Stuid = n.getStringExtra(MainActivity.StuID);
-        intent.putExtra(studentid,Stuid);
+    public void opengrouplist(View view){
+        Intent intent = new Intent(this,grouplist.class);
         startActivity(intent);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_home);
+        setContentView(R.layout.activity_grouplayout);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_student_home, menu);
+        getMenuInflater().inflate(R.menu.menu_grouplayout, menu);
         return true;
     }
 
@@ -57,5 +43,4 @@ public class StudentHome extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }
