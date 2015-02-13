@@ -98,7 +98,7 @@ public static int quizid;
                                     //lm.addView(A);
 
                                   final TextView result = new TextView(getApplicationContext());
-                                    para.setMargins(10,35,10,0);
+                                   // para.setMargins(10,35,10,0);
                                     MainActivity.api.getResult(user.getId(),quizid,new Callback<Result>() {
                                         @Override
                                         public void success(Result r, Response response) {
