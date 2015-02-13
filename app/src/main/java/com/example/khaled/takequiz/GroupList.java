@@ -24,6 +24,7 @@ Button deletegroup;
     EditText groupname;
     int counter =0;
     List<EditText> groupsname = new ArrayList<>();
+    int x =0 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +65,8 @@ Button deletegroup;
         final EditText input = new EditText(GroupList.this);
         input.setHint("Group Name");
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT);
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
         input.setLayoutParams(lp);
         alertDialog.setView(input);
         alertDialog.setPositiveButton("create",new DialogInterface.OnClickListener(){
@@ -88,27 +89,32 @@ Button deletegroup;
     }
     public void deletegroupClick(){
         if(groupsname.size()>0) {
+
             final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
             final EditText input = new EditText(GroupList.this);
             input.setHint("Deleted Group Name");
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.MATCH_PARENT);
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
             input.setLayoutParams(lp);
             alertDialog.setView(input);
             alertDialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
+                    boolean found = false;
                     String deletedGroup = input.getText().toString();
-                    for (int i = 0; i < groupsname.size(); i++) {
-                        if (deletedGroup.equals(groupsname.get(i).toString())) {
+                    for (int i = 0; i < groupsname.size(); i++)
+                        if (deletedGroup.equals(groupsname.get(i).getText().toString())) {
                             maingrouplayout.removeView(groupsname.get(i));
                             groupsname.remove(i);
-                        } else {
-                            Toast.makeText(GroupList.this, "Group Doesn't exist", Toast.LENGTH_SHORT).show();
+                            found = true;
                         }
-                    }
+
+                    if(!found)
+                        Toast.makeText(GroupList.this, "Group Doesn't exist", Toast.LENGTH_SHORT).show();
 
                 }
+
+
             });
             alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {

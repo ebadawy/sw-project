@@ -20,9 +20,9 @@
         android:layout_height="wrap_content"
         android:text="Deletegroup"
         android:id="@+id/deletegroup"
-        android:layout_alignBottom="@+id/addgroup"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="5dp" />
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/groupframe"
+        android:layout_alignEnd="@+id/groupframe" />
 
     <LinearLayout
         android:orientation="vertical"
