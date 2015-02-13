@@ -27,6 +27,7 @@ public class MainActivity extends ActionBarActivity {
         final Intent docActivity = new Intent(this,DoctorHome.class);
         EditText editText = (EditText)findViewById(R.id.Enter_ID);
         EditText editText1 = (EditText)findViewById(R.id.Enter_password);
+
         String userName = editText.getText().toString();
         String password = editText1.getText().toString();
         if (!userName.isEmpty() || !password.isEmpty()) {
@@ -59,6 +60,7 @@ public class MainActivity extends ActionBarActivity {
         } else {
             logs.setTextColor(Color.RED);
             logs.setText("Invalid User Name or Password");
+
         }
     }
 

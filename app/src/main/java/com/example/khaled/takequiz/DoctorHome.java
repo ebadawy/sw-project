@@ -7,24 +7,35 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.widget.Button;
 
-public class DoctorHome extends ActionBarActivity {
 
+
+
+public class DoctorHome extends ActionBarActivity implements View.OnClickListener {
+    Button createQuiz;
+    public void opengroups(View view){
+        Intent intent = new Intent(this,Grouplayout.class);
+        startActivity(intent);
+    }
+
+
+
+<<<<<<< HEAD
+=======
     public void getoutdr(View view){
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
 
     Intent groupsIntent;
+>>>>>>> master
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_home);
-        groupsIntent = new Intent(this, Groups.class);
-    }
-
-    public void startGroupsIntent(View v) {
-        startActivity(groupsIntent);
+        createQuiz =(Button)findViewById(R.id.createQuiz);
+        createQuiz.setOnClickListener(this);
     }
 
 
@@ -49,6 +60,23 @@ public class DoctorHome extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void createQuizClick(){
+        Intent intent = new Intent(DoctorHome.this, QuizMaininfo.class);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.createQuiz:
+                createQuizClick();
+                break;
+        }
+
+    }
+
     public void stay(){
         Intent intent = new Intent(this,DoctorHome.class);
         startActivity(intent);
@@ -57,6 +85,7 @@ public class DoctorHome extends ActionBarActivity {
     public void onBackPressed() {
         stay();
     }
+
 
 
 }
