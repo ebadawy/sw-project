@@ -18,7 +18,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a77512f-0a9d-4db3-b1b9-6de3011db611" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sw-project.iml" afterPath="$PROJECT_DIR$/sw-project.iml" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/ListofQuiz.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/ListofQuiz.java" />
+>>>>>>> cd8fad938d00ebffd2d334a82a8627923a2a7a35
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="sw-project.iws" />
@@ -82,12 +86,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListofQuiz.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ListofQuiz.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/ListofQuiz.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="2475">
               <caret line="56" column="42" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
               <folding />
+=======
+            <state vertical-scroll-proportion="0.51106197" vertical-offset="1239" max-vertical-offset="2475">
+              <caret line="100" column="42" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+>>>>>>> cd8fad938d00ebffd2d334a82a8627923a2a7a35
             </state>
           </provider>
         </entry>
@@ -135,10 +147,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="studentresult.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="studentresult.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/studentresult.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.84375" vertical-offset="420" max-vertical-offset="2025">
+=======
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2025">
+>>>>>>> cd8fad938d00ebffd2d334a82a8627923a2a7a35
               <caret line="84" column="64" selection-start-line="84" selection-start-column="64" selection-end-line="84" selection-end-column="64" />
               <folding />
             </state>
@@ -789,11 +805,11 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_listof_quiz.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_results.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/Results.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/ListofQuiz.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/StudentHome.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/SelectQuiz.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/studentresult.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/ListofQuiz.java" />
       </list>
     </option>
   </component>
@@ -1475,7 +1491,11 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32750398" sideWeight="0.47809666" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17329094" sideWeight="0.477363" order="14" side_tool="false" content_ui="tabs" x="86" y="180" width="1193" height="435" />
+=======
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21780604" sideWeight="0.477363" order="14" side_tool="false" content_ui="tabs" x="86" y="180" width="1193" height="435" />
+>>>>>>> cd8fad938d00ebffd2d334a82a8627923a2a7a35
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32888147" sideWeight="0.5143505" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21683876" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1909,6 +1929,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/ListofQuiz.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="564" max-vertical-offset="2430">
@@ -1917,6 +1938,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> cd8fad938d00ebffd2d334a82a8627923a2a7a35
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/SelectQuiz.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1605">
@@ -1927,9 +1950,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/studentresult.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.84375" vertical-offset="420" max-vertical-offset="2025">
+=======
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2025">
+>>>>>>> cd8fad938d00ebffd2d334a82a8627923a2a7a35
           <caret line="84" column="64" selection-start-line="84" selection-start-column="64" selection-end-line="84" selection-end-column="64" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/khaled/takequiz/ListofQuiz.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51106197" vertical-offset="1239" max-vertical-offset="2475">
+          <caret line="100" column="42" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

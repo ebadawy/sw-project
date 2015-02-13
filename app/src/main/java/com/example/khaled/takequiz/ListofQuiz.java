@@ -37,7 +37,6 @@ public class ListofQuiz extends ActionBarActivity {
         Intent intent = getIntent();
         String doctorid=intent.getStringExtra(DoctorHome.doctorid);
         int id =Integer.parseInt(doctorid);
-        Log.i("Info","#####################################################################"+id);
 
 
 
@@ -77,7 +76,11 @@ public class ListofQuiz extends ActionBarActivity {
                             final Switch toggleButton = new Switch(ListofQuiz.this);
                             para.setMargins(10,35,10,0);
                             toggleButton.setLayoutParams(para);
-                            toggleButton.setChecked(false);
+                            if(quiz.isPublished()) {
+                                toggleButton.setChecked(true);
+                            }else{
+                                toggleButton.setChecked(false);
+                            }
                             toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                 @Override
                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
