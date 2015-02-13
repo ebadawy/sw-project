@@ -1,5 +1,7 @@
 package com.example.khaled.takequiz;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Layout;
@@ -10,6 +12,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 
@@ -48,13 +51,37 @@ public class Grapher extends ActionBarActivity {
 
             @Override
             public void success(GraphBuilder graphBuilder, Response response) {
-                System.out.println("success");
-                GraphView graph = (GraphView)findViewById(R.id.graph);
-                LinearLayout l = (LinearLayout)findViewById(R.id.layout1);
+                try {
+                    System.out.println("success");
+                    GraphView graph = (GraphView) findViewById(R.id.graph);
+                    LinearLayout l = (LinearLayout) findViewById(R.id.layout1);
 
-                graph.addSeries(new LineGraphSeries( graphBuilder.generateData()));
+                    graph.addSeries(new LineGraphSeries(graphBuilder.generateData()));
+                    StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
+                    String[] quizName = graphBuilder.quizNamesArranged();
+                    staticLabelsFormatter.setHorizontalLabels(quizName);
+                    graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+                    graph.setTitle(username);
+                    graph.getGridLabelRenderer().setVerticalAxisTitle("Results");
+                    graph.getGridLabelRenderer().setHorizontalAxisTitle("Quiz Names");
+                    graph.getGridLabelRenderer().setVerticalAxisTitleColor(Color.BLUE);
+                    graph.setTitleTextSize(40);
+                    graph.setTitleColor(Color.BLUE);
+                    graph.getGridLabelRenderer().setVerticalAxisTitleTextSize(40);
+                    graph.getGridLabelRenderer().setHorizontalAxisTitleTextSize(40);
+                    graph.getGridLabelRenderer().setHorizontalAxisTitleColor(Color.BLUE);
+                    graph.getViewport().setYAxisBoundsManual(true);
+                    graph.getViewport().setMinY(0);
+                    graph.onDataChanged(false, false);
+                    graph.getViewport().setScalable(true);
 
-                System.out.println("success");
+                    System.out.println("success");
+                }
+                catch(IllegalStateException e){
+                    Intent intent = new Intent(Grapher.this,Statistics.class);
+                    Toast.makeText(Grapher.this,"This student took no quizzes",Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
             }
 
             @Override
@@ -70,15 +97,8 @@ public class Grapher extends ActionBarActivity {
 
 
 
-        //StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
-        //String[] quizName = new String[quizzes.size()];
-        //for(int i =0 ; i< quizzes.size();i++){
-         //   String name = quizzes.get(i).getName();
 
-          //  quizName[i] = name;
-        //}
-        //staticLabelsFormatter.setHorizontalLabels(quizName);
-        //graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+
 
        // for(int i = 0 ; i<quizzes.size();i++){
        //     System.out.println(quizzes.get(i).getId()+"        "+quizresult.get(i).getResult());

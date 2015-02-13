@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.rest.model.User;
 
@@ -54,22 +55,24 @@ List<User> usersextra = new ArrayList<>();
                 }
                 for(int i = 0 ;i<StudentNames.size();i++){
                     final int j = i;
-                    StudentNames.get(i).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            int id = usersextra.get(j).getId();
-                            String username =usersextra.get(j).getUserName();
 
-                            String ids = Integer.toString(id);
+                        StudentNames.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                int id = usersextra.get(j).getId();
+                                String username = usersextra.get(j).getUserName();
 
-                            Bundle extras =new Bundle();
-                            extras.putString("id",ids);
-                            extras.putString("username",username);
-                            Intent intent = new Intent(Statistics.this,Grapher.class);
-                            intent.putExtras(extras);
-                            startActivity(intent);
-                        }
-                    });
+                                String ids = Integer.toString(id);
+
+                                Bundle extras = new Bundle();
+                                extras.putString("id", ids);
+                                extras.putString("username", username);
+                                Intent intent = new Intent(Statistics.this, Grapher.class);
+                                intent.putExtras(extras);
+                                startActivity(intent);
+                            }
+                        });
+
                 }
 
             }
