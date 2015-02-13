@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -63,7 +64,8 @@ Button deletegroup;
     }
 
     public void addGroupClick(){
-        TextView sno = new TextView(GroupList.this);
+
+        ;
         groupname = new EditText(GroupList.this);
         final AlertDialog.Builder alertDialog =new AlertDialog.Builder(this);
         final EditText input = new EditText(GroupList.this);
@@ -71,19 +73,36 @@ Button deletegroup;
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
-        LinearLayout.LayoutParams ls = new LinearLayout.LayoutParams(
+        final LinearLayout.LayoutParams ls = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         input.setLayoutParams(lp);
         alertDialog.setView(input);
         alertDialog.setPositiveButton("create",new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface dialog, int id){
-            groupname.setId(counter);
-            counter ++;
-            groupname.setText(input.getText().toString());
-            groupsname.add(groupname);
-            maingrouplayout.addView(groupname);
+            public void onClick(DialogInterface dialog, int id) {
+                if (input.getText().toString().equals("")) {
+                    Toast.makeText(GroupList.this, "Please write a group name", Toast.LENGTH_SHORT).show();
+                } else {
+                    TextView sno = new TextView(GroupList.this);
+                    sno.setLayoutParams(ls);
+                    sno.setText("0");
+                    LinearLayout l = new LinearLayout(GroupList.this);
+                    l.setLayoutParams(ls);
+                    sno.setGravity(Gravity.RIGHT);
+                    groupname.setTextSize(20);
+                    sno.setTextSize(20);
+                    l.setOrientation(LinearLayout.HORIZONTAL);
+                    groupname.setId(counter);
+                    counter++;
+                    groupname.setText(input.getText().toString());
+                    groupsname.add(groupname);
+                    layouts.add(l);
+                    Groupsstudentno.add(sno);
+                    l.addView(groupname);
+                    l.addView(sno);
+                    maingrouplayout.addView(l);
 
+                }
             }
         });
         alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -93,6 +112,7 @@ Button deletegroup;
         });
         AlertDialog alert=alertDialog.create();
         alertDialog.show();
+        
     }
     public void deletegroupClick(){
         if(groupsname.size()>0) {
@@ -114,8 +134,11 @@ Button deletegroup;
                     String deletedGroup = input.getText().toString();
                     for (int i = 0; i < groupsname.size(); i++)
                         if (deletedGroup.equals(groupsname.get(i).getText().toString())) {
-                            maingrouplayout.removeView(groupsname.get(i));
+                            maingrouplayout.removeView(layouts.get(i));
                             groupsname.remove(i);
+                            layouts.remove(i);
+                            Groupsstudentno.remove(i);
+
                             found = true;
                         }
 
