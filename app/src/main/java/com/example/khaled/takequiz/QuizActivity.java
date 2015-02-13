@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -17,12 +18,18 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rest.model.Choice;
+import com.rest.model.CurrentQuiz;
 import com.rest.model.Question;
 import com.rest.model.Quiz;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class QuizActivity extends FragmentActivity {
@@ -41,17 +48,62 @@ public class QuizActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+      /*  MainActivity.api.getQuizQuestions(MainActivity.current_quiz.getId(),new Callback<List<Question>>() {
+            @Override
+            public void success(List<Question> questions, Response response) {
+
+
+                int i =0;
+                for(Question question : questions) {
+
+                    final FragmentQuiz currentques = (FragmentQuiz) mPagerAdapter.getItem(i);
+                    final RadioGroup rad = currentques.getRadioGroup();
+                    final RadioButton currentchoice = currentques.getRadioButton();
+                     TextView currenttext = new TextView(QuizActivity.this);
+                        currenttext   =  currentques.getTextView();
+                    Log.i("info","##################################################"+question.getQuestion());
+                    currenttext.setText(question.getQuestion());
+                    i++;
+                    MainActivity.api.getQuestionChoices(MainActivity.current_quiz.getId(),question.getId(),new Callback<List<Choice>>() {
+                        @Override
+                        public void success(List<Choice> choices, Response response) {
+                            currentchoice.setText(choices.get(0).getChoice());
+                            currentques.setChoicecontainer(currentchoice);
+                            for(int j=1;j<choices.size();j++)
+                            {
+                                RadioButton choice = new RadioButton(QuizActivity.this);
+                                choice.setId(View.generateViewId());
+                                choice.setText(choices.get(j).getChoice());
+                                currentques.setChoicecontainer(choice);
+                                rad.addView(choice);
+                            }
+
+                        }
+
+                        @Override
+                        public void failure(RetrofitError retrofitError) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+
+            }
+        });*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         submit =(Button)findViewById(R.id.submit);
         nextPage=(Button)findViewById(R.id.nextPage);
         previousPage=(Button)findViewById(R.id.previousPage);
-        quiz = MainActivity.current_quiz;
+        quiz = CurrentQuiz.getInstance();
         initialisePaging();
         QUES = quiz.getQuestions();
         ANS = new ArrayList<String>();
         quizName = (TextView) findViewById(R.id.quizName);
-        //quizName.setText(getIntent().getExtras().getString("Quiz Name"));
+        quizName.setText(quiz.getName());
         chronometer = (Chronometer)findViewById(R.id.chronometer);
         chronometer.setVisibility(View.VISIBLE);
         chronometer.start();
@@ -78,24 +130,27 @@ public class QuizActivity extends FragmentActivity {
             firstq.setChoicecontainer(i,choice);
             firstrad.addView(choice);
         }*/
-        for (int i=0;i<quiz.getQuestions().size();i++)
+        for (int i=0;i<10;i++)
         {
             FragmentQuiz currentques = (FragmentQuiz) mPagerAdapter.getItem(i);
             RadioGroup rad = currentques.getRadioGroup();
             RadioButton currentchoice = currentques.getRadioButton();
-            TextView currenttext = currentques.getTextView();
-            int choices = quiz.getQuestions().get(i).getChoices().size();
-            currenttext.setText(quiz.getQuestions().get(i).getQuestion());
-            currentchoice.setText(quiz.getQuestions().get(i).getChoices().get(0).getChoice());
+
+
+            int choices = i+1;
+            currentques.setTextView("ques");
+            currentchoice.setText("ans");
             for(int j=1;j<choices;j++)
             {
+
                 RadioButton choice = new RadioButton(this);
                 choice.setId(i+j);
-                choice.setText(quiz.getQuestions().get(i).getChoices().get(j).getChoice());
+                choice.setText("add");
                 currentques.setChoicecontainer(choice);
                 rad.addView(choice);
             }
         }
+
 
     }
     public void nextPage(View v) {

@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Vector;
 
 public class FragmentQuiz extends Fragment {
-    private TextView ques;
+    private TextView ques ;
     private RadioButton ans;
     private RadioGroup radioGroup;
     private List<RadioButton> choicecontainer = new Vector<RadioButton>();
@@ -39,19 +39,24 @@ public class FragmentQuiz extends Fragment {
                              Bundle savedInstanceState) {
         View question = (ScrollView)inflater.inflate(R.layout.activity_questions,
                 container, false);
-        choicecontainer.add(ans);
+
+
         ques = (TextView)question.findViewById(R.id.textView2);
         ans = (RadioButton)question.findViewById(R.id.radioButton);
         radioGroup = (RadioGroup)question.findViewById(R.id.radio);
+        //Intent intent = getIntent();
+        ques.setText(intent.getStringExtra("question"));
+        ans.setText(intent.getStringExtra("answer"));
+
         return question;
     }
-    public RadioGroup getRadioGroup()
+   /* public RadioGroup getRadioGroup()
     {
         return radioGroup;
     }
-    public TextView getTextView ()
+    public void setTextView (String s)
     {
-        return ques;
+        ques.setText(s);
     }
     public RadioButton getRadioButton()
     {
@@ -64,5 +69,5 @@ public class FragmentQuiz extends Fragment {
     public void setChoicecontainer(RadioButton R)
     {
         choicecontainer.add(R);
-    }
+    }*/
 }

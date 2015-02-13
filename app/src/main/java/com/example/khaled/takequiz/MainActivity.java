@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,12 +15,16 @@ import com.rest.model.Quiz;
 import com.rest.model.User;
 import com.rest.service.RestClient;
 
+import java.io.Closeable;
+
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 
 public class MainActivity extends ActionBarActivity {
+    public final static String DocID = "com.example.khaled.takequiz.id";
+    public final static String StuID="com.example.khaled.takequiz.id";
     TextView logs;
 
     public static QuizAPI api;
@@ -41,8 +46,10 @@ public class MainActivity extends ActionBarActivity {
                     try {
                        // the user is authenticated, ur code goes here
                        if(user.getRole().equals("student")){
+                           studentActivity.putExtra(StuID,Integer.toString(user.getId()));
                            startActivity(studentActivity);
                        }else if(user.getRole().equals("doc")){
+                           docActivity.putExtra(DocID,Integer.toString(user.getId()));
                            startActivity(docActivity);
                        }
 
@@ -94,4 +101,6 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

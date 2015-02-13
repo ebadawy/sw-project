@@ -9,6 +9,7 @@ import com.rest.model.QuizWrapper;
 import com.rest.model.Result;
 import com.rest.model.User;
 import com.rest.model.UserWrapper;
+import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Response;
 
 import java.util.List;
@@ -17,7 +18,9 @@ import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.Headers;
+import retrofit.http.PATCH;
 import retrofit.http.POST;
+import retrofit.http.PUT;
 import retrofit.http.Path;
 import retrofit.http.Query;
 
@@ -78,5 +81,26 @@ public interface QuizAPI {
     public void getResult(@Path("user_id") int user_id,
                            @Path("quiz_id") int quiz_id,
                            Callback<Result> rslt);
+
+    @GET("/users?role=student")
+    public void getStudents(Callback<List<User>> users);
+
+    @GET("/quizzes?users={user_id}&status=true")
+    public void getQuizzesWithResults(@Path("user_id") int userID,
+                                      Callback<List<Quiz>> quizzes);
+
+    @PATCH("/quizzes/{quiz_id}")
+    public void quizStatus(@Path("quiz_id") int quizId,
+                             @Query("quiz_status") boolean published,
+                             Callback<Response> responseCallback);
+
+    @GET("/users")
+    public void getQuizUsers(@Query("quiz_id") int quizId,
+                             Callback<List<User>> users);
+
+    @PATCH("/publish")
+    public void resultStatus(@Query("quiz_id") int quizId,
+                             @Query("result_status") int publish,
+                             Callback<Response> responseCallback);
 
 }

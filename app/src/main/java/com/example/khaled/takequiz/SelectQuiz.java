@@ -2,6 +2,7 @@ package com.example.khaled.takequiz;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rest.model.CurrentQuiz;
 import com.rest.model.Quiz;
 
 import java.util.List;
@@ -26,14 +28,17 @@ import retrofit.client.Response;
 
 public class SelectQuiz extends ActionBarActivity {
 
-    public static QuizAPI api;
-    Quiz quiz;
+
+
     LinearLayout.LayoutParams params;
     LinearLayout.LayoutParams para;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_quiz);
+        Intent intent = getIntent();
+        String sid=intent.getStringExtra(StudentHome.studentid);
+        int id = Integer.parseInt(sid);
         final LinearLayout lm = (LinearLayout) findViewById(R.id.linearmain);
         //final LinearLayout am =(LinearLayout) findViewById(R.id.alternate);
 
@@ -45,12 +50,16 @@ public class SelectQuiz extends ActionBarActivity {
 
         final TextView txt = (TextView) findViewById(R.id.txt);
         try {
-            MainActivity.api.getQuizzes(25, new Callback<List<Quiz>>() {
+
+            MainActivity.api.getQuizzes(id, new Callback<List<Quiz>>() {
+
                 @Override
                 public void success(List<Quiz> quizs, Response response) {
                     // txt.setText(quiz.getName());
                     if (quizs.size() != 0) {
+
                         for (final Quiz quiz : quizs) {
+
                         LinearLayout A = new LinearLayout(getApplicationContext());
                             A.setOrientation(LinearLayout.HORIZONTAL);
                             final Button btn = new Button(getApplicationContext());
@@ -62,15 +71,17 @@ public class SelectQuiz extends ActionBarActivity {
                             btn.setBackgroundColor(Color.WHITE);
                             btn.setTextColor(Color.BLACK);
                             btn.setTextSize(30);
+
                             btn.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     Intent intent = new Intent(SelectQuiz.this,QuizActivity.class);
                                     startActivity(intent);
-                                    Toast.makeText(getApplicationContext(), quiz.getId(), Toast.LENGTH_LONG).show();
-                                    MainActivity.current_quiz = quiz;
+                                    Toast.makeText(SelectQuiz.this,Integer.toString(quiz.getId()) , Toast.LENGTH_LONG).show();
+                                    CurrentQuiz.setInstance(quiz);
                                 }
                             });
+
 
                             A.addView(btn);
 

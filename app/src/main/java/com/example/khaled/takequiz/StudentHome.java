@@ -13,12 +13,12 @@ public class StudentHome extends ActionBarActivity {
 
 
 
-    public void openresults(View view){
-        Intent intent = new Intent(this,studentresult.class);
-        startActivity(intent);
-    }
 
 
+
+
+
+    public static final String studentid="com.example.khaled.takequiz.MESSAGE";
 
     public void getout(View view){
         Intent intent = new Intent(this,MainActivity.class);
@@ -26,6 +26,18 @@ public class StudentHome extends ActionBarActivity {
     }
     public void listquiz(View view){
         Intent intent = new Intent(this,SelectQuiz.class);
+        Intent n = getIntent();
+        String Stuid = n.getStringExtra(MainActivity.StuID);
+        intent.putExtra(studentid,Stuid);
+        startActivity(intent);
+
+
+    }
+    public void openresults(View v){
+        Intent intent = new Intent(this,studentresult.class);
+        Intent n = getIntent();
+        String Stuid = n.getStringExtra(MainActivity.StuID);
+        intent.putExtra(studentid,Stuid);
         startActivity(intent);
     }
 

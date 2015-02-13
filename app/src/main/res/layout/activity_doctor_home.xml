@@ -39,8 +39,10 @@
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Groups"
-        android:onClick="opengroups"/>
+
+        android:onClick="startGroupsIntent"
+        android:text="Groups"/>
+
     <Button
         android:layout_width="fill_parent"
         android:textSize="30dp"
@@ -49,8 +51,9 @@
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:onClick="startGroupsIntent"
-        android:text="Results"/>
+
+    android:text="Results"
+    android:onClick="drresults"/>
     <Button
         android:layout_width="fill_parent"
         android:textSize="30dp"
@@ -71,6 +74,7 @@
         android:layout_gravity="right"
         android:text="Log Out"
         android:onClick="getoutdr"/>
+
 </LinearLayout>
 
 

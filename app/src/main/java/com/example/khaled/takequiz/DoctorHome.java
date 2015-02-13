@@ -3,12 +3,17 @@ package com.example.khaled.takequiz;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.rest.model.Result;
+
 
 public class DoctorHome extends ActionBarActivity {
+public static final String doctorid="com.example.khaled.takequiz.MESSAGE";
+
 
 
     public void getoutdr(View view){
@@ -17,14 +22,29 @@ public class DoctorHome extends ActionBarActivity {
     }
 
 
-    Intent groupsIntent;
 
-    public void opengroups(View view){
-        Intent intent = new Intent(this,Grouplayout.class);
-        startActivity(intent);
+
+    public void opengroups(View view) {
+        Intent intent = new Intent(this, Grouplayout.class);
     }
-    public  void listofquiz(View v){
-        Intent intent = new Intent(this,Quizlist_DoctorActivity.class);
+
+    public void drresults(View v){
+        Intent intent = new Intent(this, Results.class);
+        Intent docid = getIntent();
+        String id = docid.getStringExtra(MainActivity.DocID);
+        Log.i("Info","++++++++++++++++++++++++++++++++++++++++++++++++++++++"+id);
+        intent.putExtra(doctorid,id);
+
+        startActivity(intent);
+
+    }
+
+    public void listofquiz(View v){
+        Intent intent = new Intent(this,ListofQuiz.class);
+        Intent docid = getIntent();
+        String id = docid.getStringExtra(MainActivity.DocID);
+        intent.putExtra(doctorid,id);
+
         startActivity(intent);
     }
     public void stata(View v){
@@ -32,11 +52,15 @@ public class DoctorHome extends ActionBarActivity {
 //        startActivity(intent);
     }
 
+
+    Intent groupsIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_home);
         groupsIntent = new Intent(this, Groups.class);
+
     }
 
     public void startGroupsIntent(View v) {
@@ -69,10 +93,7 @@ public class DoctorHome extends ActionBarActivity {
         Intent intent = new Intent(this,DoctorHome.class);
         startActivity(intent);
     }
-    @Override
-    public void onBackPressed() {
-        stay();
-    }
+
 
 
 }
