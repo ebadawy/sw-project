@@ -7,6 +7,4 @@ public class Answer {
         this.answer = answer;
         this.correct = false;
     }
-
-
 }

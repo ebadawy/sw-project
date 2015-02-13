@@ -10,7 +10,28 @@ import android.view.View;
 
 public class DoctorHome extends ActionBarActivity {
 
+
+    public void getoutdr(View view){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+
+
     Intent groupsIntent;
+
+    public void opengroups(View view){
+        Intent intent = new Intent(this,Grouplayout.class);
+        startActivity(intent);
+    }
+    public  void listofquiz(View v){
+        Intent intent = new Intent(this,Quizlist_DoctorActivity.class);
+        startActivity(intent);
+    }
+    public void stata(View v){
+//        Intent intent = new Intent(this, Statistics.class);
+//        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,4 +65,14 @@ public class DoctorHome extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    public void stay(){
+        Intent intent = new Intent(this,DoctorHome.class);
+        startActivity(intent);
+    }
+    @Override
+    public void onBackPressed() {
+        stay();
+    }
+
+
 }

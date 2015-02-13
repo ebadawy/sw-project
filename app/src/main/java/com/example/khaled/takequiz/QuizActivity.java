@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rest.model.Question;
+import com.rest.model.Quiz;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,8 @@ public class QuizActivity extends FragmentActivity {
     List<Question> QUES ;
     List<String> ANS ;
     Chronometer chronometer;
+    Quiz quiz;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,25 +46,23 @@ public class QuizActivity extends FragmentActivity {
         submit =(Button)findViewById(R.id.submit);
         nextPage=(Button)findViewById(R.id.nextPage);
         previousPage=(Button)findViewById(R.id.previousPage);
+        quiz = MainActivity.current_quiz;
         initialisePaging();
-        QUES = new ArrayList<Question>(10);
-        ANS = new ArrayList<String>(QUES.size());
+        QUES = quiz.getQuestions();
+        ANS = new ArrayList<String>();
         quizName = (TextView) findViewById(R.id.quizName);
-        quizName.setText(getIntent().getExtras().getString("Quiz Name"));
+        //quizName.setText(getIntent().getExtras().getString("Quiz Name"));
         chronometer = (Chronometer)findViewById(R.id.chronometer);
         chronometer.setVisibility(View.VISIBLE);
         chronometer.start();
-        if(chronometer.bringPointIntoView(15))
-            chronometer.stop();
-
 
     }
 
     private void initialisePaging() {
         mPagerAdapter = new QuizPageAdapter(this.getSupportFragmentManager());
-        ViewPager pager = (ViewPager)findViewById(R.id.viewpager);
+        pager = (ViewPager)findViewById(R.id.viewpager);
         pager.setAdapter(mPagerAdapter);
-        int firstnum = pager.getCurrentItem();
+        /*int firstnum = pager.getCurrentItem();
         FragmentQuiz firstq =(FragmentQuiz) mPagerAdapter.getItem(firstnum);
         RadioGroup firstrad = firstq.getRadioGroup();
         RadioButton firstc = firstq.getRadioButton();
@@ -76,18 +77,18 @@ public class QuizActivity extends FragmentActivity {
             choice.setText(QUES.get(firstnum).getChoices().get(i).getChoice());
             firstq.setChoicecontainer(i,choice);
             firstrad.addView(choice);
-        }
+        }*/
 
     }
     public void nextPage(View v) {
 
-        int totalPages = QUES.size();
+        int totalPages = MainActivity.current_quiz.getQuestions().size();
         currentPage = pager.getCurrentItem();
         int nextPage = currentPage+1;
         if (nextPage >= totalPages) {
             nextPage = 0;
         }
-        else {
+        /*else {
             FragmentQuiz nextques = (FragmentQuiz) mPagerAdapter.getItem(currentPage);
             TextView text = nextques.getTextView();
             RadioGroup rad = nextques.getRadioGroup();
@@ -102,7 +103,7 @@ public class QuizActivity extends FragmentActivity {
                 nextques.setChoicecontainer(i,choice);
                 rad.addView(choice);
             }
-        }
+        }*/
         pager.setCurrentItem(nextPage, true);
     }
 
@@ -117,7 +118,7 @@ public class QuizActivity extends FragmentActivity {
     }
     public void send(View v)
     {
-        for(int i=0;i<QUES.size();i++) {
+      /*  for(int i=0;i<QUES.size();i++) {
             FragmentQuiz randques = (FragmentQuiz) mPagerAdapter.getItem(i);
             RadioGroup randrad = randques.getRadioGroup();
             RadioButton randans = randques.getRadioButton();
@@ -140,7 +141,7 @@ public class QuizActivity extends FragmentActivity {
                 dialog.show();
             }
 
-        }
+        }*/
 
     }
     public void upload(View v)
@@ -149,10 +150,10 @@ public class QuizActivity extends FragmentActivity {
     }
     public void hide()
     {
-        if(chronometer.getVisibility()==View.VISIBLE)
+      /*  if(chronometer.getVisibility()==View.VISIBLE)
             chronometer.setVisibility(View.GONE);
         if(chronometer.getVisibility()==View.GONE)
-            chronometer.setVisibility(View.VISIBLE);
+            chronometer.setVisibility(View.VISIBLE);*/
     }
 
 

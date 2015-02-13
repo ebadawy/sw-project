@@ -1,24 +1,31 @@
 package com.example.khaled.takequiz;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
-public class Quizlist_Student extends ActionBarActivity {
+public class Grouplayout extends ActionBarActivity {
+
+    public void opengrouplist(View view){
+        Intent intent = new Intent(this,grouplist.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quizlist__student);
+        setContentView(R.layout.activity_grouplayout);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_quizlist__student, menu);
+        getMenuInflater().inflate(R.menu.menu_grouplayout, menu);
         return true;
     }
 

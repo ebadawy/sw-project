@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public class QuizPageAdapter extends FragmentPagerAdapter {
-    int num;
+    int num = 10;
 
     public QuizPageAdapter(FragmentManager fm) {
         super(fm);
