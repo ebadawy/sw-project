@@ -79,8 +79,8 @@ public class StudentRegistration extends ActionBarActivity {
 
                                         add.setLayoutParams(para);
                                         add.setGravity(Gravity.RIGHT);
+                                        //Toast.makeText(getApplicationContext(), Integer.toString(group.getUsers().size()), Toast.LENGTH_SHORT).show();
                                         try {
-
                                             if (group.getUsers().contains(user)) {
 
                                                 add.setChecked(true);
@@ -97,6 +97,7 @@ public class StudentRegistration extends ActionBarActivity {
                                                     MainActivity.api.addStudent(user.getUserName(), group.getId(), new Callback<com.squareup.okhttp.Response>() {
                                                         @Override
                                                         public void success(com.squareup.okhttp.Response response, Response response2) {
+
                                                             Log.i("info","#########################################################"+Integer.toString(group.getId()));
                                                             //Toast.makeText(StudentRegistration.this, "Student is added successfully", Toast.LENGTH_LONG).show();
                                                             Toast.makeText(StudentRegistration.this, Integer.toString(group.getId()), Toast.LENGTH_LONG).show();
