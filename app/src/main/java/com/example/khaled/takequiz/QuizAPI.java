@@ -113,8 +113,8 @@ public interface QuizAPI {
     @POST("/groups")
     public void createGroup(@Body Group group, @Query("user_id") int userId, Callback<Response> responseCallback);
 
-    @DELETE("/groups/{group_id}")
-    public void deleteGroup(@Path("group_id") int groupId, Callback<Response> responseCallback);
+    @DELETE("/destroy_group")
+    public void deleteGroup(@Query("group_name") String groupName, Callback<Response> responseCallback);
 
     @GET("/users/{user_id}/groups")
     public void getGroups(@Path("user_id") int userId, Callback<List<Group>> groups);
