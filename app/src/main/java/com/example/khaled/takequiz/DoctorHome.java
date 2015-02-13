@@ -8,16 +8,33 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import android.widget.Button;
 
-public class DoctorHome extends ActionBarActivity implements View.OnClickListener{
-Button statistics;
-Intent groupsIntent;
+
+public class DoctorHome extends ActionBarActivity implements View.OnClickListener {
+    Button statistics;
+    Intent groupsIntent;
+
+    Button createQuiz;
+    public void opengroups(View view){
+        Intent intent = new Intent(this,Grouplayout.class);
+        startActivity(intent);
+    }
+
+
+
+    public void getoutdr(View view){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_home);
 
+        createQuiz =(Button)findViewById(R.id.createQuiz);
+        createQuiz.setOnClickListener(this);
         statistics =(Button)findViewById(R.id.statistics);
         statistics.setOnClickListener(this);
 
@@ -51,16 +68,39 @@ Intent groupsIntent;
 
         return super.onOptionsItemSelected(item);
     }
+
     public void statisticsClick(){
         Intent intent = new Intent(DoctorHome.this,Statistics.class);
         startActivity(intent);
 
     }
-    public void onClick(View view){
-        switch (view.getId()){
+
+
+    private void createQuizClick(){
+        Intent intent = new Intent(DoctorHome.this, QuizMaininfo.class);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
             case R.id.statistics:
                 statisticsClick();
                 break;
+            case R.id.createQuiz:
+                createQuizClick();
+                break;
         }
+
+    }
+
+    public void stay(){
+        Intent intent = new Intent(this,DoctorHome.class);
+        startActivity(intent);
+    }
+    @Override
+    public void onBackPressed() {
+        stay();
     }
 }

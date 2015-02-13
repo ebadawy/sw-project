@@ -9,16 +9,10 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="Settings"/>
+
     <Button
         android:layout_width="fill_parent"
+        android:textSize="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="60dp"
@@ -34,7 +28,9 @@
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/result"/>
+        android:textSize="30dp"
+        android:text="@string/result"
+        android:onClick="openresults"/>
 
     <Button
         android:layout_width="fill_parent"
@@ -42,6 +38,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
+        android:textSize="30dp"
         android:layout_gravity="center_horizontal"
         android:text="@string/statistics"/>
     <Button
@@ -50,7 +47,9 @@
         android:layout_marginRight="30dp"
         android:layout_marginTop="60dp"
         android:layout_height="wrap_content"
+        android:textSize="30dp"
         android:layout_gravity="right"
-        android:text="Log Out"/>
+        android:text="Log Out"
+        android:onClick="getout"/>
 </LinearLayout>
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.example.khaled.takequiz;
 import com.rest.model.Answer;
 import com.rest.model.Choice;
 import com.rest.model.GraphBuilder;
+import com.rest.model.Group;
 import com.rest.model.Question;
 import com.rest.model.QuestionWrapper;
 import com.rest.model.Quiz;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import retrofit.Callback;
 import retrofit.http.Body;
+import retrofit.http.DELETE;
 import retrofit.http.GET;
 import retrofit.http.Headers;
 import retrofit.http.PATCH;
@@ -108,4 +110,12 @@ public interface QuizAPI {
     public void graphPoints(@Query("user_id") int userId,
                                Callback<GraphBuilder> graphBuilderCallback);
 
+    @POST("/groups")
+    public void createGroup(@Body Group group, @Query("user_id") int userId, Callback<Response> responseCallback);
+
+    @DELETE("/destroy_group")
+    public void deleteGroup(@Query("group_name") String groupName, Callback<Response> responseCallback);
+
+    @GET("/users/{user_id}/groups")
+    public void getGroups(@Path("user_id") int userId, Callback<List<Group>> groups);
 }

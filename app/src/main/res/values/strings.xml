@@ -13,8 +13,27 @@
     <string name="result">Results</string>
     <string name="statistics">Statistics</string>
     <string name="title_activity_statistics">Statistics</string>
+    <string name="title_activity_quiz_maininfo">QuizMaininfo</string>
+    <string name="title_activity_quiz_question_answer_student">QuizQuestionAnswerStudent</string>
+    <string name="title_activity_quiz_question_answer_doctor">QuizQuestionAnswerDoctor</string>
+    <string name="title_activity_dr_create_quiz">Create Quiz</string>
+    <string name="wrong_password">The ID or Password You Entered is Incorrect!! Please Try Again</string>
+    <string name="title_activity_quizlist__student">Quiz List</string>
+    <string name="quizlist">Quizes List</string>
+    <string name="quiz">Quizes</string>
+    <string name="deadline">Deadline</string>
+    <string name="title_activity_quizlist__doctor">Quizlist_DoctorActivity</string>
+    <string name="title_activity_grouplayout">Groups</string>
+    <string name="title_activity_grouplist">Group List</string>
+    <string name="title_activity_studentreg">Student Registration</string>
+    <string name="title_activity_studentresult">Results</string>
+    <string name="pop">Your Result Is 10</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="title_activity_grapher">Grapher</string>
     <string name="title_activity_groups">Groups</string>
     <string name="title_activity_student_registration">StudentRegistration</string>
+    <string name="title_activity_group_list">GroupList</string>
 
 
 </resources>
