@@ -51,6 +51,13 @@
         <dex dex="C:\swproject\sw-project\app\build\intermediates\pre-dexed\debug\classes-b801d186b6a7d21b13045304647fc6fb29328446.jar" />
     </item>
     <item
+        jar="C:\swproject\sw-project\app\build\intermediates\exploded-aar\com.jjoe64\graphview\4.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ae24ad61a573cd1faf8261f5ec6d8f0cb58ddaad">
+        <dex dex="C:\swproject\sw-project\app\build\intermediates\pre-dexed\debug\classes-d91da71ad2ce8b8ab0ddd40ab48d44289afea554.jar" />
+    </item>
+    <item
         jar="C:\Users\user\AppData\Local\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
