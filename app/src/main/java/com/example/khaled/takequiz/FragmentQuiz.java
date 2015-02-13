@@ -41,10 +41,10 @@ LinearLayout layout;
 
         return question;
     }
-    public void setLayout(View v)
+    /*public void setLayout(View v)
     {
         layout.addView(v);
-    }
+    }*/
 
 
 }
