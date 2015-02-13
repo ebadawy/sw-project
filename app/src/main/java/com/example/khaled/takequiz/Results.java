@@ -33,18 +33,19 @@ import retrofit.client.Response;
 
 public class Results extends ActionBarActivity {
 public static int quizid;
+
     LinearLayout.LayoutParams params;
     LinearLayout.LayoutParams para;
-    List<TextView> A = new ArrayList<>();
+    List<TextView> Students = new ArrayList<>();
+    List<TextView> Result = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
-        Intent intent = getIntent();
-        String DrId = intent.getStringExtra(DoctorHome.doctorid);
-        Log.i("info","******************************************************"+DrId);
-       final int idd = Integer.parseInt(DrId);
+
+       final int idd = (MainActivity.current_user.getId());
         final LinearLayout lm = (LinearLayout) findViewById(R.id.main);
 
         MainActivity.api.getQuizzes(idd,new Callback<List<Quiz>>() {
@@ -62,8 +63,11 @@ public static int quizid;
                 spinner.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, final long id) {
-                        //LinearLayout A = (LinearLayout)findViewById(R.id.AA);
-                        A.clear();
+                        final LinearLayout A = (LinearLayout)findViewById(R.id.AA);
+
+                        A.removeAllViews();
+                        Students.clear();
+                        Result.clear();
 
                         String name = parent.getItemAtPosition(position).toString();
                         for(Quiz quiz : quizs){
@@ -89,8 +93,9 @@ public static int quizid;
                                     txt.setBackgroundColor(Color.WHITE);
                                     txt.setTextColor(Color.BLACK);
                                     txt.setTextSize(30);
-                                    A.add(txt);
-                                    lm.addView(A.get(0));
+                                    Students.add(txt);
+                                    A.addView(Students.get(0));
+                                    //lm.addView(A);
 
                                   final TextView result = new TextView(getApplicationContext());
                                     para.setMargins(10,35,10,0);
@@ -114,10 +119,12 @@ public static int quizid;
                                     result.setLayoutParams(para);
                                     result.setTextColor(Color.BLACK);
                                     result.setTextSize(30);
-                                    lm.addView(result);
+                                    Result.add(result);
+                                    A.addView(Result.get(0));
+                                    //lm.addView(A);
 
 
-                                   // lm.addView(A);
+
                                 }
                             }
 
