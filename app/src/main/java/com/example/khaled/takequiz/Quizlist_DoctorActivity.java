@@ -12,19 +12,37 @@ import com.rest.model.Quiz;
 
 import java.util.List;
 
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
 
 public class Quizlist_DoctorActivity extends ListActivity {
-    List<Quiz> quizs;
-
+    QuizAPI api;
+    List<Quiz> q;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizlist__doctor);
-        ArrayAdapter<Quiz> adapter = new ArrayAdapter<Quiz>(this,android.
-                R.layout.simple_list_item_1,quizs);
-        setListAdapter(adapter);
+
+        api.getQuizzes(24,new Callback<List<Quiz>>() {
+            @Override
+            public void success(List<Quiz> quizs, Response response) {
+
+                q = quizs;
+            }
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+                q = null;
+            }
+        });
+
     }
 
+    ArrayAdapter<Quiz> adapter = new ArrayAdapter<Quiz>(this,android.
+            R.layout.simple_list_item_1,q);
+            //setListAdapter(adapter);
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
