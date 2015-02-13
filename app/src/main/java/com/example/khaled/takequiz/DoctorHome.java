@@ -10,6 +10,11 @@ import android.view.View;
 
 public class DoctorHome extends ActionBarActivity {
 
+    public void getoutdr(View view){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+
     Intent groupsIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,4 +49,14 @@ public class DoctorHome extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    public void stay(){
+        Intent intent = new Intent(this,DoctorHome.class);
+        startActivity(intent);
+    }
+    @Override
+    public void onBackPressed() {
+        stay();
+    }
+
+
 }
