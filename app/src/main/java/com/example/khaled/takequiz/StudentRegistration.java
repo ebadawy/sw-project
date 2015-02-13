@@ -41,10 +41,12 @@ public class StudentRegistration extends ActionBarActivity {
             public void success(List<Group> groups, Response response) {
 
                 List<String> names = new ArrayList<String>();
-                for (Group group : groups) {
+                for (final Group group : groups) {
                     names.add(group.getGroupName());
                 }
-                for (final Group group : groups) {
+                for(final Group group : groups){
+
+
                     Spinner spinner = (Spinner) findViewById(R.id.spinner2);
                     ArrayAdapter<String> adp =
                             new ArrayAdapter<String>(StudentRegistration.this, android.R.layout.simple_list_item_1, names);
@@ -78,13 +80,14 @@ public class StudentRegistration extends ActionBarActivity {
                                         add.setLayoutParams(para);
                                         add.setGravity(Gravity.RIGHT);
                                         try {
+
                                             if (group.getUsers().contains(user)) {
 
                                                 add.setChecked(true);
                                             } else {
                                                 add.setChecked(false);
                                             }
-                                        }catch (NullPointerException e){
+                                        } catch (NullPointerException e) {
                                             //Toast.makeText(StudentRegistration.this,"This Group have no students",Toast.LENGTH_SHORT).show();
                                         }
                                         add.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -94,7 +97,10 @@ public class StudentRegistration extends ActionBarActivity {
                                                     MainActivity.api.addStudent(user.getUserName(), group.getId(), new Callback<com.squareup.okhttp.Response>() {
                                                         @Override
                                                         public void success(com.squareup.okhttp.Response response, Response response2) {
-                                                            Toast.makeText(StudentRegistration.this, "Student is added successfully", Toast.LENGTH_LONG).show();
+                                                            Log.i("info","#########################################################"+Integer.toString(group.getId()));
+                                                            //Toast.makeText(StudentRegistration.this, "Student is added successfully", Toast.LENGTH_LONG).show();
+                                                            Toast.makeText(StudentRegistration.this, Integer.toString(group.getId()), Toast.LENGTH_LONG).show();
+
                                                         }
 
                                                         @Override
