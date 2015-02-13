@@ -21,15 +21,12 @@ public class DoctorHome extends ActionBarActivity implements View.OnClickListene
 
 
 
-<<<<<<< HEAD
-=======
     public void getoutdr(View view){
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
 
     Intent groupsIntent;
->>>>>>> master
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
