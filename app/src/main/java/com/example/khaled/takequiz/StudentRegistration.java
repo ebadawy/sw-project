@@ -3,12 +3,19 @@ package com.example.khaled.takequiz;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ActionMenuView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import com.rest.model.Group;
 
@@ -42,7 +49,26 @@ public class StudentRegistration extends ActionBarActivity {
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.linear);
+                        TextView student = new TextView(StudentRegistration.this);
+                        Switch add = new Switch(StudentRegistration.this);
+                        LinearLayout.LayoutParams para;
+                        LinearLayout.LayoutParams params;
+                       params =
+                    new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                        para =
+                    new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                        student.setLayoutParams(params);
+                        student.setGravity(Gravity.LEFT);
+                        student.setText("Ahmed");
+                        linearLayout.addView(student);
+
                         
+                        add.setLayoutParams(para);
+                        add.setGravity(Gravity.RIGHT);
+                        linearLayout.addView(add);
                     }
 
                     @Override

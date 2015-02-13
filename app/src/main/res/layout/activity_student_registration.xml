@@ -17,6 +17,13 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/spinner2" >
                 </Spinner>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linear">
+
+            </LinearLayout>
 
 
     </LinearLayout>
