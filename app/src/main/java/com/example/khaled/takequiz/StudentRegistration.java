@@ -65,7 +65,7 @@ public class StudentRegistration extends ActionBarActivity {
                         student.setText("Ahmed");
                         linearLayout.addView(student);
 
-                        
+
                         add.setLayoutParams(para);
                         add.setGravity(Gravity.RIGHT);
                         linearLayout.addView(add);
