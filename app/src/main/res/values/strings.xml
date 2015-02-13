@@ -14,5 +14,6 @@
     <string name="statistics">Statistics</string>
     <string name="title_activity_groups">Groups</string>
     <string name="title_activity_student_registration">StudentRegistration</string>
+    <string name="title_activity_group_list">GroupList</string>
 
 </resources>
