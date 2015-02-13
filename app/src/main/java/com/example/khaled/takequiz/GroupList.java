@@ -141,12 +141,28 @@ Button deletegroup;
                     groupname.setId(counter);
                     counter++;
                     groupname.setText(input.getText().toString());
-                    groupsname.add(groupname);
-                    layouts.add(l);
-                    Groupsstudentno.add(sno);
-                    l.addView(groupname);
-                    l.addView(sno);
-                    maingrouplayout.addView(l);
+                    group= new Group(input.getText().toString());
+
+                    MainActivity.api.createGroup(group,MainActivity.current_user.getId(),new Callback<Response>() {
+                        @Override
+                        public void success(Response response, retrofit.client.Response response2) {
+                            groups.add(group);
+                            groupsname.add(groupname);
+                            layouts.add(l);
+                            Groupsstudentno.add(sno);
+                            l.addView(groupname);
+                            l.addView(sno);
+                            maingrouplayout.addView(l);
+
+                        }
+
+                        @Override
+                        public void failure(RetrofitError retrofitError) {
+                            Toast.makeText(GroupList.this, "Addition failed", Toast.LENGTH_SHORT).show();
+                            Log.e("Error", "retrofit", retrofitError);
+
+                        }
+                    });
 
                 }
             }
@@ -186,20 +202,29 @@ Button deletegroup;
             alertDialog.setView(input);
             alertDialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    boolean found = false;
                     String deletedGroup = input.getText().toString();
                     for (int i = 0; i < groupsname.size(); i++)
                         if (deletedGroup.equals(groupsname.get(i).getText().toString())) {
-                            maingrouplayout.removeView(layouts.get(i));
-                            groupsname.remove(i);
-                            layouts.remove(i);
-                            Groupsstudentno.remove(i);
+                            final int finalI = i;
+                            MainActivity.api.deleteGroup(deletedGroup, new Callback<Response>() {
+                                @Override
+                                public void success(Response response, retrofit.client.Response response2) {
+                                    maingrouplayout.removeView(layouts.get(finalI));
+                                    groupsname.remove(finalI);
+                                    layouts.remove(finalI);
+                                    Groupsstudentno.remove(finalI);
 
-                            found = true;
+
+                                }
+
+                                @Override
+                                public void failure(RetrofitError retrofitError) {
+                                    Log.e("error", "Retrofit", retrofitError);
+
+                                }
+                            });
+
                         }
-
-                    if(!found)
-                        Toast.makeText(GroupList.this, "Group Doesn't exist", Toast.LENGTH_SHORT).show();
 
                 }
 
