@@ -78,6 +78,24 @@ public class QuizActivity extends FragmentActivity {
             firstq.setChoicecontainer(i,choice);
             firstrad.addView(choice);
         }*/
+        for (int i=0;i<quiz.getQuestions().size();i++)
+        {
+            FragmentQuiz currentques = (FragmentQuiz) mPagerAdapter.getItem(i);
+            RadioGroup rad = currentques.getRadioGroup();
+            RadioButton currentchoice = currentques.getRadioButton();
+            TextView currenttext = currentques.getTextView();
+            int choices = quiz.getQuestions().get(i).getChoices().size();
+            currenttext.setText(quiz.getQuestions().get(i).getQuestion());
+            currentchoice.setText(quiz.getQuestions().get(i).getChoices().get(0).getChoice());
+            for(int j=1;j<choices;j++)
+            {
+                RadioButton choice = new RadioButton(this);
+                choice.setId(i+j);
+                choice.setText(quiz.getQuestions().get(i).getChoices().get(j).getChoice());
+                currentques.setChoicecontainer(choice);
+                rad.addView(choice);
+            }
+        }
 
     }
     public void nextPage(View v) {

@@ -61,8 +61,8 @@ public class FragmentQuiz extends Fragment {
     {
         return choicecontainer;
     }
-    public void setChoicecontainer(int i,RadioButton R)
+    public void setChoicecontainer(RadioButton R)
     {
-        choicecontainer.add(i,R);
+        choicecontainer.add(R);
     }
 }
