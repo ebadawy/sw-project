@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,8 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rest.model.Group;
+import com.squareup.okhttp.Response;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
 
 
 public class GroupList extends ActionBarActivity implements View.OnClickListener{
@@ -25,9 +32,11 @@ Button deletegroup;
     LinearLayout maingrouplayout;
     EditText groupname;
     int counter =0;
+    List<Group> groups = new ArrayList<>();
     List<EditText> groupsname = new ArrayList<>();
     List<LinearLayout> layouts = new ArrayList<>();
     List<TextView> Groupsstudentno = new ArrayList<>();
+    Group group;
     int x =0 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +121,17 @@ Button deletegroup;
         });
         AlertDialog alert=alertDialog.create();
         alertDialog.show();
-        
+        MainActivity.api.createGroup(group,MainActivity.current_user.getId(),new Callback<Response>() {
+            @Override
+            public void success(Response response, retrofit.client.Response response2) {
+
+            }
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+
+            }
+        });
     }
     public void deletegroupClick(){
         if(groupsname.size()>0) {
