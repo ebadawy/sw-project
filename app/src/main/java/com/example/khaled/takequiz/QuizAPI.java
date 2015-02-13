@@ -103,7 +103,7 @@ public interface QuizAPI {
 
     @PATCH("/publish")
     public void resultStatus(@Query("quiz_id") int quizId,
-                             @Query("result_status") int publish,
+                             @Query("result_status") boolean publish,
                              Callback<Response> responseCallback);
 
     @GET("/graph")
