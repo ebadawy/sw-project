@@ -116,4 +116,6 @@ public interface QuizAPI {
     @DELETE("/groups/{group_id}")
     public void deleteGroup(@Path("group_id") int groupId, Callback<Response> responseCallback);
 
+    @GET("/users/{user_id}/groups")
+    public void getGroups(@Path("user_id") int userId, Callback<List<Group>> groups);
 }
