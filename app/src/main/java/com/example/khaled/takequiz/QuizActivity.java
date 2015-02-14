@@ -57,6 +57,7 @@ public class QuizActivity extends FragmentActivity {
     Chronometer chronometer;
     Quiz quiz;
     LinearLayout layout;
+    int limit;
     RadioGroup rad;
     TextView ques;
 
@@ -131,11 +132,12 @@ public class QuizActivity extends FragmentActivity {
         initialisePaging();
         chronometer.setVisibility(View.VISIBLE);
         chronometer.start();
-        new CountDownTimer(Integer.parseInt(quiz.getTime_limit()), 1000) {
+        limit = 1000*60*(Integer.parseInt(quiz.getTime_limit().substring(3)));
+        new CountDownTimer(limit, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                timer.setText("seconds remaining: " + millisUntilFinished / 1000);
-                remainingTime = "seconds remaining: " + millisUntilFinished / 1000;
+                timer.setText("minutes remaining: " + millisUntilFinished / (60*1000));
+                remainingTime = "minutes remaining: " + millisUntilFinished /(60* 1000);
             }
 
             public void onFinish() {
@@ -210,9 +212,9 @@ public class QuizActivity extends FragmentActivity {
                                 AlertDialog alertDialog = new AlertDialog.Builder(QuizActivity.this).create();
                                 alertDialog.setTitle("WARNING");
                                 alertDialog.setMessage("You haven't answered all Questions in the Quiz");
-                                alertDialog.setButton("Submit Anyway", new DialogInterface.OnClickListener() {
+                                alertDialog.setButton("Back", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        upload();
+
                                     }
                                 });
                                 alertDialog.show();
@@ -396,12 +398,13 @@ public class QuizActivity extends FragmentActivity {
                     });
         }
     }
-    public void hide()
+    public void hide(View view)
     {
-      String time = timer.getText().toString();
-        if(time == "")
-            timer.setText(remainingTime);
-        else
+      //String time = timer.getText().toString();
+        //if(time == "")
+           // timer.setText(remainingTime);
+
+        //else if(time == remainingTime)
             timer.setText("");
 
     }
