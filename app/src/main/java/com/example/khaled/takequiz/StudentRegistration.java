@@ -80,7 +80,7 @@ public class StudentRegistration extends ActionBarActivity {
 
                     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        public void onItemSelected(final AdapterView<?> parent, View view, final int position, long id) {
 
                             MainActivity.api.getStudents(new Callback<List<User>>() {
                                 @Override
@@ -101,18 +101,11 @@ public class StudentRegistration extends ActionBarActivity {
                                         add.setGravity(Gravity.RIGHT);
 
 
-                                        for(Group g : groups){
-                                            for(int i=0;i<g.getUsers().size();i++){
-                                                for(int j=0;j<users.size();j++){
-                                                    Log.i("info","#########"+g.getUsers().get(i).toString()+"#######"+users.get(j).toString());
-                                                    if(g.getUsers().get(i).toString().equals(users.get(j).toString())){
-                                                        add.setChecked(true);
-                                                    }else{
-                                                        add.setChecked(false);
-                                                    }
-                                                }
-                                            }
-                                        }
+                                       if(groups.get(position).hasStudent(user.getUserName())){
+                                           add.setChecked(true);
+                                       }else{
+                                           add.setChecked(false);
+                                       }
 
                                         A.addView(add);
                                         lb.addView(A);
@@ -130,7 +123,7 @@ public class StudentRegistration extends ActionBarActivity {
                                                             Log.i("info","#########################################################"+Integer.toString(g.get(spinner.getSelectedItem().toString())));
                                                             //Toast.makeText(StudentRegistration.this, "Student is added successfully", Toast.LENGTH_LONG).show();
                                                             Toast.makeText(StudentRegistration.this,"Student is added Successfully", Toast.LENGTH_LONG).show();
-
+                                                        add.setChecked(true);
                                                         }
 
                                                         @Override
@@ -148,6 +141,7 @@ public class StudentRegistration extends ActionBarActivity {
                                                         @Override
                                                         public void failure(RetrofitError retrofitError) {
                                                             Toast.makeText(StudentRegistration.this, "Error in deleting student", Toast.LENGTH_LONG).show();
+                                                            add.setChecked(false);
                                                         }
                                                     });
                                                 }
