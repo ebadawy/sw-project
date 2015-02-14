@@ -27,6 +27,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.rest.model.Answer;
+import com.rest.model.AnswerWrapper;
 import com.rest.model.Choice;
 import com.rest.model.CurrentQuiz;
 import com.rest.model.Question;
@@ -151,12 +152,15 @@ public class QuizActivity extends FragmentActivity {
             View radioButton = radioGroups.get(i).findViewById(id);
             int radioId = radioGroups.get(i).indexOfChild(radioButton);
             RadioButton ans = (RadioButton) radioGroups.get(i).getChildAt(radioId);
-            Answer answer = new Answer("NotFound404");
+            Answer answer = new Answer("NotFound404",MainActivity.current_user.getId(),
+                    quiz.getId(),QUES.get(i).getId());
             if(radioGroups.get(i).getCheckedRadioButtonId() != -1)
-                answer = new Answer(ans.getText().toString());
+                answer = new Answer(ans.getText().toString(),MainActivity.current_user.getId(),
+                        quiz.getId(),QUES.get(i).getId());
                 ANS.add(answer);
         }
-        for(int i=0;i<QUES.size();i++)
+        AnswerWrapper answerWrapper = new AnswerWrapper(ANS);
+        /*for(int i=0;i<QUES.size();i++)
         {
             MainActivity.api.sendAnswer(MainActivity.current_user.getId(),
                     quiz.getId(),QUES.get(i).getId(),ANS.get(i),new Callback<com.squareup.okhttp.Response>() {
@@ -176,7 +180,7 @@ public class QuizActivity extends FragmentActivity {
 
                         }
                     });
-        }
+        }*/
     }
     public boolean send(int i)
     {
