@@ -160,6 +160,21 @@ public class QuizActivity extends FragmentActivity {
                 ANS.add(answer);
         }
         AnswerWrapper answerWrapper = new AnswerWrapper(ANS);
+        MainActivity.api.sendAnswers(answerWrapper,new Callback<com.squareup.okhttp.Response>() {
+            @Override
+            public void success(com.squareup.okhttp.Response response, Response response2) {
+                Intent intent = new Intent(QuizActivity.this,QuizActivityFinish.class);
+                startActivity(intent);
+                Log.d("QuizActivity","###################################send");
+            }
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+                Log.d("QuizActivity","$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$fail");
+                Log.e("Error", "retrofit", retrofitError);
+
+            }
+        });
         /*for(int i=0;i<QUES.size();i++)
         {
             MainActivity.api.sendAnswer(MainActivity.current_user.getId(),
