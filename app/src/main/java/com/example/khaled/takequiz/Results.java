@@ -62,7 +62,7 @@ public static int quizid;
                 spinner.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, final long id) {
-                        final LinearLayout A = new LinearLayout(Results.this);
+
 
                         lm.removeAllViews();
 
@@ -78,12 +78,15 @@ public static int quizid;
                             public void success(List<User> users, Response response) {
 
 
+
                                 params =
                                         new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                                 para =
                                         new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
                                 for(User user : users){
+                                    final LinearLayout A = new LinearLayout(Results.this);
+                                    Log.i("info","##################################"+user.getUserName());
                                     TextView txt = new TextView(Results.this);
                                     txt.setText(user.getUserName());
                                     txt.setGravity(Gravity.LEFT);
@@ -95,7 +98,7 @@ public static int quizid;
                                     A.addView(txt);
                                     //lm.addView(A);
 
-                                  final TextView result = new TextView(getApplicationContext());
+                                  final TextView result = new TextView(Results.this);
                                    // para.setMargins(10,35,10,0);
                                     MainActivity.api.getResult(user.getId(),quizid,new Callback<Result>() {
                                         @Override
@@ -122,13 +125,14 @@ public static int quizid;
                                     //lm.addView(A);
 
 
+                                    lm.addView(A);
 
                                 }
                                // for(int i =0;i<Students.size();i++){
                                  //   A.addView(Students.get(i));
                                    // A.addView(Result.get(i));
-                               // }
-                                lm.addView(A);
+
+
                             }
 
                             @Override
