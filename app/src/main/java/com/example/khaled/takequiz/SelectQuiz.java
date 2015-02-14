@@ -78,6 +78,7 @@ public class SelectQuiz extends ActionBarActivity {
                                     Intent intent = new Intent(SelectQuiz.this,QuizActivity.class);
                                     startActivity(intent);
                                     Toast.makeText(SelectQuiz.this,Integer.toString(quiz.getId()) , Toast.LENGTH_LONG).show();
+                                    MainActivity.current_quiz = quiz;
                                     CurrentQuiz.setInstance(quiz);
                                 }
                             });

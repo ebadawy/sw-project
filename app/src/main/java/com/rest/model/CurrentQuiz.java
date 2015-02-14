@@ -2,7 +2,7 @@ package com.rest.model;
 
 
 public class CurrentQuiz {
-    private static Quiz instance = null;
+   private static Quiz instance = null;
     protected CurrentQuiz(){};
     public static Quiz getInstance()
     {
