@@ -36,8 +36,9 @@ public class StudentRegistration extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_registration);
-        final  LinearLayout lb = (LinearLayout) findViewById(R.id.linear);
-        final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.ls);
+        final  LinearLayout lb = (LinearLayout) findViewById(R.id.ls);
+
+
 
         MainActivity.api.getGroups(MainActivity.current_user.getId(),new Callback<List<Group>>() {
             @Override
@@ -61,12 +62,13 @@ public class StudentRegistration extends ActionBarActivity {
                 adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(adp);
                 params =
-                        new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-                spinner.setLayoutParams(params);
+                spinner.setLayoutParams(para);
                // lb.addView(spinner);
 
                 for(final Group group : groups){
+                   // final LinearLayout linearLayout = new LinearLayout(StudentRegistration.this);
 
                     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
@@ -89,17 +91,9 @@ public class StudentRegistration extends ActionBarActivity {
 
                                         add.setLayoutParams(para);
                                         add.setGravity(Gravity.RIGHT);
-                                        //Toast.makeText(getApplicationContext(), Integer.toString(group.getUsers().size()), Toast.LENGTH_SHORT).show();
-                                        try {
-                                            if (group.getUsers().contains(user)) {
 
-                                                add.setChecked(true);
-                                            } else {
-                                                add.setChecked(false);
-                                            }
-                                        } catch (NullPointerException e) {
-                                            //Toast.makeText(StudentRegistration.this,"This Group have no students",Toast.LENGTH_SHORT).show();
-                                        }
+                                        //Toast.makeText(getApplicationContext(), Integer.toString(group.getUsers().size()), Toast.LENGTH_SHORT).show();
+
                                         add.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                             @Override
                                             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -138,7 +132,8 @@ public class StudentRegistration extends ActionBarActivity {
 
 
                                         A.addView(add);
-                                        linearLayout.addView(A);
+                                        lb.addView(A);
+                                        //lb.addView(linearLayout);
                                     }
                                 }
 
