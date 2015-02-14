@@ -46,6 +46,8 @@ public class ListofQuiz extends ActionBarActivity {
         para =
                 new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
+        params.weight=2;
+        para.weight=1;
 
 
         final TextView txt = (TextView) findViewById(R.id.txt);
