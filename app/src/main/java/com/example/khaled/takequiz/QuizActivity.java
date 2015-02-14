@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class QuizActivity extends FragmentActivity {
     TextView quizName;
     List<Question> QUES ;
     List<String> ANS ;
+    String ans [];
     Chronometer chronometer;
     Quiz quiz;
     LinearLayout layout;
@@ -100,10 +102,10 @@ public class QuizActivity extends FragmentActivity {
         });*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-        submit =(Button)findViewById(R.id.submit);
-        nextPage=(Button)findViewById(R.id.nextPage);
-        previousPage=(Button)findViewById(R.id.previousPage);
-        //layout = (LinearLayout)findViewById(R.id.fragment);
+        //submit =(Button)findViewById(R.id.submit);
+        //nextPage=(Button)findViewById(R.id.nextPage);
+        //previousPage=(Button)findViewById(R.id.previousPage);
+        layout = (LinearLayout)findViewById(R.id.viewpager);
         //ques = new TextView(this);
         //layout.addView(ques);
         //rad = new RadioGroup(this);
@@ -112,6 +114,7 @@ public class QuizActivity extends FragmentActivity {
         initialisePaging();
         QUES = quiz.getQuestions();
         ANS = new ArrayList<String>();
+        ans = new String[10];
         quizName = (TextView) findViewById(R.id.quizName);
         quizName.setText(quiz.getName());
         chronometer = (Chronometer)findViewById(R.id.chronometer);
@@ -121,9 +124,9 @@ public class QuizActivity extends FragmentActivity {
     }
 
     private void initialisePaging() {
-        mPagerAdapter = new QuizPageAdapter(this.getSupportFragmentManager());
-        pager = (ViewPager)findViewById(R.id.viewpager);
-        pager.setAdapter(mPagerAdapter);
+        //mPagerAdapter = new QuizPageAdapter(this.getSupportFragmentManager());
+        //pager = (ViewPager)findViewById(R.id.viewpager);
+        //pager.setAdapter(mPagerAdapter);
         /*int firstnum = pager.getCurrentItem();
         FragmentQuiz firstq =(FragmentQuiz) mPagerAdapter.getItem(firstnum);
         RadioGroup firstrad = firstq.getRadioGroup();
@@ -142,24 +145,53 @@ public class QuizActivity extends FragmentActivity {
         }*/
         for (int i=0;i<10;i++)
         {
-            FragmentQuiz currentques = (FragmentQuiz) mPagerAdapter.getItem(i);
+            //FragmentQuiz currentques = (FragmentQuiz) mPagerAdapter.getItem(i);
             TextView t = new TextView(this);
             RadioGroup r = new RadioGroup(this);
             t.setText("fkjhkfhkfllf");
-            currentques.layout.addView(t);
-            currentques.layout.addView(r);
+            t.setPadding(20,20,20,10);
+            layout.addView(t);
+            layout.addView(r);
 
 
-            for(int j=1;j<3;j++)
+            for(int j=0;j<3;j++)
             {
 
-                RadioButton choice = new RadioButton(this);
+                final RadioButton choice = new RadioButton(this);
                 choice.setId(i+j);
                 choice.setText("add");
+                choice.setPadding(20, 20, 20, 10);
+                choice.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(choice.isChecked())
+                            ANS.add(choice.getText().toString());
+                        else
+                            ANS.remove(choice.getText().toString());
+                    }
+                });
                 r.addView(choice);
 
             }
         }
+        Button submit = new Button(this);
+        submit.setText("Submit");
+        submit.setPadding(20,20,20,10);
+        layout.addView(submit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i=0;i<10;i++)
+                {
+                    if(ANS.size()<9)
+                    {
+                        Dialog dialog = new Dialog(QuizActivity.this);
+                        dialog.setContentView(R.layout.activity_quiz_warning);
+                        dialog.show();
+                    }
+                }
+            }
+        });
 
 
     }
