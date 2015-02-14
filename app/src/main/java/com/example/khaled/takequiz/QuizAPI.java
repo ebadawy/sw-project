@@ -2,6 +2,8 @@ package com.example.khaled.takequiz;
 
 import com.rest.model.Answer;
 import com.rest.model.Choice;
+import com.rest.model.GraphBuilder;
+import com.rest.model.Group;
 import com.rest.model.Question;
 import com.rest.model.QuestionWrapper;
 import com.rest.model.Quiz;
@@ -16,6 +18,7 @@ import java.util.List;
 
 import retrofit.Callback;
 import retrofit.http.Body;
+import retrofit.http.DELETE;
 import retrofit.http.GET;
 import retrofit.http.Headers;
 import retrofit.http.PATCH;
@@ -100,7 +103,33 @@ public interface QuizAPI {
 
     @PATCH("/publish")
     public void resultStatus(@Query("quiz_id") int quizId,
-                             @Query("result_status") int publish,
+                             @Query("result_status") boolean publish,
                              Callback<Response> responseCallback);
+
+    @GET("/graph")
+    public void graphPoints(@Query("user_id") int userId,
+                               Callback<GraphBuilder> graphBuilderCallback);
+
+    @POST("/groups")
+    public void createGroup(@Body Group group, @Query("user_id") int userId, Callback<Response> responseCallback);
+
+    @DELETE("/destroy_group")
+    public void deleteGroup(@Query("group_name") String groupName, Callback<Response> responseCallback);
+
+    @GET("/users/{user_id}/groups")
+    public void getGroups(@Path("user_id") int userId, Callback<List<Group>> groups);
+
+    @GET("/groups/{group_id}/users")
+    public void getGroupUsers(@Path("group_id") int groupId, Callback<List<User>> users);
+
+    @PATCH("/groups/{group_id}?method=add")
+    public void addStudent(@Query("user_name") String user_name,
+                           @Path("group_id") int groupId,
+                           Callback<Response> responseCallback);
+
+    @PATCH("/groups/{group_id}?method=delete")
+    public void deleteStudent(@Query("user_name") String user_name,
+                              @Path("group_id") int groupId,
+                              Callback<Response> responseCallback);
 
 }
