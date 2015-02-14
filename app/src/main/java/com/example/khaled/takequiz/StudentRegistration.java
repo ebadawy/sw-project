@@ -36,6 +36,9 @@ public class StudentRegistration extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_registration);
+        final  LinearLayout lb = (LinearLayout) findViewById(R.id.linear);
+        final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.ls);
+
         MainActivity.api.getGroups(MainActivity.current_user.getId(),new Callback<List<Group>>() {
             @Override
             public void success(List<Group> groups, Response response) {
@@ -44,14 +47,27 @@ public class StudentRegistration extends ActionBarActivity {
                 for (final Group group : groups) {
                     names.add(group.getGroupName());
                 }
+                final LinearLayout.LayoutParams para;
+                final LinearLayout.LayoutParams params;
+
+                //params =
+                  //      new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                para =
+                        new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                Spinner spinner = (Spinner) findViewById(R.id.sp);
+                ArrayAdapter<String> adp =
+                        new ArrayAdapter<String>(StudentRegistration.this, android.R.layout.simple_list_item_1, names);
+                adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(adp);
+                params =
+                        new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                spinner.setLayoutParams(params);
+               // lb.addView(spinner);
+
                 for(final Group group : groups){
 
-
-                    Spinner spinner = (Spinner) findViewById(R.id.spinner2);
-                    ArrayAdapter<String> adp =
-                            new ArrayAdapter<String>(StudentRegistration.this, android.R.layout.simple_list_item_1, names);
-                    adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinner.setAdapter(adp);
                     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -60,21 +76,15 @@ public class StudentRegistration extends ActionBarActivity {
                                 @Override
                                 public void success(List<User> users, Response response) {
                                     for (final User user : users) {
-                                        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linear);
+                                        LinearLayout A = new LinearLayout(StudentRegistration.this);
                                         TextView student = new TextView(StudentRegistration.this);
                                         final Switch add = new Switch(StudentRegistration.this);
-                                        LinearLayout.LayoutParams para;
-                                        LinearLayout.LayoutParams params;
-                                        params =
-                                                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-                                        para =
-                                                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
                                         student.setLayoutParams(params);
                                         student.setGravity(Gravity.LEFT);
                                         student.setText(user.getUserName());
-                                        linearLayout.addView(student);
+                                        A.addView(student);
 
 
                                         add.setLayoutParams(para);
@@ -127,7 +137,8 @@ public class StudentRegistration extends ActionBarActivity {
                                         });
 
 
-                                        linearLayout.addView(add);
+                                        A.addView(add);
+                                        linearLayout.addView(A);
                                     }
                                 }
 
