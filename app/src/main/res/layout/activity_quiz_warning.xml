@@ -5,7 +5,7 @@
     android:id="@+id/popupview">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="You Haven't Answered All The Questions "
@@ -21,10 +21,11 @@
         android:layout_height="wrap_content"
         android:text="Submit Anyway"
         android:id="@+id/button5"
-        android:layout_below="@+id/textView3"
         android:layout_marginLeft="130dp"
 
         android:onClick="upload"
 
-        />
+        android:layout_below="@+id/textView3" />
+
+
 </RelativeLayout>

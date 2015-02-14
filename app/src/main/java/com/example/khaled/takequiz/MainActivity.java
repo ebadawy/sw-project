@@ -43,6 +43,7 @@ public class MainActivity extends ActionBarActivity {
             api.login(userName, password, new Callback<User>() {
                 @Override
                 public void success(User user, Response response) {
+                    current_user = user;
                     try {
                        // the user is authenticated, ur code goes here
                        if(user.getRole().equals("student")){

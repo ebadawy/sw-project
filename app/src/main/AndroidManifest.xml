@@ -2,9 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.khaled.takequiz" >
 
-
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:allowBackup="true"
@@ -36,7 +34,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khaled.takequiz.MainActivity" />
         </activity>
-
         <activity
             android:name=".Groups"
             android:label="@string/title_activity_groups" >
@@ -53,7 +50,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khaled.takequiz.StudentHome" />
         </activity>
-
         <activity
             android:name=".studentresult"
             android:label="Results"
@@ -68,23 +64,16 @@
             android:parentActivityName=".DoctorHome" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-
                 android:value="com.example.khaled.takequiz.Grouplayout" />
         </activity>
-
         <activity
             android:name=".Quizlist_DoctorActivity"
             android:label="@string/title_activity_quizlist__doctor" >
         </activity>
-
         <activity
             android:name=".QuizActivity"
             android:label="QuizActivity" >
         </activity>
-
-
-
-
         <activity
             android:name=".ListofQuiz"
             android:label="@string/title_activity_listof_quiz"
@@ -92,7 +81,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khaled.takequiz.DoctorHome" />
-
+        </activity>
+        <activity
+            android:name=".QuizActivityWarning"
+            android:label="@string/title_activity_quiz_activity_warning" >
+        </activity>
+        <activity
+            android:name=".QuizActivityFinish"
+            android:label="@string/title_activity_quiz_activity_finish" >
         </activity>
     </application>
 

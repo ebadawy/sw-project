@@ -2,6 +2,7 @@ package com.example.khaled.takequiz;
 
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.app.FragmentActivity;
@@ -20,6 +21,7 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rest.model.Answer;
 import com.rest.model.Choice;
 import com.rest.model.CurrentQuiz;
 import com.rest.model.Question;
@@ -44,6 +46,7 @@ public class QuizActivity extends FragmentActivity {
     TextView quizName;
     List<Question> QUES ;
     List<String> ANS ;
+    List<RadioGroup> radioGroups;
     String ans [];
     Chronometer chronometer;
     Quiz quiz;
@@ -111,19 +114,94 @@ public class QuizActivity extends FragmentActivity {
         //rad = new RadioGroup(this);
         //layout.addView(rad);
         quiz = CurrentQuiz.getInstance();
-        initialisePaging();
         QUES = quiz.getQuestions();
         ANS = new ArrayList<String>();
         ans = new String[10];
         quizName = (TextView) findViewById(R.id.quizName);
         quizName.setText(quiz.getName());
         chronometer = (Chronometer)findViewById(R.id.chronometer);
+        radioGroups = new ArrayList<RadioGroup>();
+        initialisePaging();
         chronometer.setVisibility(View.VISIBLE);
         chronometer.start();
+
+
 
     }
 
     private void initialisePaging() {
+       MainActivity.api.getQuizQuestions(quiz.getId(),new Callback<List<Question>>() {
+            @Override
+            public void success(List<Question> questions, Response response) {
+                int i =0;
+                for(Question question : questions) {
+                    TextView t = new TextView(QuizActivity.this);
+                    final RadioGroup r = new RadioGroup(QuizActivity.this);
+                    r.setId(View.generateViewId());
+                    t.setText(question.getQuestion());
+                    t.setPadding(20, 20, 20, 10);
+                    layout.addView(t);
+                    MainActivity.api.getQuestionChoices(quiz.getId(), question.getId(), new Callback<List<Choice>>() {
+                        @Override
+                        public void success(List<Choice> choices, Response response) {
+                            int j = 0;
+                            for (Choice choice : choices) {
+                                final RadioButton c = new RadioButton(QuizActivity.this);
+                                c.setText(choice.getChoice());
+                                c.setPadding(20, 20, 20, 10);
+                                c.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        if (c.isChecked())
+                                            ANS.add(c.getText().toString());
+                                        else
+                                            ANS.remove(c.getText().toString());
+                                    }
+                                });
+                                r.addView(c);
+                                j++;
+                            }
+
+                        }
+
+                        @Override
+                        public void failure(RetrofitError retrofitError) {
+
+                        }
+                    });
+
+                    radioGroups.add(r);
+                    layout.addView(radioGroups.get(i));
+                    i++;
+                }
+
+                Button submit = new Button(QuizActivity.this);
+                submit.setText("Submit");
+                submit.setPadding(20,20,20,10);
+                layout.addView(submit);
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        for (int i=0;i<radioGroups.size();i++)
+                        {
+                            if(radioGroups.get(i).getCheckedRadioButtonId() == -1)
+                            {
+                                Dialog dialog = new Dialog(QuizActivity.this);
+                                dialog.setContentView(R.layout.activity_quiz_warning);
+                                dialog.show();
+                            }
+                            else
+                                upload();
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+
+            }
+        });
         //mPagerAdapter = new QuizPageAdapter(this.getSupportFragmentManager());
         //pager = (ViewPager)findViewById(R.id.viewpager);
         //pager.setAdapter(mPagerAdapter);
@@ -143,15 +221,17 @@ public class QuizActivity extends FragmentActivity {
             firstq.setChoicecontainer(i,choice);
             firstrad.addView(choice);
         }*/
-        for (int i=0;i<10;i++)
+      /* for (int i=0;i<10;i++)
         {
             //FragmentQuiz currentques = (FragmentQuiz) mPagerAdapter.getItem(i);
             TextView t = new TextView(this);
             RadioGroup r = new RadioGroup(this);
+            r.setId(View.generateViewId());
+            radioGroups.add(r);
             t.setText("fkjhkfhkfllf");
             t.setPadding(20,20,20,10);
             layout.addView(t);
-            layout.addView(r);
+            layout.addView(radioGroups.get(i));
 
 
             for(int j=0;j<3;j++)
@@ -170,29 +250,31 @@ public class QuizActivity extends FragmentActivity {
                             ANS.remove(choice.getText().toString());
                     }
                 });
-                r.addView(choice);
+                radioGroups.get(i).addView(choice);
 
             }
         }
         Button submit = new Button(this);
         submit.setText("Submit");
-        submit.setPadding(20,20,20,10);
+        submit.setPadding(20, 20, 20, 10);
         layout.addView(submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (int i=0;i<10;i++)
+                for (int i=0;i<radioGroups.size();i++)
                 {
-                    if(ANS.size()<9)
+                    if(radioGroups.get(i).getCheckedRadioButtonId() == -1)
                     {
                         Dialog dialog = new Dialog(QuizActivity.this);
                         dialog.setContentView(R.layout.activity_quiz_warning);
                         dialog.show();
                     }
+                    else
+                        upload();
                 }
             }
         });
-
+*/
 
     }
     public void nextPage(View v) {
@@ -259,9 +341,29 @@ public class QuizActivity extends FragmentActivity {
         }*/
 
     }
-    public void upload(View v)
+    public void upload()
     {
+        for(int i=0;i<radioGroups.size();i++)
+        {
+            int id= radioGroups.get(i).getCheckedRadioButtonId();
+            View radioButton = radioGroups.get(i).findViewById(id);
+            int radioId = radioGroups.get(i).indexOfChild(radioButton);
+            RadioButton ans = (RadioButton) radioGroups.get(i).getChildAt(radioId);
+            Answer answer = new Answer(ans.getText().toString());
+            MainActivity.api.sendAnswer(MainActivity.current_user.getId(),
+                    quiz.getId(),radioGroups.get(i).getId(),answer,new Callback<com.squareup.okhttp.Response>() {
+                        @Override
+                        public void success(com.squareup.okhttp.Response response, Response response2) {
+                            Intent intent = new Intent(QuizActivity.this,QuizActivityFinish.class);
+                            startActivity(intent);
+                        }
 
+                        @Override
+                        public void failure(RetrofitError retrofitError) {
+                            
+                        }
+                    });
+        }
     }
     public void hide()
     {
@@ -270,6 +372,7 @@ public class QuizActivity extends FragmentActivity {
         if(chronometer.getVisibility()==View.GONE)
             chronometer.setVisibility(View.VISIBLE);*/
     }
+
 
 
 }
