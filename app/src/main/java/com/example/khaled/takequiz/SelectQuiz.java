@@ -60,10 +60,12 @@ public class SelectQuiz extends ActionBarActivity {
 
                         for (final Quiz quiz : quizs) {
 
-                        LinearLayout A = new LinearLayout(getApplicationContext());
+                            final LinearLayout A = new LinearLayout(getApplicationContext());
                             A.setOrientation(LinearLayout.HORIZONTAL);
                             final Button btn = new Button(getApplicationContext());
                             params.setMargins(10,35,0,0);
+                            final TextView deadline = new TextView(getApplicationContext());
+                            para.setMargins(10,35,10,0);
                             btn.setId(quiz.getId());
                             btn.setText(quiz.getName());
                             btn.setGravity(Gravity.LEFT);
@@ -71,6 +73,11 @@ public class SelectQuiz extends ActionBarActivity {
                             btn.setBackgroundColor(Color.WHITE);
                             btn.setTextColor(Color.BLACK);
                             btn.setTextSize(30);
+                            deadline.setText(quiz.getDeadline());
+                            deadline.setGravity(Gravity.RIGHT);
+                            deadline.setLayoutParams(para);
+                            deadline.setTextColor(Color.BLACK);
+                            deadline.setTextSize(30);
 
                             btn.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -80,21 +87,12 @@ public class SelectQuiz extends ActionBarActivity {
                                     Toast.makeText(SelectQuiz.this,Integer.toString(quiz.getId()) , Toast.LENGTH_LONG).show();
                                     MainActivity.current_quiz = quiz;
                                     CurrentQuiz.setInstance(quiz);
+                                    A.removeView(btn);
+                                    A.removeView(deadline);
                                 }
                             });
-
-
                             A.addView(btn);
-
-                            TextView deadline = new TextView(getApplicationContext());
-                            para.setMargins(10,35,10,0);
-                            deadline.setText(quiz.getDeadline());
-                            deadline.setGravity(Gravity.RIGHT);
-                            deadline.setLayoutParams(para);
-                            deadline.setTextColor(Color.BLACK);
-                            deadline.setTextSize(30);
                             A.addView(deadline);
-
                             lm.addView(A);
 
                         }
