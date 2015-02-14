@@ -118,6 +118,7 @@ public class QuizActivity extends FragmentActivity {
                 submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        boolean check = true;
                         for (int i=0;i<radioGroups.size();i++)
                         {
                             if(radioGroups.get(i).getCheckedRadioButtonId() == -1)
@@ -126,10 +127,13 @@ public class QuizActivity extends FragmentActivity {
                                         "WARNING: You haven't answered all Questions in the Quiz",
                                         Toast.LENGTH_SHORT);
                                 warning.show();
+                                check = false;
                                 break;
                             }
-                                upload();
+
                         }
+                        if(check)
+                            upload();
                     }
                 });
             }
