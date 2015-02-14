@@ -117,6 +117,11 @@ public class ListofQuiz extends ActionBarActivity {
 
                             final Switch result = new Switch(ListofQuiz.this);
                             result.setLayoutParams(para);
+                            if(quiz.isResultPublished()){
+                                result.setChecked(true);
+                            }else{
+                                result.setChecked(false);
+                            }
                             result.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                 @Override
                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

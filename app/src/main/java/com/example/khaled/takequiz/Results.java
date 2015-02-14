@@ -46,7 +46,7 @@ public static int quizid;
         setContentView(R.layout.activity_results);
 
        final int idd = (MainActivity.current_user.getId());
-        final LinearLayout lm = (LinearLayout) findViewById(R.id.main);
+        final LinearLayout lm = (LinearLayout) findViewById(R.id.AA);
 
         MainActivity.api.getQuizzes(idd,new Callback<List<Quiz>>() {
             @Override
@@ -63,9 +63,9 @@ public static int quizid;
                 spinner.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, final long id) {
-                        final LinearLayout A = (LinearLayout)findViewById(R.id.AA);
+                        final LinearLayout A = new LinearLayout(Results.this);
 
-                        A.removeAllViews();
+                        lm.removeAllViews();
                         Students.clear();
                         Result.clear();
 
@@ -130,6 +130,7 @@ public static int quizid;
                                     A.addView(Students.get(i));
                                     A.addView(Result.get(i));
                                 }
+                                lm.addView(A);
                             }
 
                             @Override

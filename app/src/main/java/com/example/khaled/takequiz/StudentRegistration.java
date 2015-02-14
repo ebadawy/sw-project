@@ -92,6 +92,9 @@ public class StudentRegistration extends ActionBarActivity {
                                         add.setLayoutParams(para);
                                         add.setGravity(Gravity.RIGHT);
 
+                                        A.addView(add);
+                                        lb.addView(A);
+
                                         //Toast.makeText(getApplicationContext(), Integer.toString(group.getUsers().size()), Toast.LENGTH_SHORT).show();
 
                                         add.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -131,8 +134,6 @@ public class StudentRegistration extends ActionBarActivity {
                                         });
 
 
-                                        A.addView(add);
-                                        lb.addView(A);
                                         //lb.addView(linearLayout);
                                     }
                                 }
