@@ -1,5 +1,6 @@
 package com.example.khaled.takequiz;
 
+import android.content.ClipData;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,7 @@ import com.rest.model.User;
 import java.security.Key;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -40,13 +42,12 @@ public class StudentRegistration extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_registration);
         final  LinearLayout lb = (LinearLayout) findViewById(R.id.ls);
-        final List<String>students = new ArrayList<>();
-        List<Switch>switches = new ArrayList<>();
+
 
 
         MainActivity.api.getGroups(MainActivity.current_user.getId(),new Callback<List<Group>>() {
             @Override
-            public void success(List<Group> groups, Response response) {
+            public void success(final List<Group> groups, Response response) {
 
                 List<String> names = new ArrayList<String>();
                 final Map<String,Integer> g = new HashMap<String, Integer>();
@@ -76,6 +77,7 @@ public class StudentRegistration extends ActionBarActivity {
                // for(final Group group : groups){
                    // final LinearLayout linearLayout = new LinearLayout(StudentRegistration.this);
 
+
                     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -100,9 +102,17 @@ public class StudentRegistration extends ActionBarActivity {
 
 
 
+
                                         A.addView(add);
                                         lb.addView(A);
-
+                                        for(Group g : groups){
+                                            for(User u : users)
+                                            if(g.getUsers().contains(u.getUserName())){
+                                                add.setChecked(true);
+                                            }else{
+                                                add.setChecked(false);
+                                            }
+                                        }
                                         //Toast.makeText(getApplicationContext(), Integer.toString(group.getUsers().size()), Toast.LENGTH_SHORT).show();
 
                                         add.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
