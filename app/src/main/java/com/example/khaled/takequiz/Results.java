@@ -93,8 +93,8 @@ public static int quizid;
                                     txt.setBackgroundColor(Color.WHITE);
                                     txt.setTextColor(Color.BLACK);
                                     txt.setTextSize(30);
-                                    Students.add(txt);
-                                   // A.addView(Students.get(0));
+                                    //Students.add(txt);
+                                    A.addView(txt);
                                     //lm.addView(A);
 
                                   final TextView result = new TextView(getApplicationContext());
@@ -119,17 +119,17 @@ public static int quizid;
                                     result.setLayoutParams(para);
                                     result.setTextColor(Color.BLACK);
                                     result.setTextSize(30);
-                                    Result.add(result);
-                                   // A.addView(Result.get(0));
+                                    //Result.add(result);
+                                    A.addView(result);
                                     //lm.addView(A);
 
 
 
                                 }
-                                for(int i =0;i<Students.size();i++){
-                                    A.addView(Students.get(i));
-                                    A.addView(Result.get(i));
-                                }
+                               // for(int i =0;i<Students.size();i++){
+                                 //   A.addView(Students.get(i));
+                                   // A.addView(Result.get(i));
+                               // }
                                 lm.addView(A);
                             }
 
