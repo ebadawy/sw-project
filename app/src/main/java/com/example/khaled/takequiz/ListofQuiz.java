@@ -35,20 +35,17 @@ public class ListofQuiz extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listof_quiz);
-        Intent intent = getIntent();
-        String doctorid=intent.getStringExtra(DoctorHome.doctorid);
-        int id =Integer.parseInt(doctorid);
-
-
-
+        int id =MainActivity.current_user.getId();
 
         final LinearLayout lm = (LinearLayout) findViewById(R.id.linearmain);
         //final LinearLayout am =(LinearLayout) findViewById(R.id.alternate);
 
         params =
                 new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
         para =
-                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
 
 
         final TextView txt = (TextView) findViewById(R.id.txt);
@@ -60,22 +57,19 @@ public class ListofQuiz extends ActionBarActivity {
                     // txt.setText(quiz.getName());
                     if (quizs.size() != 0) {
                         for ( final Quiz quiz : quizs) {
-                            LinearLayout A = new LinearLayout(getApplicationContext());
-                            A.setOrientation(LinearLayout.HORIZONTAL);
-                            final Button btn = new Button(getApplicationContext());
-                            params.setMargins(10,35,0,0);
-                            btn.setId(quiz.getId());
+                            LinearLayout A = new LinearLayout(ListofQuiz.this);
+                            final Button btn = new Button(ListofQuiz.this);
+                            //final Button btn = (Button)findViewById(R.id.bt);
                             btn.setText(quiz.getName());
                             btn.setGravity(Gravity.LEFT);
                             btn.setLayoutParams(params);
-                            btn.setBackgroundColor(Color.WHITE);
                             btn.setTextColor(Color.BLACK);
                             btn.setTextSize(30);
+                            btn.setBackgroundColor(Color.WHITE);
 
                             A.addView(btn);
 
                             final Switch toggleButton = new Switch(ListofQuiz.this);
-                            para.setMargins(10,35,10,0);
                             toggleButton.setLayoutParams(para);
                             if(quiz.isPublished()) {
                                 toggleButton.setChecked(true);
@@ -89,8 +83,7 @@ public class ListofQuiz extends ActionBarActivity {
                                         MainActivity.api.quizStatus(quiz.getId(),true,new Callback<com.squareup.okhttp.Response>() {
                                             @Override
                                             public void success(com.squareup.okhttp.Response response, Response response2) {
-                                                AlertDialog.Builder dialog = new AlertDialog.Builder(ListofQuiz.this);
-                                                //Toast.makeText(ListofQuiz.this,"Quiz is now published to students",Toast.LENGTH_LONG).show();
+                                                Toast.makeText(ListofQuiz.this,"Quiz is now published to students",Toast.LENGTH_LONG).show();
                                             }
 
                                             @Override
@@ -119,7 +112,44 @@ public class ListofQuiz extends ActionBarActivity {
                             });
                             A.addView(toggleButton);
 
+                            final Switch result = new Switch(ListofQuiz.this);
+                            result.setLayoutParams(para);
+                            result.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                @Override
+                                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                    if (isChecked) {
+                                        MainActivity.api.resultStatus(quiz.getId(), true, new Callback<com.squareup.okhttp.Response>() {
+                                            @Override
+                                            public void success(com.squareup.okhttp.Response response, Response response2) {
+                                                Toast.makeText(ListofQuiz.this, "Results is published to students", Toast.LENGTH_SHORT);
+                                            }
+
+                                            @Override
+                                            public void failure(RetrofitError retrofitError) {
+
+                                                Toast.makeText(ListofQuiz.this, "Error in publishing results", Toast.LENGTH_SHORT);
+                                            }
+                                        });
+                                    } else {
+                                        MainActivity.api.resultStatus(quiz.getId(), false, new Callback<com.squareup.okhttp.Response>() {
+                                            @Override
+                                            public void success(com.squareup.okhttp.Response response, Response response2) {
+
+                                                Toast.makeText(ListofQuiz.this, "Results is not published to students", Toast.LENGTH_SHORT);
+                                            }
+
+                                            @Override
+                                            public void failure(RetrofitError retrofitError) {
+
+                                                Toast.makeText(ListofQuiz.this, "Error occurred", Toast.LENGTH_SHORT);
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                            A.addView(result);
                             lm.addView(A);
+
 
                         }
                     } else {
