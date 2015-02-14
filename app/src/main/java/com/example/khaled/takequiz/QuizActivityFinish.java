@@ -43,4 +43,10 @@ public class QuizActivityFinish extends ActionBarActivity {
         Intent intent = new Intent(this,StudentHome.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this,StudentHome.class);
+        startActivity(intent);
+    }
 }
