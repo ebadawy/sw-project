@@ -105,6 +105,7 @@ public class ListofQuiz extends ActionBarActivity {
                                             @Override
                                             public void failure(RetrofitError retrofitError) {
                                                 Toast.makeText(ListofQuiz.this,"Error, Quiz is still published",Toast.LENGTH_LONG).show();
+                                                
 
                                             }
                                         });
