@@ -47,6 +47,7 @@ public class QuizActivity extends FragmentActivity {
     String remainingTime;
     List<RadioGroup> radioGroups;
     List<Question> QUES;
+    List<Answer> ANS;
     Chronometer chronometer;
     Quiz quiz;
     LinearLayout layout;
@@ -63,6 +64,7 @@ public class QuizActivity extends FragmentActivity {
         chronometer = (Chronometer)findViewById(R.id.chronometer);
         radioGroups = new ArrayList<RadioGroup>();
         QUES = new ArrayList<Question>();
+        ANS = new ArrayList<Answer>();
         initialisePaging();
         chronometer.start();
         limit = 1000*60*(Integer.parseInt(quiz.getTime_limit().substring(3)));
@@ -98,6 +100,7 @@ public class QuizActivity extends FragmentActivity {
                                 r.addView(c);
                             }
                         }
+
                         @Override
                         public void failure(RetrofitError retrofitError) {
 
@@ -119,17 +122,12 @@ public class QuizActivity extends FragmentActivity {
                         {
                             if(radioGroups.get(i).getCheckedRadioButtonId() == -1)
                             {
-                                AlertDialog alertDialog = new AlertDialog.Builder(QuizActivity.this).create();
-                                alertDialog.setTitle("WARNING");
-                                alertDialog.setMessage("You haven't answered all Questions in the Quiz");
-                                alertDialog.setButton("Back", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-
-                                    }
-                                });
-                                alertDialog.show();
+                                Toast warning = Toast.makeText(QuizActivity.this,
+                                        "WARNING: You haven't answered all Questions in the Quiz",
+                                        Toast.LENGTH_SHORT);
+                                warning.show();
+                                break;
                             }
-                            else
                                 upload();
                         }
                     }
@@ -152,8 +150,12 @@ public class QuizActivity extends FragmentActivity {
             Answer answer = new Answer("NotFound404");
             if(radioGroups.get(i).getCheckedRadioButtonId() != -1)
                 answer = new Answer(ans.getText().toString());
+                ANS.add(answer);
+        }
+        for(int i=0;i<QUES.size();i++)
+        {
             MainActivity.api.sendAnswer(MainActivity.current_user.getId(),
-                    quiz.getId(),QUES.get(i).getId(),answer,new Callback<com.squareup.okhttp.Response>() {
+                    quiz.getId(),QUES.get(i).getId(),ANS.get(i),new Callback<com.squareup.okhttp.Response>() {
                         @Override
                         public void success(com.squareup.okhttp.Response response, Response response2) {
                             Intent intent = new Intent(QuizActivity.this,QuizActivityFinish.class);
@@ -174,13 +176,7 @@ public class QuizActivity extends FragmentActivity {
     }
     public void hide(View view)
     {
-        if(timer.isChecked()==false)
-      //String time = timer.getText().toString();
-        //if(time == "")
-            timer.setText("");
-
-        //else if(time == remainingTime)
-           // timer.setVisibility(View.GONE);
-           // chronometer.setVisibility(View.GONE);
+           timer.setVisibility(View.GONE);
+           chronometer.setVisibility(View.GONE);
     }
 }
