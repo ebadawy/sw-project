@@ -36,8 +36,7 @@ public static int quizid;
 
     LinearLayout.LayoutParams params;
     LinearLayout.LayoutParams para;
-    List<TextView> Students = new ArrayList<>();
-    List<TextView> Result = new ArrayList<>();
+
 
 
     @Override
@@ -66,8 +65,7 @@ public static int quizid;
                         final LinearLayout A = new LinearLayout(Results.this);
 
                         lm.removeAllViews();
-                        Students.clear();
-                        Result.clear();
+
 
                         String name = parent.getItemAtPosition(position).toString();
                         for(Quiz quiz : quizs){

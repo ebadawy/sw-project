@@ -129,13 +129,13 @@ public class ListofQuiz extends ActionBarActivity {
                                         MainActivity.api.resultStatus(quiz.getId(), true, new Callback<com.squareup.okhttp.Response>() {
                                             @Override
                                             public void success(com.squareup.okhttp.Response response, Response response2) {
-                                                Toast.makeText(ListofQuiz.this, "Results is published to students", Toast.LENGTH_SHORT);
+                                                Toast.makeText(ListofQuiz.this, "Results is published to students", Toast.LENGTH_SHORT).show();
                                             }
 
                                             @Override
                                             public void failure(RetrofitError retrofitError) {
 
-                                                Toast.makeText(ListofQuiz.this, "Error in publishing results", Toast.LENGTH_SHORT);
+                                                Toast.makeText(ListofQuiz.this, "Error in publishing results", Toast.LENGTH_SHORT).show();
                                             }
                                         });
                                     } else {
@@ -143,13 +143,13 @@ public class ListofQuiz extends ActionBarActivity {
                                             @Override
                                             public void success(com.squareup.okhttp.Response response, Response response2) {
 
-                                                Toast.makeText(ListofQuiz.this, "Results is not published to students", Toast.LENGTH_SHORT);
+                                                Toast.makeText(ListofQuiz.this, "Results is not published to students", Toast.LENGTH_SHORT).show();
                                             }
 
                                             @Override
                                             public void failure(RetrofitError retrofitError) {
 
-                                                Toast.makeText(ListofQuiz.this, "Error occurred", Toast.LENGTH_SHORT);
+                                                Toast.makeText(ListofQuiz.this, "Error occurred", Toast.LENGTH_SHORT).show();
                                             }
                                         });
                                     }

@@ -101,18 +101,22 @@ public class StudentRegistration extends ActionBarActivity {
                                         add.setGravity(Gravity.RIGHT);
 
 
-
+                                        for(Group g : groups){
+                                            for(int i=0;i<g.getUsers().size();i++){
+                                                for(int j=0;j<users.size();j++){
+                                                    Log.i("info","#########"+g.getUsers().get(i).toString()+"#######"+users.get(j).toString());
+                                                    if(g.getUsers().get(i).toString().equals(users.get(j).toString())){
+                                                        add.setChecked(true);
+                                                    }else{
+                                                        add.setChecked(false);
+                                                    }
+                                                }
+                                            }
+                                        }
 
                                         A.addView(add);
                                         lb.addView(A);
-                                        for(Group g : groups){
-                                            for(User u : users)
-                                            if(g.getUsers().contains(u.getUserName())){
-                                                add.setChecked(true);
-                                            }else{
-                                                add.setChecked(false);
-                                            }
-                                        }
+
                                         //Toast.makeText(getApplicationContext(), Integer.toString(group.getUsers().size()), Toast.LENGTH_SHORT).show();
 
                                         add.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
