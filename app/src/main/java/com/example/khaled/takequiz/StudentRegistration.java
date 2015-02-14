@@ -22,8 +22,11 @@ import android.widget.Toast;
 import com.rest.model.Group;
 import com.rest.model.User;
 
+import java.security.Key;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -45,8 +48,10 @@ public class StudentRegistration extends ActionBarActivity {
             public void success(List<Group> groups, Response response) {
 
                 List<String> names = new ArrayList<String>();
+                final Map<String,Integer> g = new HashMap<String, Integer>();
                 for (final Group group : groups) {
                     names.add(group.getGroupName());
+                    g.put(group.getGroupName(),group.getId());
                 }
                 final LinearLayout.LayoutParams para;
                 final LinearLayout.LayoutParams params;
@@ -56,7 +61,7 @@ public class StudentRegistration extends ActionBarActivity {
 
                 para =
                         new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                Spinner spinner = (Spinner) findViewById(R.id.sp);
+                final Spinner spinner = (Spinner) findViewById(R.id.sp);
                 ArrayAdapter<String> adp =
                         new ArrayAdapter<String>(StudentRegistration.this, android.R.layout.simple_list_item_1, names);
                 adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -67,7 +72,7 @@ public class StudentRegistration extends ActionBarActivity {
                 spinner.setLayoutParams(para);
                // lb.addView(spinner);
 
-                for(final Group group : groups){
+               // for(final Group group : groups){
                    // final LinearLayout linearLayout = new LinearLayout(StudentRegistration.this);
 
                     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -101,13 +106,13 @@ public class StudentRegistration extends ActionBarActivity {
                                             @Override
                                             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                                 if (isChecked) {
-                                                    MainActivity.api.addStudent(user.getUserName(), group.getId(), new Callback<com.squareup.okhttp.Response>() {
+                                                    MainActivity.api.addStudent(user.getUserName(), g.get(spinner.getSelectedItem().toString()), new Callback<com.squareup.okhttp.Response>() {
                                                         @Override
                                                         public void success(com.squareup.okhttp.Response response, Response response2) {
 
-                                                            Log.i("info","#########################################################"+Integer.toString(group.getId()));
+                                                            Log.i("info","#########################################################"+Integer.toString(g.get(spinner.getSelectedItem().toString())));
                                                             //Toast.makeText(StudentRegistration.this, "Student is added successfully", Toast.LENGTH_LONG).show();
-                                                            Toast.makeText(StudentRegistration.this, Integer.toString(group.getId()), Toast.LENGTH_LONG).show();
+                                                            Toast.makeText(StudentRegistration.this, Integer.toString(g.get(spinner.getSelectedItem().toString())), Toast.LENGTH_LONG).show();
 
                                                         }
 
@@ -117,7 +122,7 @@ public class StudentRegistration extends ActionBarActivity {
                                                         }
                                                     });
                                                 } else {
-                                                    MainActivity.api.deleteStudent(user.getUserName(), group.getId(), new Callback<com.squareup.okhttp.Response>() {
+                                                    MainActivity.api.deleteStudent(user.getUserName(), g.get(spinner.getSelectedItem().toString()), new Callback<com.squareup.okhttp.Response>() {
                                                         @Override
                                                         public void success(com.squareup.okhttp.Response response, Response response2) {
                                                             Toast.makeText(StudentRegistration.this, "Student Deleted Successfully", Toast.LENGTH_LONG).show();
@@ -150,7 +155,7 @@ public class StudentRegistration extends ActionBarActivity {
 
                         }
                     });
-                }
+                //}
             }
             @Override
             public void failure(RetrofitError retrofitError) {
