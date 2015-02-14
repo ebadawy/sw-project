@@ -24,6 +24,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.rest.model.Answer;
 import com.rest.model.Choice;
@@ -42,9 +43,10 @@ import retrofit.client.Response;
 
 public class QuizActivity extends FragmentActivity {
     TextView quizName;
-    Button timer;
+    ToggleButton timer;
     String remainingTime;
     List<RadioGroup> radioGroups;
+    List<Question> QUES;
     Chronometer chronometer;
     Quiz quiz;
     LinearLayout layout;
@@ -57,9 +59,10 @@ public class QuizActivity extends FragmentActivity {
         quiz = CurrentQuiz.getInstance();
         quizName = (TextView) findViewById(R.id.quizName);
         quizName.setText(quiz.getName());
-        timer = (Button)findViewById(R.id.timer);
+        timer = (ToggleButton)findViewById(R.id.timer);
         chronometer = (Chronometer)findViewById(R.id.chronometer);
         radioGroups = new ArrayList<RadioGroup>();
+        QUES = new ArrayList<Question>();
         initialisePaging();
         chronometer.start();
         limit = 1000*60*(Integer.parseInt(quiz.getTime_limit().substring(3)));
@@ -100,6 +103,7 @@ public class QuizActivity extends FragmentActivity {
 
                         }
                     });
+                    QUES.add(question);
                     radioGroups.add(r);
                     layout.addView(radioGroups.get(i));
                     i++;
@@ -145,21 +149,24 @@ public class QuizActivity extends FragmentActivity {
             View radioButton = radioGroups.get(i).findViewById(id);
             int radioId = radioGroups.get(i).indexOfChild(radioButton);
             RadioButton ans = (RadioButton) radioGroups.get(i).getChildAt(radioId);
-            Answer answer = new Answer("NotFound");
+            Answer answer = new Answer("NotFound404");
             if(radioGroups.get(i).getCheckedRadioButtonId() != -1)
                 answer = new Answer(ans.getText().toString());
             MainActivity.api.sendAnswer(MainActivity.current_user.getId(),
-                    quiz.getId(),radioGroups.get(i).getId(),answer,new Callback<com.squareup.okhttp.Response>() {
+                    quiz.getId(),QUES.get(i).getId(),answer,new Callback<com.squareup.okhttp.Response>() {
                         @Override
                         public void success(com.squareup.okhttp.Response response, Response response2) {
                             Intent intent = new Intent(QuizActivity.this,QuizActivityFinish.class);
                             startActivity(intent);
+                            Log.d("QuizActivity","###################################send");
                         }
 
                         @Override
                         public void failure(RetrofitError retrofitError) {
                             //Intent intent = new Intent(QuizActivity.this,QuizActivityFinish.class);
                             //(intent);
+                            Log.d("QuizActivity","$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$fail");
+                            Log.e("Error", "retrofit", retrofitError);
 
                         }
                     });
@@ -167,12 +174,13 @@ public class QuizActivity extends FragmentActivity {
     }
     public void hide(View view)
     {
+        if(timer.isChecked()==false)
       //String time = timer.getText().toString();
         //if(time == "")
-           // timer.setText(remainingTime);
-
-        //else if(time == remainingTime)
             timer.setText("");
 
+        //else if(time == remainingTime)
+           // timer.setVisibility(View.GONE);
+           // chronometer.setVisibility(View.GONE);
     }
 }
