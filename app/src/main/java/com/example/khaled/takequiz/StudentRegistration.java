@@ -40,7 +40,8 @@ public class StudentRegistration extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_registration);
         final  LinearLayout lb = (LinearLayout) findViewById(R.id.ls);
-
+        final List<String>students = new ArrayList<>();
+        List<Switch>switches = new ArrayList<>();
 
 
         MainActivity.api.getGroups(MainActivity.current_user.getId(),new Callback<List<Group>>() {
@@ -82,6 +83,7 @@ public class StudentRegistration extends ActionBarActivity {
                             MainActivity.api.getStudents(new Callback<List<User>>() {
                                 @Override
                                 public void success(List<User> users, Response response) {
+                                    lb.removeAllViews();
                                     for (final User user : users) {
                                         LinearLayout A = new LinearLayout(StudentRegistration.this);
                                         TextView student = new TextView(StudentRegistration.this);
@@ -93,9 +95,10 @@ public class StudentRegistration extends ActionBarActivity {
                                         student.setText(user.getUserName());
                                         A.addView(student);
 
-
                                         add.setLayoutParams(para);
                                         add.setGravity(Gravity.RIGHT);
+
+
 
                                         A.addView(add);
                                         lb.addView(A);
@@ -112,7 +115,7 @@ public class StudentRegistration extends ActionBarActivity {
 
                                                             Log.i("info","#########################################################"+Integer.toString(g.get(spinner.getSelectedItem().toString())));
                                                             //Toast.makeText(StudentRegistration.this, "Student is added successfully", Toast.LENGTH_LONG).show();
-                                                            Toast.makeText(StudentRegistration.this, Integer.toString(g.get(spinner.getSelectedItem().toString())), Toast.LENGTH_LONG).show();
+                                                            Toast.makeText(StudentRegistration.this,"Student is added Successfully", Toast.LENGTH_LONG).show();
 
                                                         }
 
