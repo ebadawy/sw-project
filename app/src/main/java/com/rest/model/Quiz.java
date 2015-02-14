@@ -56,6 +56,7 @@ public class Quiz {
     public int getId() {
         return this.id;
     }
+    public String getTime_limit () { return  time_limit;}
 
     public boolean isPublished() {return published;}
 
