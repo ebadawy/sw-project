@@ -33,4 +33,11 @@ public class Group {
         return this.id;
     }
 
+    public boolean hasStudent(String studentName) {
+        for(User user : users)
+            if(user.getUserName().equals(studentName))
+                return true;
+        return false;
+    }
+
 }
