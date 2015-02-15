@@ -16,8 +16,9 @@ public class DoctorHome extends ActionBarActivity implements View.OnClickListene
 
 
     Button createQuiz;
-    public void opengroups(View view){
-        Intent intent = new Intent(this,Grouplayout.class);
+    public void opengroups(View view) {
+        Intent intent = new Intent(this, Grouplayout.class);
+    }
     public void drresults(View v){
         Intent intent = new Intent(this, Results.class);
         Intent docid = getIntent();
