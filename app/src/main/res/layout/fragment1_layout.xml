@@ -78,25 +78,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Check"
-            android:id="@+id/check"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/addChoice"
-            android:layout_toEndOf="@+id/addChoice" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Click Check before swipe"
-            android:id="@+id/textView2"
-            android:layout_alignBottom="@+id/check"
-            android:layout_toRightOf="@+id/check"
-            android:layout_toEndOf="@+id/check" />
-
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,9 +86,7 @@
             android:id="@+id/rightChoice"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/check"
-            android:layout_toStartOf="@+id/check" />
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"
