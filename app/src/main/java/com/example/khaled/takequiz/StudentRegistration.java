@@ -1,10 +1,38 @@
 package com.example.khaled.takequiz;
 
+import android.content.ClipData;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ActionMenuView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.rest.model.Group;
+import com.rest.model.User;
+
+import java.security.Key;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class StudentRegistration extends ActionBarActivity {
@@ -13,6 +41,139 @@ public class StudentRegistration extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_registration);
+        final  LinearLayout lb = (LinearLayout) findViewById(R.id.ls);
+
+
+
+        MainActivity.api.getGroups(MainActivity.current_user.getId(),new Callback<List<Group>>() {
+            @Override
+            public void success(final List<Group> groups, Response response) {
+
+                List<String> names = new ArrayList<String>();
+                final Map<String,Integer> g = new HashMap<String, Integer>();
+                for (final Group group : groups) {
+                    names.add(group.getGroupName());
+                    g.put(group.getGroupName(),group.getId());
+                }
+                final LinearLayout.LayoutParams para;
+                final LinearLayout.LayoutParams params;
+
+                //params =
+                  //      new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                para =
+                        new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                final Spinner spinner = (Spinner) findViewById(R.id.sp);
+                ArrayAdapter<String> adp =
+                        new ArrayAdapter<String>(StudentRegistration.this, android.R.layout.simple_list_item_1, names);
+                adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(adp);
+                params =
+                        new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                spinner.setLayoutParams(para);
+               // lb.addView(spinner);
+
+               // for(final Group group : groups){
+                   // final LinearLayout linearLayout = new LinearLayout(StudentRegistration.this);
+
+
+                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(final AdapterView<?> parent, View view, final int position, long id) {
+
+                            MainActivity.api.getStudents(new Callback<List<User>>() {
+                                @Override
+                                public void success(List<User> users, Response response) {
+                                    lb.removeAllViews();
+                                    for (final User user : users) {
+                                        LinearLayout A = new LinearLayout(StudentRegistration.this);
+                                        TextView student = new TextView(StudentRegistration.this);
+                                        final Switch add = new Switch(StudentRegistration.this);
+
+
+                                        student.setLayoutParams(params);
+                                        student.setGravity(Gravity.LEFT);
+                                        student.setText(user.getUserName());
+                                        A.addView(student);
+
+                                        add.setLayoutParams(para);
+                                        add.setGravity(Gravity.RIGHT);
+
+
+                                       if(groups.get(position).hasStudent(user.getUserName())){
+                                           add.setChecked(true);
+                                       }else{
+                                           add.setChecked(false);
+                                       }
+
+                                        A.addView(add);
+                                        lb.addView(A);
+
+                                        //Toast.makeText(getApplicationContext(), Integer.toString(group.getUsers().size()), Toast.LENGTH_SHORT).show();
+
+                                        add.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                            @Override
+                                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                                if (isChecked) {
+                                                    MainActivity.api.addStudent(user.getUserName(), g.get(spinner.getSelectedItem().toString()), new Callback<com.squareup.okhttp.Response>() {
+                                                        @Override
+                                                        public void success(com.squareup.okhttp.Response response, Response response2) {
+
+                                                            Log.i("info","#########################################################"+Integer.toString(g.get(spinner.getSelectedItem().toString())));
+                                                            //Toast.makeText(StudentRegistration.this, "Student is added successfully", Toast.LENGTH_LONG).show();
+                                                            Toast.makeText(StudentRegistration.this,"Student is added Successfully", Toast.LENGTH_LONG).show();
+                                                        add.setChecked(true);
+                                                        }
+
+                                                        @Override
+                                                        public void failure(RetrofitError retrofitError) {
+                                                            Toast.makeText(StudentRegistration.this, "Error on adding student", Toast.LENGTH_LONG).show();
+                                                        }
+                                                    });
+                                                } else {
+                                                    MainActivity.api.deleteStudent(user.getUserName(), g.get(spinner.getSelectedItem().toString()), new Callback<com.squareup.okhttp.Response>() {
+                                                        @Override
+                                                        public void success(com.squareup.okhttp.Response response, Response response2) {
+                                                            Toast.makeText(StudentRegistration.this, "Student Deleted Successfully", Toast.LENGTH_LONG).show();
+                                                        }
+
+                                                        @Override
+                                                        public void failure(RetrofitError retrofitError) {
+                                                            Toast.makeText(StudentRegistration.this, "Error in deleting student", Toast.LENGTH_LONG).show();
+                                                            add.setChecked(false);
+                                                        }
+                                                    });
+                                                }
+
+                                            }
+                                        });
+
+
+                                        //lb.addView(linearLayout);
+                                    }
+                                }
+
+                                @Override
+                                public void failure(RetrofitError retrofitError) {
+
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+                //}
+            }
+            @Override
+            public void failure(RetrofitError retrofitError) {
+
+            }
+        });
+
     }
 
 
