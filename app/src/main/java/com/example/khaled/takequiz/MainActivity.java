@@ -24,14 +24,15 @@ import retrofit.client.Response;
 public class MainActivity extends ActionBarActivity {
     public final static String DocID = "com.example.khaled.takequiz.id";
     public final static String StuID="com.example.khaled.takequiz.id";
-    public static User current_user;
     TextView logs;
     public static QuizAPI api;
+    public static User current_user;
     public void login(View view){
         final Intent studentActivity = new Intent(this,StudentHome.class);
         final Intent docActivity = new Intent(this,DoctorHome.class);
         EditText editText = (EditText)findViewById(R.id.Enter_ID);
         EditText editText1 = (EditText)findViewById(R.id.Enter_password);
+
         String userName = editText.getText().toString();
         String password = editText1.getText().toString();
         if (!userName.isEmpty() || !password.isEmpty()) {
@@ -42,7 +43,7 @@ public class MainActivity extends ActionBarActivity {
                 public void success(User user, Response response) {
                     try {
                         MainActivity.current_user = user;
-                        // the user is authenticated, ur code goes here
+                       // the user is authenticated, ur code goes here
                        if(user.getRole().equals("student")){
                            studentActivity.putExtra(StuID,Integer.toString(user.getId()));
                            startActivity(studentActivity);
@@ -66,6 +67,7 @@ public class MainActivity extends ActionBarActivity {
         } else {
             logs.setTextColor(Color.RED);
             logs.setText("Invalid User Name or Password");
+
         }
     }
 

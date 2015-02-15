@@ -23,5 +23,6 @@
         android:id="@+id/button5"
         android:layout_below="@+id/textView3"
         android:layout_marginLeft="130dp"
+        android:onClick="upload"
         />
 </RelativeLayout>

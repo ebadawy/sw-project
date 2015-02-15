@@ -10,9 +10,9 @@ public class Group {
     private int students_number;
     private List<User> users;
 
-    public Group() {
+    public Group(String name) {
         this.id = 0;
-        this.group_name = null;
+        this.group_name = name;
         this.students_number = 0;
         this.users = null;
     }
@@ -32,6 +32,13 @@ public class Group {
     public int getId() {
         return this.id;
     }
+    public void setGroupName(String groupName){
+        this.group_name = groupName;
+    }
+    public void setStudentNumber(int studentNumber){
+        this.students_number = studentNumber;
+    }
+
 
     public boolean hasStudent(String studentName) {
         for(User user : users)

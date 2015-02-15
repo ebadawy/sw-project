@@ -1,0 +1,387 @@
+[33mcommit 2beb866324ed499eb690247580ed256b4d9a6a12[m
+Author: hatem93 <hatem.hussin1993@gmail.com>
+Date:   Mon Feb 9 07:56:11 2015 +0200
+
+    'Issue
+
+[33mcommit e6504f19bc1c7adc20d45d559cb076e86eebd3ac[m
+Merge: ecb7230 3e5f369
+Author: hatem93 <hatem.hussin1993@gmail.com>
+Date:   Sun Feb 8 15:07:11 2015 +0200
+
+    Merge branch 'ebadawy_10_apiInterface' of github.com:ehab93/sw-project into hatem_7_quizquestionsanswerdoctor
+    
+    Conflicts:
+    	.gradle/2.2.1/taskArtifacts/cache.properties
+    	.gradle/2.2.1/taskArtifacts/cache.properties.lock
+    	.gradle/2.2.1/taskArtifacts/fileHashes.bin
+    	.gradle/2.2.1/taskArtifacts/fileSnapshots.bin
+    	.gradle/2.2.1/taskArtifacts/outputFileStates.bin
+    	.gradle/2.2.1/taskArtifacts/taskArtifacts.bin
+    	.idea/gradle.xml
+    	.idea/libraries/support_annotations_21_0_3.xml
+    	.idea/libraries/support_v4_21_0_3.xml
+    	.idea/misc.xml
+    	.idea/workspace.xml
+    	app/app.iml
+    	app/src/main/AndroidManifest.xml
+    	app/src/main/java/com/example/khaled/takequiz/DoctorHome.java
+    	app/src/main/res/values/strings.xml
+    	build/intermediates/dex-cache/cache.xml
+    	build/intermediates/model_data.bin
+    	local.properties
+
+[33mcommit ecb7230264c87391c6a279958506f73651840a05[m
+Author: hatem93 <hatem.hussin1993@gmail.com>
+Date:   Sun Feb 8 12:15:24 2015 +0200
+
+    Issue #7, listing questions and answers and the right choice
+
+[33mcommit 3e5f3696114e4e78f2ba4b09cf589967797d438e[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sun Feb 8 11:02:19 2015 +0200
+
+    Issue #10, Add published attr to quiz class
+
+[33mcommit db1735f7b136bd4bf8f27faeccf457422d8a4c49[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sun Feb 8 11:01:37 2015 +0200
+
+    Issue #10, Create loadQuizInfo function
+
+[33mcommit 120f1cd8bc4d0e1543c85848c334c32b949dccbc[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sun Feb 8 11:00:25 2015 +0200
+
+    Issue #10, Add a get request to load quiz info
+
+[33mcommit 4bd98e23d6327dcce47cef688c7d14720f22c4fd[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 18:02:50 2015 +0200
+
+    Issue #10, Add other quiz attrs
+
+[33mcommit a01d450e7073b9e58f29e6e7a69df59e052e632f[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 17:33:35 2015 +0200
+
+    Android files
+
+[33mcommit 26b7dfcdc6cff6579e959702d60abe3dd253769b[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 17:33:09 2015 +0200
+
+    Issue #10, Add the post request for quiz
+
+[33mcommit 35891c4a8f8d1c5d6e10dc148cd646bac84c32b0[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 17:32:22 2015 +0200
+
+    Issue #10, Create a wrapper for quiz class
+
+[33mcommit 41bb5b73a1b6b0fbcacd2c53f2b3d80f4acce2f3[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 17:31:44 2015 +0200
+
+    Issue #10, Create a quiz constractor with args
+
+[33mcommit 0af03c77c885bd00b201ba70e005acf4c4e3946b[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 17:31:14 2015 +0200
+
+    Issue #10, Fix a typo
+
+[33mcommit f3879fdb8d310800e0467d1291bc57cff2db1e6a[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 15:37:25 2015 +0200
+
+    Android files
+
+[33mcommit ffd0783479204dd6c3c9513dcac2633afe6bdcd8[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 15:36:35 2015 +0200
+
+    Issue #10, Add the createQuestion method
+
+[33mcommit ce17a8d06026c4b4bf8f4a1211f3b35f49266c82[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 15:35:57 2015 +0200
+
+    Issue #10, Create a wraper for question class
+
+[33mcommit f4495362bb3403df9fda80be9d12e377f48e3d7a[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 15:35:20 2015 +0200
+
+    Issue #10, Add id attr
+
+[33mcommit 8c6a8d0cc6670120cd08c77cf9d8723916626ce9[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 13:13:12 2015 +0200
+
+    Issue #10, Add user_id to user's class
+
+[33mcommit 3bbbe72f3b38ea570d3b86991823f94da5ca0608[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 12:29:52 2015 +0200
+
+    Issue #10, Create quiz class
+
+[33mcommit 9534738bf2f71c7477ea5821d67ad37b44f44a86[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 12:29:39 2015 +0200
+
+    Issue #10, Create question class
+
+[33mcommit 3ecffaf9d5fbc55ee22a92b3df80d451ebe253ce[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 12:29:28 2015 +0200
+
+    Issue #10, Create group class
+
+[33mcommit cbff52de241a32c6b066eb6afdd185733ab296c2[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 12:29:11 2015 +0200
+
+    Issue #10, Create choice class
+
+[33mcommit 95fad90fcd3b2f98a944b822737142a757a3f160[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 11:29:06 2015 +0200
+
+    Isseu #10, Add groups attr in user's class
+
+[33mcommit 7f21e39621a0706c0c182c5a8bd5ea44de7c6986[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Sat Feb 7 10:58:34 2015 +0200
+
+    Issue #10, Add please wait message to the logs
+
+[33mcommit e6d164c1e726d0e7768ba77bf8b24cb687e1b54c[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Fri Feb 6 18:52:08 2015 +0200
+
+    Adnroid files
+
+[33mcommit 5fb1fd6a9f9b18cebc7a14e5d2eb59d49ac36b6c[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Fri Feb 6 18:51:48 2015 +0200
+
+    Issue #10, remove unused vars&imports
+
+[33mcommit 0da22c0ad51ad0c1772e7250b128defa7c19c460[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Fri Feb 6 17:49:34 2015 +0200
+
+    Android files
+
+[33mcommit ec657ced70bc50bca0229304e306d65b691d3985[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Fri Feb 6 17:49:15 2015 +0200
+
+    Issue #10, remove RequestWraper file
+
+[33mcommit 95b64625369e3a237e1680be0b16a3e51cb3cde0[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Fri Feb 6 17:47:48 2015 +0200
+
+    Issue #10, Setup the login connection
+
+[33mcommit 4d4d4aeffe3d7a684d0e2bf74744e426d84143e0[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Fri Feb 6 17:47:05 2015 +0200
+
+    Issue #10, Edit var names and add the logs textView
+
+[33mcommit 9c73709759467be8ab4db93e5580979b19de1d33[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Fri Feb 6 17:43:40 2015 +0200
+
+    Issue #10, Add OkHttp lib
+
+[33mcommit b8ff21bc248fb989ea36e32b5c65c20f96cb3377[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Fri Feb 6 17:42:42 2015 +0200
+
+    Issue #10, Move User class to model folder and Create its wraper
+
+[33mcommit e18a0794f1a900232b4d14435391075560cf3125[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Fri Feb 6 17:35:46 2015 +0200
+
+    Issue #10, Add logs textView
+
+[33mcommit 5343396aa4a90390279a6ee8a8e1f3bf7921e96b[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Fri Feb 6 17:34:53 2015 +0200
+
+    Isseu #10, Add OkHttp as a client to retrofit
+
+[33mcommit 5e3c9f169ea15b049b03addd3d136360d3667e2c[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Fri Feb 6 17:33:42 2015 +0200
+
+    Issue #10, Add login connection
+
+[33mcommit a285dc17e633aa703335b8fec959b9a85a3155e8[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Wed Feb 4 11:29:28 2015 +0200
+
+    Android studio files
+
+[33mcommit 26f10b06478a893ae66a3b1d17b5504568ab17df[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Wed Feb 4 11:29:08 2015 +0200
+
+    Isseu #10, Add the internet permission
+
+[33mcommit 116abd3272ea72b7226ab1faebc3d6c0ba9b3382[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Wed Feb 4 11:28:35 2015 +0200
+
+    Issue #10, Create a wraper for user
+
+[33mcommit d6c375dfdd9de640ab1ff4407842ca2ebfbdff0b[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Wed Feb 4 11:28:04 2015 +0200
+
+    Issue #10, Create POST and GET requests
+
+[33mcommit b4a12b3b3add92f7c37a2d6f0949f620ceeef2fd[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Wed Feb 4 11:26:46 2015 +0200
+
+    Issue #10, Show retrofil logs
+
+[33mcommit 5ea8a6fccc8156d0c5fd933e9de7637d63c47716[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Wed Feb 4 11:26:08 2015 +0200
+
+    Issue #10, Edit User class
+
+[33mcommit c07d3bd128b957a3168a03ecf071a7aaaf4b67b5[m
+Author: hatem93 <hatem.hussin1993@gmail.com>
+Date:   Wed Feb 4 09:59:16 2015 +0200
+
+    Issue #7,quizDoctorQuestionAnswer
+
+[33mcommit 8f5d3a6518b95005100ad003f43d49981f8b96a1[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Tue Feb 3 21:02:19 2015 +0200
+
+    Issue #10, Create quizApi interface
+
+[33mcommit 786cda3aaa92b0ca2fba16b317911a6eb5362138[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Tue Feb 3 21:01:35 2015 +0200
+
+    Issue #10, Setup retrofit conigs
+
+[33mcommit d11a7da512f46c84326aa23a6c665f1b93401c6c[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Tue Feb 3 21:00:58 2015 +0200
+
+    Issue #10, Create a user class
+
+[33mcommit 3deb5e9986375548fc7f3c989b66ccec0df5c480[m
+Merge: 02dd8a8 49f6402
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Tue Feb 3 19:15:14 2015 +0200
+
+    Merge branch 'ebadawy_8_studnetRegistartion' into ebadawy_10_apiInterface
+    
+    Conflicts:
+    	app/app.iml
+
+[33mcommit 02dd8a86ce8fc8f267fe2a187440e3564adb8512[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Tue Feb 3 19:11:58 2015 +0200
+
+    Issue #10, Fix a stash conflict
+
+[33mcommit fc3cd5e49360e66ec11315b4dd72f1c995570fde[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Tue Feb 3 19:09:33 2015 +0200
+
+    Issue #10, Add gson & retrofit jar files
+
+[33mcommit 49f6402451a62b05a1263a42ec04ea4d08ac0ef1[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Mon Feb 2 18:30:04 2015 +0200
+
+    Issue #8, Import savagelook pkg
+
+[33mcommit 9af61ed143057c8bb56bc96b58536db661eea13e[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Mon Feb 2 17:08:12 2015 +0200
+
+    commit multiple files
+
+[33mcommit 2609d1e33ad2d6b5f71064d9285c4de5044fff30[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Mon Feb 2 17:05:20 2015 +0200
+
+    Issue #8, Add StudentRegistration activity
+
+[33mcommit dcc6a1ece13a978874947521cce973586b2b875c[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Mon Feb 2 17:04:31 2015 +0200
+
+    Issue #8, Add groups activity
+
+[33mcommit 5bd27a465b6e95a3886c28929a33c545ca7b8fb4[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Mon Feb 2 17:02:19 2015 +0200
+
+    Issue #8, Start groups activity when clickOn its btn
+
+[33mcommit 02471d8b2b9a0edd50d6feb6de8e2a3d48a3f761[m
+Author: hatem93 <hatem.hussin1993@gmail.com>
+Date:   Sun Feb 1 16:54:34 2015 +0200
+
+    Issue#4,Quiz main info Doctor
+
+[33mcommit 582b9d3768813f204eca40ba131f196129fe76bd[m
+Author: hatem93 <hatem.hussin1993@gmail.com>
+Date:   Sun Feb 1 16:52:54 2015 +0200
+
+    Issue#4,Quiz main info Doctor
+
+[33mcommit 4090b39fe8fb09527f220029d704db41137292cf[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Fri Jan 30 19:49:47 2015 +0200
+
+    init commit
+
+[33mcommit f96522b6487378815a9b030a2df7d925cead7684[m
+Author: ehab93 <ehalbadawy93@gmail.com>
+Date:   Fri Jan 30 19:49:10 2015 +0200
+
+    Remove newFile.txt
+
+[33mcommit 9cde6db309f58c86d3598561adab0f4cdeaaf3af[m
+Merge: 4166a63 894fc6d
+Author: Khaled Mohamed Fathy <eng.khaled.93@hotmail.com>
+Date:   Sat Jan 24 17:18:51 2015 +0200
+
+    Merge pull request #1 from ehab93/dummyBranch
+    
+    Dummy branch
+
+[33mcommit 894fc6d9717f8eb7fd6b61aac79e11989beb06c8[m
+Author: khaled <eng.khaled.93@hotmail.com>
+Date:   Sat Jan 24 17:11:09 2015 +0200
+
+    Khaled Commit
+
+[33mcommit b51be978878b453e78aa018a27017715ecd13c31[m
+Author: hatem93 <hatem.hussin1993@gmail.com>
+Date:   Sat Jan 24 16:58:57 2015 +0200
+
+    firstfile
+
+[33mcommit 4166a633e64b7cd06664806a761ef0bda9b2653b[m
+Author: ebadawy <ehalbadawy93@gmail.com>
+Date:   Sun Nov 30 20:24:59 2014 +0200
+
+    Initial commit
