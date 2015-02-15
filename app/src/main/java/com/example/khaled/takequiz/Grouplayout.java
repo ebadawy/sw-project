@@ -11,7 +11,7 @@ import android.view.View;
 public class Grouplayout extends ActionBarActivity {
 
     public void opengrouplist(View view){
-        Intent intent = new Intent(this,grouplist.class);
+        Intent intent = new Intent(this, GroupList.class);
         startActivity(intent);
     }
 
