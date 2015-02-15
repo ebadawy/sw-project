@@ -175,27 +175,7 @@ public class QuizActivity extends FragmentActivity {
 
             }
         });
-        /*for(int i=0;i<QUES.size();i++)
-        {
-            MainActivity.api.sendAnswer(MainActivity.current_user.getId(),
-                    quiz.getId(),QUES.get(i).getId(),ANS.get(i),new Callback<com.squareup.okhttp.Response>() {
-                        @Override
-                        public void success(com.squareup.okhttp.Response response, Response response2) {
-                            Intent intent = new Intent(QuizActivity.this,QuizActivityFinish.class);
-                            startActivity(intent);
-                            Log.d("QuizActivity","###################################send");
-                        }
 
-                        @Override
-                        public void failure(RetrofitError retrofitError) {
-                            //Intent intent = new Intent(QuizActivity.this,QuizActivityFinish.class);
-                            //(intent);
-                            Log.d("QuizActivity","$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$fail");
-                            Log.e("Error", "retrofit", retrofitError);
-
-                        }
-                    });
-        }*/
     }
     public boolean send(int i)
     {
