@@ -9,17 +9,19 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class Groups extends ActionBarActivity {
+public class Groups extends ActionBarActivity implements View.OnClickListener {
 
     Intent srIntent;
-
+    Button gl;
+    Button sr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups);
-        Button gl = (Button) findViewById(R.id.groupList);
-        Button sr = (Button) findViewById(R.id.studnetRegistation);
+        gl = (Button) findViewById(R.id.groupList);
+        sr = (Button) findViewById(R.id.studnetRegistation);
         srIntent = new Intent(this, StudentRegistration.class);
+        gl.setOnClickListener(this);
 
     }
 
@@ -48,5 +50,19 @@ public class Groups extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void grouplistClick(){
+        Intent intent = new Intent (this,GroupList.class);
+        startActivity(intent);
+    }
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.groupList:
+                grouplistClick();
+                break;
+
+        }
+
     }
 }

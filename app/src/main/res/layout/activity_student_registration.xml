@@ -9,30 +9,40 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:id="@+id/lm">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Select a Group"
+            android:textSize="30dp"
+            android:gravity="center_horizontal"/>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="99dp"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:textSize="16sp"
-                android:text="Group Name"
-                android:id="@+id/textView" />
-
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinner" />
-        </LinearLayout>
-
-        <ListView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/listView" />
+            android:orientation="vertical"
+            android:id="@+id/linear">
+
+         <Spinner
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/sp">
+
+             </Spinner>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:id="@+id/ls">
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
     </LinearLayout>
 </RelativeLayout>

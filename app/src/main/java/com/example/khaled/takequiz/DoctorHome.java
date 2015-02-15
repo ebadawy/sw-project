@@ -7,23 +7,19 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import com.rest.model.Result;
-
-
-public class DoctorHome extends ActionBarActivity {
-public static final String doctorid="com.example.khaled.takequiz.MESSAGE";
+import android.widget.Button;
 
 
-
-    public void getoutdr(View view){
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
-    }
+public class DoctorHome extends ActionBarActivity implements View.OnClickListener {
+    Button statistics;
+    public static final String doctorid="com.example.khaled.takequiz.MESSAGE";
 
 
 
 
+
+
+    Button createQuiz;
     public void opengroups(View view) {
         Intent intent = new Intent(this, Grouplayout.class);
     }
@@ -34,6 +30,7 @@ public static final String doctorid="com.example.khaled.takequiz.MESSAGE";
         String id = docid.getStringExtra(MainActivity.DocID);
         Log.i("Info","++++++++++++++++++++++++++++++++++++++++++++++++++++++"+id);
         intent.putExtra(doctorid,id);
+
 
         startActivity(intent);
 
@@ -59,12 +56,19 @@ public static final String doctorid="com.example.khaled.takequiz.MESSAGE";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_home);
+
+        createQuiz =(Button)findViewById(R.id.createQuiz);
+        createQuiz.setOnClickListener(this);
+        statistics =(Button)findViewById(R.id.statistics);
+        statistics.setOnClickListener(this);
+
         groupsIntent = new Intent(this, Groups.class);
 
     }
 
     public void startGroupsIntent(View v) {
         startActivity(groupsIntent);
+
     }
 
 
@@ -89,11 +93,39 @@ public static final String doctorid="com.example.khaled.takequiz.MESSAGE";
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void statisticsClick(){
+        Intent intent = new Intent(DoctorHome.this,Statistics.class);
+        startActivity(intent);
+
+    }
+
+
+    private void createQuizClick(){
+        Intent intent = new Intent(DoctorHome.this, QuizMaininfo.class);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.statistics:
+                statisticsClick();
+                break;
+            case R.id.createQuiz:
+                createQuizClick();
+                break;
+        }
+
+    }
+
     public void stay(){
         Intent intent = new Intent(this,DoctorHome.class);
         startActivity(intent);
     }
-
-
-
+    @Override
+    public void onBackPressed() {
+        stay();
+    }
 }

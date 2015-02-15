@@ -2,6 +2,7 @@ package com.example.khaled.takequiz;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.annotation.IntegerRes;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rest.model.Quiz;
+import com.rest.model.Result;
 import com.rest.model.User;
 
 import java.util.ArrayList;
@@ -30,19 +33,21 @@ import retrofit.client.Response;
 
 public class Results extends ActionBarActivity {
 public static int quizid;
+
     LinearLayout.LayoutParams params;
     LinearLayout.LayoutParams para;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
-        Intent intent = getIntent();
-        String DrId = intent.getStringExtra(DoctorHome.doctorid);
-        Log.i("info","******************************************************"+DrId);
-        int id = Integer.parseInt(DrId);
-        final LinearLayout lm = (LinearLayout) findViewById(R.id.main);
-        MainActivity.api.getQuizzes(id,new Callback<List<Quiz>>() {
+
+       final int idd = (MainActivity.current_user.getId());
+        final LinearLayout lm = (LinearLayout) findViewById(R.id.AA);
+
+        MainActivity.api.getQuizzes(idd,new Callback<List<Quiz>>() {
             @Override
             public void success(final List<Quiz> quizs, Response response) {
                 final List<String> names = new ArrayList<String>();
@@ -56,7 +61,12 @@ public static int quizid;
                 spinner.setAdapter(adp);
                 spinner.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, final long id) {
+
+
+                        lm.removeAllViews();
+
+
                         String name = parent.getItemAtPosition(position).toString();
                         for(Quiz quiz : quizs){
                             if(quiz.getName().equals(name)){
@@ -66,7 +76,8 @@ public static int quizid;
                         MainActivity.api.getQuizUsers(quizid,new Callback<List<User>>() {
                             @Override
                             public void success(List<User> users, Response response) {
-                                LinearLayout A = new LinearLayout(Results.this);
+
+
 
                                 params =
                                         new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -74,6 +85,8 @@ public static int quizid;
                                         new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
                                 for(User user : users){
+                                    final LinearLayout A = new LinearLayout(Results.this);
+                                    Log.i("info","##################################"+user.getUserName());
                                     TextView txt = new TextView(Results.this);
                                     txt.setText(user.getUserName());
                                     txt.setGravity(Gravity.LEFT);
@@ -81,20 +94,45 @@ public static int quizid;
                                     txt.setBackgroundColor(Color.WHITE);
                                     txt.setTextColor(Color.BLACK);
                                     txt.setTextSize(30);
+                                    //Students.add(txt);
                                     A.addView(txt);
+                                    //lm.addView(A);
 
-                                    TextView result = new TextView(getApplicationContext());
-                                    para.setMargins(10,35,10,0);
-                                    result.setText(user.getUserResult());
+                                  final TextView result = new TextView(Results.this);
+                                   // para.setMargins(10,35,10,0);
+                                    MainActivity.api.getResult(user.getId(),quizid,new Callback<Result>() {
+                                        @Override
+                                        public void success(Result r, Response response) {
+                                          try{
+                                              result.setText(Integer.toString(r.getResult()));
+                                          }catch (NullPointerException e){
+                                              result.setText("Not Yet");
+                                          }
+                                        }
+
+                                        @Override
+                                        public void failure(RetrofitError retrofitError) {
+
+                                        }
+                                    });
+                                   // result.setText(user.getUserResult());
                                     result.setGravity(Gravity.RIGHT);
                                     result.setLayoutParams(para);
                                     result.setTextColor(Color.BLACK);
                                     result.setTextSize(30);
+                                    //Result.add(result);
                                     A.addView(result);
+                                    //lm.addView(A);
 
 
                                     lm.addView(A);
+
                                 }
+                               // for(int i =0;i<Students.size();i++){
+                                 //   A.addView(Students.get(i));
+                                   // A.addView(Result.get(i));
+
+
                             }
 
                             @Override

@@ -10,14 +10,6 @@ import android.view.View;
 
 public class StudentHome extends ActionBarActivity {
 
-
-
-
-
-
-
-
-
     public static final String studentid="com.example.khaled.takequiz.MESSAGE";
 
     public void getout(View view){
@@ -45,6 +37,7 @@ public class StudentHome extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_home);
+
     }
 
 

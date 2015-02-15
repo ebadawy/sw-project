@@ -124,6 +124,7 @@ public interface QuizAPI {
     public void getGroupUsers(@Path("group_id") int groupId, Callback<List<User>> users);
 
     @PATCH("/groups/{group_id}?method=add")
+
     public void addStudent(@Query("user_name") String user_name,
                            @Path("group_id") int groupId,
                            Callback<Response> responseCallback);

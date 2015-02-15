@@ -35,12 +35,49 @@
                 android:value="com.example.khaled.takequiz.MainActivity" />
         </activity>
         <activity
+            android:name=".QuizMaininfo"
+            android:label="@string/title_activity_quiz_maininfo"
+            android:parentActivityName=".StudentHome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.StudentHome" />
+        </activity>
+        <activity
+            android:name=".Statistics"
+            android:label="@string/title_activity_statistics" >
+        </activity>
+        <activity
+            android:name=".Grapher"
+            android:label="grapher" >
+        </activity>
+        <activity
+
+            android:name=".Grouplayout"
+            android:label="@string/title_activity_grouplayout"
+            android:parentActivityName=".DoctorHome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.DoctorHome" />
+        </activity>
+        <activity
             android:name=".Groups"
             android:label="@string/title_activity_groups" >
         </activity>
         <activity
             android:name=".StudentRegistration"
             android:label="@string/title_activity_student_registration" >
+        </activity>
+        <activity
+            android:name=".GroupList"
+            android:label="@string/title_activity_group_list" >
+        </activity>
+        <activity
+            android:name=".QuizQuestionAnswerDoctor"
+            android:label="@string/title_activity_quiz_question_answer_doctor"
+            android:parentActivityName=".QuizMaininfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.QuizMaininfo" />
         </activity>
         <activity
             android:name=".SelectQuiz"
