@@ -84,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
+        android:text=""
         android:id="@+id/savepleasewait"
         android:layout_above="@+id/addQuestion"
         android:layout_alignParentRight="true"
