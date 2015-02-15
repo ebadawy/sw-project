@@ -9,11 +9,14 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.rest.model.CurrentQuiz;
 import com.rest.model.Quiz;
 
 import java.util.List;
@@ -25,8 +28,8 @@ import retrofit.client.Response;
 
 public class SelectQuiz extends ActionBarActivity {
 
-    public static QuizAPI api;
-    Quiz quiz;
+
+
     LinearLayout.LayoutParams params;
     LinearLayout.LayoutParams para;
     @Override
@@ -47,16 +50,22 @@ public class SelectQuiz extends ActionBarActivity {
 
         final TextView txt = (TextView) findViewById(R.id.txt);
         try {
+
             MainActivity.api.getQuizzes(id, new Callback<List<Quiz>>() {
+
                 @Override
                 public void success(List<Quiz> quizs, Response response) {
                     // txt.setText(quiz.getName());
                     if (quizs.size() != 0) {
-                        for (Quiz quiz : quizs) {
-                        LinearLayout A = new LinearLayout(getApplicationContext());
+
+                        for (final Quiz quiz : quizs) {
+
+                            final LinearLayout A = new LinearLayout(getApplicationContext());
                             A.setOrientation(LinearLayout.HORIZONTAL);
                             final Button btn = new Button(getApplicationContext());
                             params.setMargins(10,35,0,0);
+                            final TextView deadline = new TextView(getApplicationContext());
+                            para.setMargins(10,35,10,0);
                             btn.setId(quiz.getId());
                             btn.setText(quiz.getName());
                             btn.setGravity(Gravity.LEFT);
@@ -64,18 +73,26 @@ public class SelectQuiz extends ActionBarActivity {
                             btn.setBackgroundColor(Color.WHITE);
                             btn.setTextColor(Color.BLACK);
                             btn.setTextSize(30);
-
-                            A.addView(btn);
-
-                            TextView deadline = new TextView(getApplicationContext());
-                            para.setMargins(10,35,10,0);
                             deadline.setText(quiz.getDeadline());
                             deadline.setGravity(Gravity.RIGHT);
                             deadline.setLayoutParams(para);
                             deadline.setTextColor(Color.BLACK);
                             deadline.setTextSize(30);
-                            A.addView(deadline);
 
+                            btn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(SelectQuiz.this,QuizActivity.class);
+                                    startActivity(intent);
+                                    Toast.makeText(SelectQuiz.this,Integer.toString(quiz.getId()) , Toast.LENGTH_LONG).show();
+                                    MainActivity.current_quiz = quiz;
+                                    CurrentQuiz.setInstance(quiz);
+                                    A.removeView(btn);
+                                    A.removeView(deadline);
+                                }
+                            });
+                            A.addView(btn);
+                            A.addView(deadline);
                             lm.addView(A);
 
                         }

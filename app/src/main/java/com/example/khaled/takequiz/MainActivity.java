@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.rest.model.Quiz;
 import com.rest.model.User;
 import com.rest.service.RestClient;
 
@@ -25,8 +26,12 @@ public class MainActivity extends ActionBarActivity {
     public final static String DocID = "com.example.khaled.takequiz.id";
     public final static String StuID="com.example.khaled.takequiz.id";
     TextView logs;
+
     public static QuizAPI api;
     public static User current_user;
+
+    public static Quiz current_quiz;
+
     public void login(View view){
         final Intent studentActivity = new Intent(this,StudentHome.class);
         final Intent docActivity = new Intent(this,DoctorHome.class);
@@ -41,6 +46,7 @@ public class MainActivity extends ActionBarActivity {
             api.login(userName, password, new Callback<User>() {
                 @Override
                 public void success(User user, Response response) {
+                    current_user = user;
                     try {
                         MainActivity.current_user = user;
                        // the user is authenticated, ur code goes here

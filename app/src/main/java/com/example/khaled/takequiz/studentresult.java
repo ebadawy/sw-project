@@ -51,7 +51,7 @@ public class studentresult extends ActionBarActivity {
         setContentView(R.layout.activity_studentresult);
         Intent intent = getIntent();
         String sid=intent.getStringExtra(StudentHome.studentid);
-        final int id = Integer.parseInt(sid);
+        //final int id = Integer.parseInt(sid);
         final LinearLayout lm = (LinearLayout) findViewById(R.id.linearmain);
         //final LinearLayout am =(LinearLayout) findViewById(R.id.alternate);
 
@@ -60,7 +60,7 @@ public class studentresult extends ActionBarActivity {
 
         final TextView txt = (TextView) findViewById(R.id.txt);
         try {
-            MainActivity.api.getQuizzes(id, new Callback<List<Quiz>>() {
+            MainActivity.api.getQuizzes(MainActivity.current_user.getId(), new Callback<List<Quiz>>() {
                 @Override
                 public void success(List<Quiz> quizs, Response response) {
                     // txt.setText(quiz.getName());
@@ -82,7 +82,7 @@ public class studentresult extends ActionBarActivity {
                                @Override
                                public void onClick(View v) {
 
-                                   MainActivity.api.getResult(id, quiz.getId(), new Callback<Result>() {
+                                   MainActivity.api.getResult(MainActivity.current_user.getId(), quiz.getId(), new Callback<Result>() {
                                        @Override
                                        public void success(Result result, Response response) {
 

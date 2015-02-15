@@ -1,6 +1,7 @@
 package com.example.khaled.takequiz;
 
 import com.rest.model.Answer;
+import com.rest.model.AnswerWrapper;
 import com.rest.model.Choice;
 import com.rest.model.GraphBuilder;
 import com.rest.model.Group;
@@ -133,5 +134,10 @@ public interface QuizAPI {
     public void deleteStudent(@Query("user_name") String user_name,
                               @Path("group_id") int groupId,
                               Callback<Response> responseCallback);
+
+    @POST("/answers?status=listOfAnswers")
+    public void sendAnswers(@Body AnswerWrapper answerWrapper,
+                            Callback<Response> response);
+
 
 }

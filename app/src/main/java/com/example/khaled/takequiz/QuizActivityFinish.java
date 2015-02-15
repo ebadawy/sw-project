@@ -1,5 +1,6 @@
 package com.example.khaled.takequiz;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,19 +8,19 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class StudentRegistration extends ActionBarActivity {
+public class QuizActivityFinish extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_registration);
+        setContentView(R.layout.activity_quiz_activity_finish);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_student_registration, menu);
+        getMenuInflater().inflate(R.menu.menu_quiz_activity_finish, menu);
         return true;
     }
 
@@ -37,6 +38,15 @@ public class StudentRegistration extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    public void goback (View view)
+    {
+        Intent intent = new Intent(this,StudentHome.class);
+        startActivity(intent);
+    }
 
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this,StudentHome.class);
+        startActivity(intent);
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.khaled.takequiz;
 
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -27,42 +28,23 @@ import java.util.List;
 import java.util.Vector;
 
 public class FragmentQuiz extends Fragment {
-    private TextView ques;
-    private RadioButton ans;
-    private RadioGroup radioGroup;
-    private List<RadioButton> choicecontainer = new Vector<RadioButton>();
 
-
+LinearLayout layout;
 
 @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View question = (ScrollView)inflater.inflate(R.layout.activity_questions,
                 container, false);
-        choicecontainer.add(0,ans);
-        ques = (TextView)question.findViewById(R.id.textView2);
-        ans = (RadioButton)question.findViewById(R.id.radioButton);
-        radioGroup = (RadioGroup)question.findViewById(R.id.radio);
+        layout = (LinearLayout) question.findViewById(R.id.fragment);
+
+
         return question;
     }
-    public RadioGroup getRadioGroup()
+    /*public void setLayout(View v)
     {
-        return radioGroup;
-    }
-    public TextView getTextView ()
-    {
-        return ques;
-    }
-    public RadioButton getRadioButton()
-    {
-        return ans;
-    }
-    public List<RadioButton> getChoicecontainer()
-    {
-        return choicecontainer;
-    }
-    public void setChoicecontainer(int i,RadioButton R)
-    {
-        choicecontainer.add(i,R);
-    }
+        layout.addView(v);
+    }*/
+
+
 }

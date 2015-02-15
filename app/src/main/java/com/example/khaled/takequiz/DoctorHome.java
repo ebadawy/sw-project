@@ -15,34 +15,42 @@ public class DoctorHome extends ActionBarActivity implements View.OnClickListene
     public static final String doctorid="com.example.khaled.takequiz.MESSAGE";
 
 
+
+
+
+
     Button createQuiz;
     public void opengroups(View view) {
         Intent intent = new Intent(this, Grouplayout.class);
     }
+
     public void drresults(View v){
         Intent intent = new Intent(this, Results.class);
         Intent docid = getIntent();
         String id = docid.getStringExtra(MainActivity.DocID);
         Log.i("Info","++++++++++++++++++++++++++++++++++++++++++++++++++++++"+id);
         intent.putExtra(doctorid,id);
+
+
         startActivity(intent);
 
     }
+
     public void listofquiz(View v){
         Intent intent = new Intent(this,ListofQuiz.class);
         Intent docid = getIntent();
         String id = docid.getStringExtra(MainActivity.DocID);
         intent.putExtra(doctorid,id);
+
         startActivity(intent);
     }
+    public void stata(View v){
+//        Intent intent = new Intent(this, Statistics.class);
+//        startActivity(intent);
+    }
+
 
     Intent groupsIntent;
-
-
-    public void getoutdr(View view){
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,12 +120,5 @@ public class DoctorHome extends ActionBarActivity implements View.OnClickListene
 
     }
 
-    public void stay(){
-        Intent intent = new Intent(this,DoctorHome.class);
-        startActivity(intent);
-    }
-    @Override
-    public void onBackPressed() {
-        stay();
-    }
+
 }
