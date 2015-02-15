@@ -45,6 +45,7 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
     String timelimit;
     String quizmark;
     String j;
+    TextView saveplzwait;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
         previousPage = (Button) findViewById(R.id.previousPage);
         go = (Button) findViewById(R.id.go);
         pageNumber = (EditText) findViewById(R.id.pageNumber);
+        saveplzwait=(TextView)findViewById(R.id.savepleasewait);
         save = (Button) findViewById(R.id.save);
         addQuestion.setOnClickListener(this);
         save.setOnClickListener(this);
@@ -144,10 +146,12 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
         Quiz quiz = new Quiz(j, deadline, timelimit, Integer.parseInt(quizmark), questions);
 
         QuizWrapper quizWrapper = new QuizWrapper(quiz);
+        saveplzwait.setText("Please Wait...");
 
         MainActivity.api.createQuize(quizWrapper, new Callback<Response>() {
             @Override
             public void success(Response response, retrofit.client.Response response2) {
+                saveplzwait.setText("");
                 Toast.makeText(getApplicationContext(), "Saved Successfully", Toast.LENGTH_SHORT).show();
             }
 
