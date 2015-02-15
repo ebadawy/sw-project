@@ -57,7 +57,8 @@ public class ListofQuiz extends ActionBarActivity {
                 @Override
                 public void success(List<Quiz> quizs, Response response) {
                     // txt.setText(quiz.getName());
-                    if (quizs.size() != 0) {
+                    try{
+
                         for ( final Quiz quiz : quizs) {
                             LinearLayout A = new LinearLayout(ListofQuiz.this);
                             final Button btn = new Button(ListofQuiz.this);
@@ -160,7 +161,7 @@ public class ListofQuiz extends ActionBarActivity {
 
 
                         }
-                    } else {
+                    }catch(NullPointerException e)  {
                         txt.setText("No Quizzes Available Now");
                     }
                 }
@@ -174,6 +175,7 @@ public class ListofQuiz extends ActionBarActivity {
             });
         }catch (NullPointerException e){
             txt.setText("No Quizzes Available Now");
+            lm.addView(txt);
         }
     }
 
