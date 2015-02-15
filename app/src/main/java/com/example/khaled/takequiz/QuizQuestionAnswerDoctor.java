@@ -153,6 +153,8 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
             public void success(Response response, retrofit.client.Response response2) {
                 saveplzwait.setText("");
                 Toast.makeText(getApplicationContext(), "Saved Successfully", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(QuizQuestionAnswerDoctor.this,ListofQuiz.class);
+                startActivity(intent);
             }
 
             @Override
