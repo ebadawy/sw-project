@@ -19,6 +19,7 @@ public class Quiz {
     private int quiz_mark;
     private List<Question> questions;
     private boolean published;
+    private boolean result_published;
 
     public Quiz() {
         this.name = null;
@@ -41,6 +42,7 @@ public class Quiz {
         this.published = false;
     }
 
+    public String getDeadline(){return this.deadline;}
     public void setQuestions(List<Question> q) {
         this.questions = q;
     }
@@ -84,6 +86,10 @@ public class Quiz {
 
             }
         });
+    }
+
+    public boolean isResultPublished() {
+        return this.result_published;
     }
 }
 

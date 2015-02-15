@@ -9,7 +9,7 @@
         android:id="@+id/viewpager"
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"
-        android:layout_marginBottom="47dp"
+        android:layout_marginBottom="50dp"
         android:layout_marginTop="47dp"
         />
 
@@ -79,6 +79,16 @@
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/go"
         android:layout_toStartOf="@+id/go" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=""
+        android:id="@+id/savepleasewait"
+        android:layout_above="@+id/addQuestion"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
 

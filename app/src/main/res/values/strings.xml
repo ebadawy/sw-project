@@ -12,6 +12,11 @@
     <string name="listofquiz">List Of Quizes</string>
     <string name="result">Results</string>
     <string name="statistics">Statistics</string>
+    <string name="title_activity_groups">Groups</string>
+    <string name="title_activity_student_registration">StudentRegistration</string>
+    <string name="title_activity_select_quiz">Quiz</string>
+    <string name="title_activity_results">Results</string>
+    <string name="title_activity_listof_quiz">Quizzes</string>
     <string name="title_activity_statistics">Statistics</string>
     <string name="title_activity_quiz_maininfo">QuizMaininfo</string>
     <string name="title_activity_quiz_question_answer_student">QuizQuestionAnswerStudent</string>
@@ -31,9 +36,8 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="title_activity_grapher">Grapher</string>
-    <string name="title_activity_groups">Groups</string>
-    <string name="title_activity_student_registration">StudentRegistration</string>
     <string name="title_activity_group_list">GroupList</string>
 
+>>>>>>> master
 
 </resources>

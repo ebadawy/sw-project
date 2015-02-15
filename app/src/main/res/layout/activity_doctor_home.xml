@@ -24,10 +24,8 @@
         android:layout_marginTop="60dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Create Quiz"/>
-
-
-
+        android:text="Create Quiz"
+        android:background="@drawable/butt"/>
 
     <Button
         android:layout_width="fill_parent"
@@ -36,27 +34,29 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_gravity="center_horizontal"
+        android:background="@drawable/butt"
         android:text="List Of Quizs"
         android:onClick="listofquiz"/>
-
     <Button
         android:layout_width="fill_parent"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/butt"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Groups"
-        android:onClick="opengroups"/>
+        android:onClick="startGroupsIntent"
+        android:text="Groups"/>
     <Button
         android:layout_width="fill_parent"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
+        android:background="@drawable/butt"
+        android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Results"/>
-
+        android:text="Results"
+        android:onClick="drresults"/>
 
 
     <Button
@@ -66,7 +66,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
-
+        android:background="@drawable/butt"
         android:text="Statistics"
         android:id="@+id/statistics"
         android:layout_gravity="center_horizontal" />
@@ -81,6 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:text="Log Out"
+        android:background="@drawable/butt"
         android:onClick="getoutdr"/>
 </LinearLayout>
 

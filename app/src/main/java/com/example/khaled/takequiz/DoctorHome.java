@@ -3,24 +3,40 @@ package com.example.khaled.takequiz;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import android.widget.Button;
-
 
 public class DoctorHome extends ActionBarActivity implements View.OnClickListener {
     Button statistics;
-    Intent groupsIntent;
+    public static final String doctorid="com.example.khaled.takequiz.MESSAGE";
+
 
     Button createQuiz;
-    public void opengroups(View view){
-        Intent intent = new Intent(this,Grouplayout.class);
+    public void opengroups(View view) {
+        Intent intent = new Intent(this, Grouplayout.class);
+    }
+    public void drresults(View v){
+        Intent intent = new Intent(this, Results.class);
+        Intent docid = getIntent();
+        String id = docid.getStringExtra(MainActivity.DocID);
+        Log.i("Info","++++++++++++++++++++++++++++++++++++++++++++++++++++++"+id);
+        intent.putExtra(doctorid,id);
+        startActivity(intent);
+
+    }
+    public void listofquiz(View v){
+        Intent intent = new Intent(this,ListofQuiz.class);
+        Intent docid = getIntent();
+        String id = docid.getStringExtra(MainActivity.DocID);
+        intent.putExtra(doctorid,id);
         startActivity(intent);
     }
 
+    Intent groupsIntent;
 
 
     public void getoutdr(View view){
@@ -39,6 +55,7 @@ public class DoctorHome extends ActionBarActivity implements View.OnClickListene
         statistics.setOnClickListener(this);
 
         groupsIntent = new Intent(this, Groups.class);
+
     }
 
     public void startGroupsIntent(View v) {

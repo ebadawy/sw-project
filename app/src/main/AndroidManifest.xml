@@ -34,8 +34,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khaled.takequiz.MainActivity" />
         </activity>
-
-
         <activity
             android:name=".QuizMaininfo"
             android:label="@string/title_activity_quiz_maininfo"
@@ -52,7 +50,7 @@
             android:name=".Grapher"
             android:label="grapher" >
         </activity>
-    <activity
+        <activity
 
             android:name=".Grouplayout"
             android:label="@string/title_activity_grouplayout"
@@ -61,7 +59,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khaled.takequiz.DoctorHome" />
         </activity>
-
         <activity
             android:name=".Groups"
             android:label="@string/title_activity_groups" >
@@ -69,7 +66,14 @@
         <activity
             android:name=".StudentRegistration"
             android:label="@string/title_activity_student_registration" >
-
+        </activity>
+        <activity
+            android:name=".SelectQuiz"
+            android:label="@string/title_activity_select_quiz"
+            android:parentActivityName=".StudentHome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.StudentHome" />
         </activity>
         <activity
             android:name=".GroupList"
@@ -86,15 +90,28 @@
 
         <activity
             android:name=".studentresult"
-            android:label="@string/title_activity_studentresult"
+            android:label="Results"
             android:parentActivityName=".StudentHome" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.khaled.takequiz.StudentHome" />
-
         </activity>
-
-
+        <activity
+            android:name=".Results"
+            android:label="@string/title_activity_results"
+            android:parentActivityName=".DoctorHome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.DoctorHome" />
+        </activity>
+        <activity
+            android:name=".ListofQuiz"
+            android:label="@string/title_activity_listof_quiz"
+            android:parentActivityName=".DoctorHome" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.DoctorHome" />
+        </activity>
     </application>
 
 </manifest>

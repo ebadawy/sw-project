@@ -9,17 +9,26 @@ import android.view.View;
 
 
 public class StudentHome extends ActionBarActivity {
-
+    public static final String studentid="com.example.khaled.takequiz.MESSAGE";
     public void getout(View view){
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
+    public void listquiz(View view){
+        Intent intent = new Intent(this,SelectQuiz.class);
+        Intent n = getIntent();
+        String Stuid = n.getStringExtra(MainActivity.StuID);
+        intent.putExtra(studentid,Stuid);
+        startActivity(intent);
 
-    public void openresults(View view){
+    }
+    public void openresults(View v){
         Intent intent = new Intent(this,studentresult.class);
+        Intent n = getIntent();
+        String Stuid = n.getStringExtra(MainActivity.StuID);
+        intent.putExtra(studentid,Stuid);
         startActivity(intent);
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,12 +58,5 @@ public class StudentHome extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void stay(){
-        Intent intent = new Intent(this,StudentHome.class);
-        startActivity(intent);
-    }
-    @Override
-    public void onBackPressed() {
-        stay();
-    }
+
 }

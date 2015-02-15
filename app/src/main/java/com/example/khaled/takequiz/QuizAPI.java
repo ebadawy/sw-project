@@ -48,6 +48,7 @@ public interface QuizAPI {
 
     @POST("/quizzes")
     public void createQuize(@Body QuizWrapper quizWrapper,
+                            @Query("user_id") int userId,
                             Callback<Response> response);
 
     @GET("/users/{user_id}/quizzes")
@@ -103,7 +104,7 @@ public interface QuizAPI {
 
     @PATCH("/publish")
     public void resultStatus(@Query("quiz_id") int quizId,
-                             @Query("result_status") int publish,
+                             @Query("result_status") boolean publish,
                              Callback<Response> responseCallback);
 
     @GET("/graph")
@@ -118,4 +119,19 @@ public interface QuizAPI {
 
     @GET("/users/{user_id}/groups")
     public void getGroups(@Path("user_id") int userId, Callback<List<Group>> groups);
+
+    @GET("/groups/{group_id}/users")
+    public void getGroupUsers(@Path("group_id") int groupId, Callback<List<User>> users);
+
+    @PATCH("/groups/{group_id}?method=add")
+
+    public void addStudent(@Query("user_name") String user_name,
+                           @Path("group_id") int groupId,
+                           Callback<Response> responseCallback);
+
+    @PATCH("/groups/{group_id}?method=delete")
+    public void deleteStudent(@Query("user_name") String user_name,
+                              @Path("group_id") int groupId,
+                              Callback<Response> responseCallback);
+
 }
