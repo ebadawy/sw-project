@@ -148,7 +148,7 @@ public class QuizQuestionAnswerDoctor extends FragmentActivity implements View.O
         QuizWrapper quizWrapper = new QuizWrapper(quiz);
         saveplzwait.setText("Please Wait...");
 
-        MainActivity.api.createQuize(quizWrapper, new Callback<Response>() {
+        MainActivity.api.createQuize(quizWrapper, MainActivity.current_user.getId(), new Callback<Response>() {
             @Override
             public void success(Response response, retrofit.client.Response response2) {
                 saveplzwait.setText("");
