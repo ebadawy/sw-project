@@ -49,6 +49,7 @@ public interface QuizAPI {
 
     @POST("/quizzes")
     public void createQuize(@Body QuizWrapper quizWrapper,
+                            @Query("user_id") int userId,
                             Callback<Response> response);
 
     @GET("/users/{user_id}/quizzes")

@@ -60,9 +60,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
              addChoice =(Button)beko.findViewById(R.id.addChoice);
              allEds.add(choice);
 
-             check = (Button) beko.findViewById(R.id.check);
 
-             check.setOnClickListener(this);
              addChoice.setOnClickListener(this);
 
 
@@ -112,29 +110,13 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
             e.printStackTrace();
         }
     }
-    public void checkClick(){
-        if (radioGroup.getCheckedRadioButtonId() == -1)
-        {
-            Toast.makeText(getActivity(), "Choose Right Answer", Toast.LENGTH_SHORT).show();
-        }
 
 
-
-        else
-        {
-            Toast.makeText(getActivity(), "Check Passed", Toast.LENGTH_SHORT).show();
-        }
-
-
-    }
     @Override
      public void onClick(View view) {
                 switch(view.getId()){
                     case R.id.addChoice:
                         addChoiceclick();
-                        break;
-                    case R.id.check:
-                        checkClick();
                         break;
                 }
 

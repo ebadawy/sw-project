@@ -88,6 +88,19 @@
                 android:value="com.example.khaled.takequiz.StudentHome" />
         </activity>
         <activity
+            android:name=".GroupList"
+            android:label="@string/title_activity_group_list" >
+        </activity>
+        <activity
+            android:name=".QuizQuestionAnswerDoctor"
+            android:label="@string/title_activity_quiz_question_answer_doctor"
+            android:parentActivityName=".QuizMaininfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.khaled.takequiz.QuizMaininfo" />
+        </activity>
+
+        <activity
             android:name=".studentresult"
             android:label="Results"
             android:parentActivityName=".StudentHome" >
