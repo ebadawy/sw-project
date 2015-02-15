@@ -120,12 +120,5 @@ public class DoctorHome extends ActionBarActivity implements View.OnClickListene
 
     }
 
-    public void stay(){
-        Intent intent = new Intent(this,DoctorHome.class);
-        startActivity(intent);
-    }
-    @Override
-    public void onBackPressed() {
-        stay();
-    }
+    
 }
